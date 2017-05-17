@@ -6,6 +6,4 @@ notifications:
 before_install:
   - cd java
 jobs:
-  include:
-    - stage: deploy
-      script: ./deploy
+    script: ./deploy

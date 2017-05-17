@@ -44,6 +44,8 @@ public abstract class Damier {
 		return false;
 	}
 	
+	
+	
 	public String toStringDebug(){
 
 		int compteur = 0;
