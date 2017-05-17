@@ -478,6 +478,12 @@ public class Damier {
 		return false;
 	}
 	
+	public boolean estPermis(Case parCaseOri, Case parCaseDest){
+		if(estVoisin(parCaseOri, parCaseDest) && parCaseDest.getPion() == null)
+			return true;
+		return false;
+	}
+	
 	public String toStringDebug(){
 
 		int compteur = 0;
