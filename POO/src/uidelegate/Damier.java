@@ -44,8 +44,6 @@ public abstract class Damier {
 		return false;
 	}
 	
-	
-	
 	public String toStringDebug(){
 
 		int compteur = 0;
@@ -56,6 +54,38 @@ public abstract class Damier {
 		}
 		chaine += "nombre de cases parcourues : " + compteur;
 		
+		return chaine;
+	}
+	
+	public String toStringDebugV2(){
+		String chaine = "";
+		for(int i = 0; i < tabCases.length; i++){
+			chaine += "Case : " + tabCases[i].getId();
+			
+			if(tabCases[i].getVoisinHautGauche() == null)
+				chaine += " -- voisinHG = null";
+			else chaine += " -- voisinHG " + tabCases[i].getVoisinHautGauche().getId();
+			
+			if(tabCases[i].getVoisinGauche() == null)
+				chaine += " -- voisinG = null";
+			else chaine += " -- voisinG " + tabCases[i].getVoisinGauche().getId();
+					
+			if(tabCases[i].getVoisinBasGauche() == null)
+				chaine += " -- voisinBG = null";
+			else chaine += " -- voisinBG " + tabCases[i].getVoisinBasGauche().getId();
+			
+			if(tabCases[i].getVoisinBasDroit() == null)
+				chaine += " -- voisinBD = null";
+			else chaine += " -- voisinBD " + tabCases[i].getVoisinBasDroit().getId();
+			
+			if(tabCases[i].getVoisinDroit() == null)
+				chaine += " -- voisinD = null";
+			else chaine += " -- voisinD " + tabCases[i].getVoisinDroit().getId();
+			
+			if(tabCases[i].getVoisinHautDroit() == null)
+				chaine += " -- voisinHD = null\n";
+			else chaine += " -- voisinHD " + tabCases[i].getVoisinHautDroit().getId() + "\n";
+		}
 		return chaine;
 	}
 	

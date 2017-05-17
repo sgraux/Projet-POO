@@ -9,15 +9,15 @@ public class TestDamier {
 	
 	public static void main(String []args){
 	
-	Damier damier = new DamierAbalone();
+	Damier damier = new DamierDameChinoise();
 	//System.out.println(damier.getCase(1).getVoisinGauche().getId());
 	//System.out.println(damier.toStringDebug());
-	
-	Case maCase = damier.getCase(7);
+	System.out.println(damier.toStringDebugV2());
+	//Case maCase = damier.getCase(7);
 	//System.out.println(damier.estBordureD(maCase, 0));
-	System.out.println(maCase.getVoisinDroit().getId());
+	//System.out.println(maCase.getVoisinDroit().getId());
 	//System.out.println(maCase.getVoisinGauche().getId());
-	System.out.println(maCase.getVoisinBasDroit().getId());
+	//System.out.println(maCase.getVoisinBasDroit().getId());
 	//System.out.println(maCase.getVoisinBasGauche().getId());
 	//System.out.println(maCase.getVoisinHautGauche().getId());
 	//System.out.println(maCase.getVoisinHautDroit().getId());
