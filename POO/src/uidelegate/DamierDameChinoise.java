@@ -1,0 +1,226 @@
+package uidelegate;
+
+public class DamierDameChinoise extends Damier{
+
+	public DamierDameChinoise() {
+		super(121);
+		initialiseGraphe();
+	}
+
+	@Override
+	public void initialiseGraphe() {
+
+		/* TRIANGLE SOMMET */
+		
+		//LIGNE 1
+		tabCases[0].setVoisinBasGauche(tabCases[1]); tabCases[0].setVoisinBasDroit(tabCases[2]);
+		
+		//LIGNE 2
+		tabCases[1].setVoisinDroit(tabCases[2]); tabCases[1].setVoisinBasGauche(tabCases[3]);
+		tabCases[1].setVoisinBasDroit(tabCases[4]); tabCases[1].setVoisinHautDroit(tabCases[0]);
+		
+		tabCases[2].setVoisinGauche(tabCases[1]); tabCases[2].setVoisinBasGauche(tabCases[4]);
+		tabCases[2].setVoisinBasDroit(tabCases[5]); tabCases[2].setVoisinHautGauche(tabCases[0]);
+		
+		//LIGNE 3
+		tabCases[3].setVoisinDroit(tabCases[4]); tabCases[3].setVoisinBasGauche(tabCases[6]);
+		tabCases[3].setVoisinBasDroit(tabCases[7]); tabCases[3].setVoisinHautDroit(tabCases[1]);
+		
+		tabCases[4].setVoisinGauche(tabCases[3]); tabCases[4].setVoisinDroit(tabCases[5]);
+		tabCases[4].setVoisinHautGauche(tabCases[1]); tabCases[4].setVoisinHautDroit(tabCases[2]);
+		tabCases[4].setVoisinBasGauche(tabCases[7]); tabCases[4].setVoisinBasDroit(tabCases[8]);
+		
+		tabCases[5].setVoisinHautGauche(tabCases[2]);tabCases[5].setVoisinGauche(tabCases[4]);
+		tabCases[5].setVoisinBasGauche(tabCases[8]); tabCases[5].setVoisinBasDroit(tabCases[9]);
+		
+		
+		///////////////////// CORPS DE L'ETOILE //////////////////////
+		//ETAGE 0 
+		for(int i = 6; i < 10; i++){
+			tabCases[i].setVoisinBasDroit(tabCases[i + 9]);
+			tabCases[i].setVoisinBasGauche(tabCases[i + 8]);
+			if(i != 6){
+				tabCases[i].setVoisinHautDroit(tabCases[i - 3]);
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+			}
+			if(i != 9){
+				tabCases[i].setVoisinHautGauche(tabCases[i - 4]);
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+			}
+		}
+		
+		//ETAGE 1
+		for(int i = 10; i < 23; i++){
+			if(i != 10){
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+				tabCases[i].setVoisinBasGauche(tabCases[i + 12]);
+			}
+			if(i != 22){
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+				tabCases[i].setVoisinBasDroit(tabCases[i + 13]);
+			}
+		}
+		
+		tabCases[14].setVoisinHautDroit(tabCases[6]);
+		tabCases[15].setVoisinHautGauche(tabCases[6]);tabCases[15].setVoisinHautDroit(tabCases[7]);
+		tabCases[16].setVoisinGauche(tabCases[7]); tabCases[16].setVoisinHautDroit(tabCases[8]);
+		tabCases[17].setVoisinHautGauche(tabCases[8]); tabCases[17].setVoisinHautDroit(tabCases[9]);
+		tabCases[18].setVoisinHautGauche(tabCases[9]);
+		
+		//ETAGE 2
+		for(int i = 23; i < 35; i++){
+			if(i != 23){
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+				tabCases[i].setVoisinBasGauche(tabCases[i + 11]);
+			}
+			if(i != 34){
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+				tabCases[i].setVoisinBasDroit(tabCases[i + 12]);
+			}
+			tabCases[i].setVoisinHautGauche(tabCases[i - 13]);
+			tabCases[i].setVoisinHautDroit(tabCases[i - 12]);
+		}
+		
+		//ETAGE 3
+		for(int i = 35; i < 46; i++){
+			if(i != 35){
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+				tabCases[i].setVoisinBasGauche(tabCases[i + 10]);
+			}
+			if(i != 45){
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+				tabCases[i].setVoisinBasDroit(tabCases[i + 11]);
+			}
+			tabCases[i].setVoisinHautDroit(tabCases[i - 11]);
+			tabCases[i].setVoisinHautGauche(tabCases[i - 12]);
+		}
+		
+		//ETAGE 4
+		for(int i = 46; i < 56; i++){
+			if(i != 46){
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+				tabCases[i].setVoisinBasGauche(tabCases[i + 9]);
+			}
+			if(i != 55){
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+				tabCases[i].setVoisinBasDroit(tabCases[i + 10]);
+			}
+			tabCases[i].setVoisinHautDroit(tabCases[i - 10]);
+			tabCases[i].setVoisinHautGauche(tabCases[i - 11]);
+		}
+		
+		//ETAGE 5
+		for(int i = 56; i < 65; i++){
+			if(i != 56)
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+			if(i != 64)
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+			
+			tabCases[i].setVoisinHautDroit(tabCases[i - 9]);
+			tabCases[i].setVoisinHautGauche(tabCases[i - 10]);
+			tabCases[i].setVoisinBasDroit(tabCases[i + 10]);
+			tabCases[i].setVoisinBasGauche(tabCases[i + 9]);
+		}
+		
+		//ETAGE 6
+		for(int i = 65; i < 75; i++){
+			if(i != 65){
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+				tabCases[i].setVoisinHautGauche(tabCases[i - 10]);
+			}
+			if(i != 74){
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+				tabCases[i].setVoisinHautDroit(tabCases[i - 9]);
+			}
+			tabCases[i].setVoisinBasDroit(tabCases[i + 11]);
+			tabCases[i].setVoisinBasGauche(tabCases[i + 10]);
+		}
+		
+		//ETAGE 7
+		for(int i = 75; i < 86; i++){
+			if(i != 75){
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+				tabCases[i].setVoisinHautGauche(tabCases[i - 11]);
+			}
+			if(i != 85){
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+				tabCases[i].setVoisinHautDroit(tabCases[i - 10]);
+			}
+			tabCases[i].setVoisinBasDroit(tabCases[i + 12]);
+			tabCases[i].setVoisinBasGauche(tabCases[i + 11]);
+		}
+		
+		//ETAGE 8
+		for(int i = 86; i < 98; i++){
+			if(i != 86){
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+				tabCases[i].setVoisinHautGauche(tabCases[i - 12]);
+			}
+			if(i != 97){
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+				tabCases[i].setVoisinHautDroit(tabCases[i - 11]);
+			}
+			tabCases[i].setVoisinDroit(tabCases[i + 13]);
+			tabCases[i].setVoisinBasGauche(tabCases[i + 12]);
+		}
+		
+		//ETAGE 9
+		for(int i = 98; i < 111; i++){
+			if(i != 98){
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+				tabCases[i].setVoisinHautGauche(tabCases[i - 13]);
+			}
+			if(i != 110){
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+				tabCases[i].setVoisinHautDroit(tabCases[i - 12]);
+			}
+		}
+		
+		tabCases[103].setVoisinBasDroit(tabCases[111]);
+		tabCases[103].setVoisinBasGauche(tabCases[111]); tabCases[103].setVoisinBasDroit(tabCases[112]);
+		tabCases[104].setVoisinBasGauche(tabCases[112]); tabCases[104].setVoisinBasDroit(tabCases[113]);
+		tabCases[105].setVoisinBasGauche(tabCases[113]); tabCases[105].setVoisinBasDroit(tabCases[114]);
+		tabCases[107].setVoisinBasGauche(tabCases[114]);
+		
+		////////////// TRIANGLE DU BAS ////////////////
+		//ETAGE 10
+		for(int i = 111; i < 115; i++){
+			if(i != 111){
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+				tabCases[i].setVoisinBasGauche(tabCases[i + 3]);
+			}
+			if(i != 114){
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+				tabCases[i].setVoisinBasDroit(tabCases[i + 4]);
+			}
+			tabCases[i].setVoisinHautDroit(tabCases[i - 8]);
+			tabCases[i].setVoisinHautGauche(tabCases[i - 9]);
+		}
+		
+		for(int i = 115; i < 118; i++){
+			if(i != 115){
+				tabCases[i].setVoisinGauche(tabCases[i - 1]);
+				tabCases[i].setVoisinBasGauche(tabCases[i + 2]);
+			}
+			if(i != 117){
+				tabCases[i].setVoisinDroit(tabCases[i + 1]);
+				tabCases[i].setVoisinBasDroit(tabCases[i + 3]);
+			}
+			tabCases[i].setVoisinHautDroit(tabCases[i - 3]);
+			tabCases[i].setVoisinHautGauche(tabCases[i - 4]);
+		}
+		
+		tabCases[118].setVoisinBasGauche(tabCases[119]);
+		tabCases[118].setVoisinHautGauche(tabCases[115]); tabCases[118].setVoisinHautDroit(tabCases[116]);
+		tabCases[118].setVoisinBasDroit(tabCases[120]);
+		
+		tabCases[119].setVoisinDroit(tabCases[118]);
+		tabCases[119].setVoisinHautGauche(tabCases[116]); tabCases[119].setVoisinHautDroit(tabCases[117]);
+		tabCases[119].setVoisinBasGauche(tabCases[120]);
+		
+		tabCases[120].setVoisinHautGauche(tabCases[118]);
+		tabCases[120].setVoisinHautDroit(tabCases[119]);
+		
+	}
+
+}
