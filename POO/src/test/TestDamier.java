@@ -2,12 +2,13 @@ package test;
 
 import uidelegate.Case;
 import uidelegate.Damier;
+import uidelegate.DamierDameChinoise;
 
 public class TestDamier {
 	
 	public static void main(String []args){
 	
-	Damier damier = new Damier(true);
+	Damier damier = new DamierDameChinoise();
 	//System.out.println(damier.getCase(1).getVoisinGauche().getId());
 	//System.out.println(damier.toStringDebug());
 	
