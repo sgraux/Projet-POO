@@ -6,6 +6,5 @@ notifications:
 script:
   - pwd
   - ls -l
-  - cd ./build/
   - chmod +x travis-ci.sh build.sh
   - ./travis-ci.sh
