@@ -3,7 +3,9 @@ jdk:
   - oraclejdk8
 notifications:
   - email: false
-before_install:
-  - cd java
-jobs:
-    script: ./deploy
+script:
+  - pwd
+  - ls -l
+  - cd ./build/
+  - chmod +x travis-ci.sh build.sh
+  - ./travis-ci.sh

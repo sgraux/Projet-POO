@@ -150,7 +150,7 @@ public class DamierAbalone extends Damier{
 		}
 	}
 	
-public boolean estBordureG(Case parCase, int etage){
+	public boolean estBordureG(Case parCase, int etage){
 		
 		int id = parCase.getId();
 		
@@ -222,5 +222,12 @@ public boolean estBordureG(Case parCase, int etage){
             break;
 		}
     return false;
+	}
+
+	public void deplacement(Case parCaseOri, Case parCaseDest){
+		if(estPermis(parCaseOri, parCaseDest)){
+			parCaseDest.setPion(parCaseOri.getPion());
+			parCaseOri.setPion(null);
+		}
 	}
 }
