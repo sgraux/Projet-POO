@@ -47,13 +47,18 @@ public class Case {
 	}
 	
 	public String toString(){
-		return "id = " + id + "   ---   pion : " + pion.toString() + "   ---   etat = " + etat 
+		String chaine =  "id = " + id ;
+				if(pion != null)
+					chaine += "   ---   pion : " + pion.toString();
+				chaine += "   ---   etat = " + etat 
 				+"\n voisin haut gauche : " + voisinHautGauche.getId() 
 				+ "\n voisin gauche : " + voisinGauche.getId()
 				+ "\n voisin bas gauche : " + voisinBasGauche.getId()
 				+ "\n voisin bas droit : " + voisinBasDroit.getId()
 				+ "\n voisin droit : " + voisinDroit.getId()
 				+ "\n voisin haut droit : " + voisinHautDroit.getId();
+		
+		return chaine;
 	}
 	
 	/*public String toStringDebugId(){

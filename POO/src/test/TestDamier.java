@@ -9,7 +9,9 @@ public class TestDamier {
 	
 	public static void main(String []args){
 	
-	DamierAbalone damier = new DamierAbalone();
+	DamierDameChinoise damier = new DamierDameChinoise();
+	//System.out.println(damier.toStringDebugV2());
+	damier.inialisePion2C();
 	//System.out.println(damier.getCase(1).getVoisinGauche().getId());
 	//System.out.println(damier.toStringDebug());
 	//System.out.println(damier.toStringDebugV2());
@@ -23,11 +25,10 @@ public class TestDamier {
 	//System.out.println(maCase.getVoisinHautDroit().getId());
 	//System.out.println(maCase.getVoisinBasGauche().getPion().getCouleur());
 	
-	damier.deplacement(damier.getCase(13), damier.getCase(21));
-	
-	Case maCase = damier.getCase(21);
-	System.out.println(maCase.getPion());
-	
+	System.out.println(damier.estVoisin(damier.getCase(6), damier.getCase(15)));
+	System.out.println(damier.estPermis(damier.getCase(6), damier.getCase(15)));
+	System.out.println(damier.deplacement(damier.getCase(6), damier.getCase(15)));
+	System.out.print(damier.getCase(15).getPion());
 	/*Case maCase2 = damier.getCase(1);
 	maCase.setVoisinDroit(maCase2);
 	maCase2.setVoisinGauche(maCase);*/

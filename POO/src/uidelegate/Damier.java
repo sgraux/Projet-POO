@@ -22,17 +22,17 @@ public abstract class Damier {
 
 	public boolean estVoisin(Case parCaseRef, Case parCaseTest){
 		
-		if(parCaseRef.getVoisinHautGauche() == parCaseTest.getVoisinHautGauche())
+		if(parCaseRef.getVoisinHautGauche() == parCaseTest)
 			return true;
-		else if(parCaseRef.getVoisinGauche() == parCaseTest.getVoisinGauche())
+		else if(parCaseRef.getVoisinGauche() == parCaseTest)
 			return true;
-		else if(parCaseRef.getVoisinBasGauche() == parCaseTest.getVoisinBasGauche())
+		else if(parCaseRef.getVoisinBasGauche() == parCaseTest)
 			return true;
-		else if(parCaseRef.getVoisinBasDroit() == parCaseTest.getVoisinBasDroit())
+		else if(parCaseRef.getVoisinBasDroit() == parCaseTest)
 			return true;
-		else if(parCaseRef.getVoisinDroit() == parCaseTest.getVoisinDroit())
+		else if(parCaseRef.getVoisinDroit() == parCaseTest)
 			return true;
-		else if(parCaseRef.getVoisinHautDroit() == parCaseTest.getVoisinHautDroit())
+		else if(parCaseRef.getVoisinHautDroit() == parCaseTest)
 			return true;
 		
 		return false;

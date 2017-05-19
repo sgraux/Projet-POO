@@ -224,10 +224,4 @@ public class DamierAbalone extends Damier{
     return false;
 	}
 
-	public void deplacement(Case parCaseOri, Case parCaseDest){
-		if(estPermis(parCaseOri, parCaseDest)){
-			parCaseDest.setPion(parCaseOri.getPion());
-			parCaseOri.setPion(null);
-		}
-	}
 }

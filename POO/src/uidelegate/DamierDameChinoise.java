@@ -223,4 +223,26 @@ public class DamierDameChinoise extends Damier{
 		
 	}
 
+	public boolean deplacement(Case parCaseOri, Case parCaseDest){
+		if(estPermis(parCaseOri, parCaseDest)){
+			parCaseDest.setPion(parCaseOri.getPion());
+			parCaseOri.setPion(null);
+			return true;
+		}
+		return false;
+	}
+	
+	public void inialisePion2C(){//BLEU & ROUGE
+		
+		for(int i = 0; i < 10; i++){
+			tabCases[i].setPion(new Pion("rouge"));
+		}
+		
+		for(int i = 111; i < 121; i++){
+			tabCases[i].setPion(new Pion("bleu"));
+		}
+		
+	}
+	
+	//public void
 }
