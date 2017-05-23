@@ -101,6 +101,13 @@ public abstract class Damier {
 		this.tabCases = tabCases;
 	}
 	
-	
+	public String toSTringCouleur(){
+		String chaine = "";
+		for(int i = 0; i < 120; i++){
+			if(tabCases[i].getPion() != null)
+				chaine += tabCases[i].getPion().getCouleur() + "\n";
+		}
+		return chaine;
+	}
 
 }
