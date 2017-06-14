@@ -232,17 +232,142 @@ public class DamierDameChinoise extends Damier{
 		return false;
 	}
 	
-	public void inialisePion2C(){//BLEU & ROUGE
-		
+	public boolean saut(Case parCaseOri, Case parCaseDest){
+		if(parCaseOri.getVoisinHautGauche() != null){
+			if(parCaseOri.getVoisinHautGauche().getVoisinHautGauche() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				return true;
+			}
+		}
+		if(parCaseOri.getVoisinGauche() != null){
+			if(parCaseOri.getVoisinGauche().getVoisinGauche() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				return true;
+			}
+		}
+		if(parCaseOri.getVoisinBasGauche() != null){
+			if(parCaseOri.getVoisinBasGauche().getVoisinBasGauche() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				return true;
+			}
+		}
+		if(parCaseOri.getVoisinBasDroit() != null){
+			if(parCaseOri.getVoisinBasDroit().getVoisinBasDroit() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				return true;	
+			}
+		}
+		if(parCaseOri.getVoisinDroit() != null){
+			if(parCaseOri.getVoisinDroit().getVoisinDroit() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				return true;
+			}
+		}
+		if(parCaseOri.getVoisinHautDroit() != null){
+			if(parCaseOri.getVoisinHautDroit().getVoisinHautDroit() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				return true;
+				
+			}
+		}
+		return false;
+	}
+	public void initialiseRouge(){
 		for(int i = 0; i < 10; i++){
 			tabCases[i].setPion(new Pion("rouge"));
 		}
-		
+	}
+	
+	public void initialiseBleu(){
 		for(int i = 111; i < 121; i++){
 			tabCases[i].setPion(new Pion("bleu"));
 		}
-		
 	}
 	
-	//public void
+	public void initialiseBlanc(){
+		tabCases[10].setPion(new Pion("blanc"));
+		tabCases[11].setPion(new Pion("blanc"));
+		tabCases[12].setPion(new Pion("blanc"));
+		tabCases[13].setPion(new Pion("blanc"));
+		
+		tabCases[23].setPion(new Pion("blanc"));
+		tabCases[24].setPion(new Pion("blanc"));
+		tabCases[25].setPion(new Pion("blanc"));
+		
+		tabCases[35].setPion(new Pion("blanc"));
+		tabCases[36].setPion(new Pion("blanc"));
+		
+		tabCases[46].setPion(new Pion("blanc"));
+	}
+	
+	public void initialiseJaune(){
+		tabCases[19].setPion(new Pion("jaune"));
+		tabCases[20].setPion(new Pion("jaune"));
+		tabCases[21].setPion(new Pion("jaune"));
+		tabCases[22].setPion(new Pion("jaune"));
+		
+		tabCases[32].setPion(new Pion("jaune"));
+		tabCases[33].setPion(new Pion("jaune"));
+		tabCases[34].setPion(new Pion("jaune"));
+		
+		tabCases[44].setPion(new Pion("jaune"));
+		tabCases[45].setPion(new Pion("jaune"));
+		
+		tabCases[55].setPion(new Pion("jaune"));
+	}
+	
+	public void initialiseVert(){
+		tabCases[65].setPion(new Pion("vert"));
+		
+		tabCases[75].setPion(new Pion("vert"));
+		tabCases[76].setPion(new Pion("vert"));
+		
+		tabCases[86].setPion(new Pion("vert"));
+		tabCases[87].setPion(new Pion("vert"));
+		tabCases[88].setPion(new Pion("vert"));
+		
+		tabCases[98].setPion(new Pion("vert"));
+		tabCases[99].setPion(new Pion("vert"));
+		tabCases[100].setPion(new Pion("vert"));
+		tabCases[101].setPion(new Pion("vert"));
+	}
+	
+	public void initialiseNoir(){
+		tabCases[74].setPion(new Pion("vert"));
+		
+		tabCases[84].setPion(new Pion("noir"));
+		tabCases[85].setPion(new Pion("noir"));
+		
+		tabCases[95].setPion(new Pion("noir"));
+		tabCases[96].setPion(new Pion("noir"));
+		tabCases[97].setPion(new Pion("noir"));
+		
+		tabCases[107].setPion(new Pion("noir"));
+		tabCases[108].setPion(new Pion("noir"));
+		tabCases[109].setPion(new Pion("noir"));
+		tabCases[110].setPion(new Pion("noir"));
+	}
+	
+	public void initialisePion2C(){//BLEU & ROUGE
+		initialiseRouge();
+		initialiseBleu();
+	}
+	
+	public void initialisePion6C(){
+		initialiseRouge();
+		initialiseJaune();
+		initialiseNoir();
+		initialiseBleu();
+		initialiseVert();
+		initialiseBlanc();
+	}
+	
+	
+	
 }

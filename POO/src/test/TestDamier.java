@@ -11,7 +11,7 @@ public class TestDamier {
 	
 	DamierDameChinoise damier = new DamierDameChinoise();
 	//System.out.println(damier.toStringDebugV2());
-	damier.inialisePion2C();
+	damier.initialisePion6C();
 	//System.out.println(damier.getCase(1).getVoisinGauche().getId());
 	//System.out.println(damier.toStringDebug());
 	//System.out.println(damier.toStringDebugV2());
@@ -25,10 +25,14 @@ public class TestDamier {
 	//System.out.println(maCase.getVoisinHautDroit().getId());
 	//System.out.println(maCase.getVoisinBasGauche().getPion().getCouleur());
 	
-	System.out.println(damier.estVoisin(damier.getCase(6), damier.getCase(15)));
+	/*System.out.println(damier.estVoisin(damier.getCase(6), damier.getCase(15)));
 	System.out.println(damier.estPermis(damier.getCase(6), damier.getCase(15)));
 	System.out.println(damier.deplacement(damier.getCase(6), damier.getCase(15)));
-	System.out.print(damier.getCase(15).getPion());
+	System.out.print(damier.getCase(15).getPion());*/
+	
+	System.out.println(damier.saut(damier.getCase(4), damier.getCase(17)));
+	System.out.println(damier.getCase(17).getPion());
+	System.out.println(damier.toSTringCouleur());
 	/*Case maCase2 = damier.getCase(1);
 	maCase.setVoisinDroit(maCase2);
 	maCase2.setVoisinGauche(maCase);*/
