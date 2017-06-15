@@ -75,13 +75,13 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(new GridLayout(17, 25));
-		panel1.setPreferredSize(new Dimension(400, 400));
+		panel1.setPreferredSize(new Dimension(600, 600));
 		panel1.setLocation(0, 0);
 		panel1.setBackground(Color.gray);
 
 		for (int i = 0; i < 17; i++) {
 			for (int j = 0; j < 25; j++) {
-				button[i][j] = new BoutonCase(bBla);
+				button[i][j] = new BoutonCase();
 			}
 		}
 
@@ -147,7 +147,7 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		 */
 		this.panel.add(panel1);
 
-		label.setFont(new Font("Verdana", 1, 30));
+		/*label.setFont(new Font("Verdana", 1, 30));
 		label.setForeground(Color.black);
 		label.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		label.setBounds(150, 550, 100, 50);
@@ -220,7 +220,7 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		label11.setForeground(Color.black);
 		label11.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		label11.setBounds(110, 0, 575, 50);
-		// this.panel.add(label11);
+		// this.panel.add(label11);*/
 
 	}
 
@@ -228,46 +228,20 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		
 		BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
-		if(compteurClique == 0){
-			boutonClique = boutonTemp;
-			System.out.println("caseSelect = " + boutonTemp.getCasePlateau().getId());
-			compteurClique ++;
-		/*System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId()
-				+ " -- la couleur de mon pion est " + boutonTemp.getCasePlateau().getPion().getCouleur());*/
+		//System.out.println(boutonTemp.getCasePlateau().toString());
+		
+		int resultatCoup = jeuDame.appliqueCoup(boutonTemp);
+		if(resultatCoup == 1){
+			
+			boutonTemp.setIcon(jeuDame.getBoutonCourant().getIcon());
+			jeuDame.getBoutonCourant().setIcon(bBla);
+			
+			jeuDame.reinitialiseBouton();
+			
+			//System.out.println(jeuDame.getDamier().toSTringCouleur());
+			
+			System.out.println(jeuDame.victoireRouge());
 		}
-		else if(!jeuDame.getDamier().estVoisin(boutonClique.getCasePlateau(), boutonTemp.getCasePlateau())){
-			if(((DamierDameChinoise)jeuDame.getDamier()).saut(boutonClique.getCasePlateau(),boutonTemp.getCasePlateau())){
-				Pion pionTemp = boutonClique.getCasePlateau().getPion();
-				
-				boutonClique.getCasePlateau().setPion(null);
-				boutonTemp.getCasePlateau().setPion(pionTemp);
-				
-				
-				boutonTemp.setIcon(boutonClique.getIcon());
-				boutonClique.setIcon(bBla);
-				
-				boutonClique = null;
-				compteurClique = 0;
-			}
-			else{
-			boutonClique = boutonTemp;
-			System.out.println("caseSelect else if = " + boutonTemp.getCasePlateau().getId());
-			}
-		}
-		else{
-			System.out.println(((DamierDameChinoise)jeuDame.getDamier()).deplacement(boutonClique.getCasePlateau(),boutonTemp.getCasePlateau()));
-			Pion pionTemp = boutonClique.getCasePlateau().getPion();
-			
-			boutonClique.getCasePlateau().setPion(null);
-			boutonTemp.getCasePlateau().setPion(pionTemp);
-			
-			
-			boutonTemp.setIcon(boutonClique.getIcon());
-			boutonClique.setIcon(bBla);
-			
-			boutonClique = null;
-			compteurClique = 0;
-			
-		}
+		else if(resultatCoup == -1)jeuDame.reinitialiseBouton();
 	}
 }

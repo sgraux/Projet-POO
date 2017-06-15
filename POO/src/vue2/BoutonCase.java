@@ -7,7 +7,11 @@ import uidelegate.Case;
 
 public class BoutonCase extends JButton{
 	
-	private Case casePlateau;
+	private Case casePlateau = null;
+	
+	public BoutonCase(){
+		casePlateau = null;
+	}
 	
 	public BoutonCase(Case parCasePlateau){
 		super();

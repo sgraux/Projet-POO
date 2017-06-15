@@ -117,9 +117,9 @@ public class DamierAbalone extends Damier{
 			tabCases[i].setVoisinHautDroit(tabCases[i-7]);
 		}
 		
-		tabCases[45].setPion(new Pion("rouge"));
-		tabCases[46].setPion(new Pion("rouge"));
-		tabCases[47].setPion(new Pion("rouge"));
+		tabCases[45].setPion(new Pion("blanc"));
+		tabCases[46].setPion(new Pion("blanc"));
+		tabCases[47].setPion(new Pion("blanc"));
 		
 		/* ETAGE 7 */
 		for(int i = 50; i < 56; i++){
@@ -134,7 +134,7 @@ public class DamierAbalone extends Damier{
 			tabCases[i].setVoisinHautGauche(tabCases[i-7]);
 			tabCases[i].setVoisinHautDroit(tabCases[i-6]);
 			
-			tabCases[i].setPion(new Pion("rouge"));
+			tabCases[i].setPion(new Pion("blanc"));
 		}
 		
 		/* ETAGE 8 */
@@ -148,7 +148,7 @@ public class DamierAbalone extends Damier{
 			tabCases[i].setVoisinHautGauche(tabCases[i-6]);
 			tabCases[i].setVoisinHautDroit(tabCases[i-5]);
 			
-			tabCases[i].setPion(new Pion("rouge"));
+			tabCases[i].setPion(new Pion("blanc"));
 		}
 	}
 	
@@ -968,6 +968,27 @@ public class DamierAbalone extends Damier{
 		return case1;
 	}
 	
+	public void deplacerBoule(Case case1,String direction){
+		if(direction=="hautDroite"){
+			deplacerBouleHautDroit(case1);
+		}
+		if(direction=="hautGauche"){
+			deplacerBouleHautGauche(case1);
+		}
+		if(direction=="droite"){
+			deplacerBouleDroite(case1);
+		}
+		if(direction=="gauche"){
+			deplacerBouleGauche(case1);
+		}
+		if(direction=="basDroite"){
+			deplacerBouleBasDroite(case1);
+		}
+		if(direction=="hautGauche"){
+			deplacerBouleHautGauche(case1);
+		}
+	}
+	
 	public void deplacerBouleDroite(Case case1){
 		
 		String caseTmp1;
@@ -1168,9 +1189,9 @@ public class DamierAbalone extends Damier{
 				{
 					System.out.print(""+"N");
 				}
-				if(getCase(i).getPion().getCouleur()=="rouge")
+				if(getCase(i).getPion().getCouleur()=="blanc")
 				{
-					System.out.print(""+"R");
+					System.out.print(""+"B");
 				}
 			}
 			
@@ -1178,15 +1199,15 @@ public class DamierAbalone extends Damier{
 	
 	public boolean sumito(Case a,String direction)
 	{ // Determine si il y a position de sumito
-		int cptrouge=0,cptnoir=0;
+		int cptblanc=0,cptnoir=0;
 		
 		String color =a.getPion().getCouleur();
 		
 		while((a!=null)&&(a.getPion()!=null))
 		{
-			if (a.getPion().getCouleur()=="rouge")
+			if (a.getPion().getCouleur()=="blanc")
 			{
-				cptrouge++;
+				cptblanc++;
 			}
 			if (a.getPion().getCouleur()=="noir")
 			{
@@ -1217,9 +1238,9 @@ public class DamierAbalone extends Damier{
 				a=a.getVoisinBasGauche();
 			}
 		}
-		if (color=="rouge")
+		if (color=="blanc")
 		{
-			if((cptrouge>cptnoir)&&(cptrouge<=3))
+			if((cptblanc>cptnoir)&&(cptblanc<=3))
 			{
 				return true;
 			}
@@ -1230,7 +1251,7 @@ public class DamierAbalone extends Damier{
 		}
 		if (color=="noir")
 		{
-			if((cptrouge<cptnoir)&&(cptnoir<=3))
+			if((cptblanc<cptnoir)&&(cptnoir<=3))
 			{
 				return true;
 			}
