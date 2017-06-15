@@ -5,9 +5,12 @@ import java.lang.Math;
 public class DamierAbalone extends Damier{
 	
 	private Case caseSelectione[];
-	private String modeJeu;
-	private String couleurJoueur;
-	private String direction;
+	
+	// les 3 prochaines variables sont surement a mettre dans JeuAbalone
+	
+	private String modeJeu; // normal ou variante
+	private String couleurJoueur; // couleur du joueur actuel
+	private String direction; // direction selectione par un joueur
 	
 	public DamierAbalone(){
 		super(61);
@@ -49,7 +52,7 @@ public class DamierAbalone extends Damier{
 			}
 			tabCases[i].setVoisinBasGauche(tabCases[i+6]);
 			tabCases[i].setVoisinBasDroit(tabCases[i+7]);
-			
+			 
 			tabCases[i].setPion(new Pion("noir"));
 		}
 		
@@ -161,6 +164,23 @@ public class DamierAbalone extends Damier{
 			
 			tabCases[i].setPion(new Pion("rouge"));
 		}
+		
+
+	if(modeJeu=="TrouNoir"){
+		tabCases[21].setVoisinBasDroit(null);
+		tabCases[22].setVoisinBasGauche(null);
+		tabCases[29].setVoisinDroit(null);
+		tabCases[38].setVoisinHautDroit(null);
+		tabCases[39].setVoisinHautGauche(null);
+		tabCases[31].setVoisinGauche(null);
+	}
+	
+	if(modeJeu=="Mur"){
+		tabCases[29].setEtat(1);
+		tabCases[30].setEtat(1);
+		tabCases[31].setEtat(1);
+	}
+
 	}
 	
 	public String getModeJeu(){
@@ -1349,7 +1369,6 @@ public class DamierAbalone extends Damier{
 		return true;
 	}
 
-	
 	public boolean deplacementPossible(Case case1,Case case2,Case case3,String direction){
 		// fonction prenant 3 boules et une direction, et determine si un deplacement est possible.
 		
@@ -1507,6 +1526,60 @@ public class DamierAbalone extends Damier{
 			System.out.println("gauche");
 		}
 	}
+
+	public String getCouleurJoueur() {
+		return couleurJoueur;
+	}
+
+	public void setCouleurJoueur(String couleurJoueur) {
+		this.couleurJoueur = couleurJoueur;
+	}
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
 }
+
+/* 	    
+	    TANT QUE LE JOUEUR N'A PAS CLIQUE SUR UNE FLECHE DIRECTIONELLE 
+	    |
+	    |   // Des que le joueur clique sur une case
+		|	damier.remplirTableau(caseActuelle,((DamierAbalone)damier).getCouleurJoueur());
+		|_____	
+		
+		// Des que le joueur clique sur une fleche directionelle
+		
+		ON ENREGISTRE LA DIRECTION QUE LE JOUEUR A SELECTIONE
+
+		// CONVENTION DE CODE POUR LES NOMS DE DIRECTION
+		// hautGauche hautDroite droite gauche basGauche basDroite // 
+		
+		if(damier.deplacementPossible(LES 3 CASES SELECTONEES, DIRECTION)){
+			Case tmp=new Case();
+			
+			tmp=damier.determinerCaseADeplacer(LES 3 CASES SELECTIONEES, DIRECTION);
+			
+			damier.deplacerBoule(tmp, DIRECTION);
+			
+			// On change la couleur du joueur actuel
+			if(damier.getCouleurJoueur()=="noir"){
+				damier.setCouleurJoueur("rouge");
+			}
+			else{
+				damier.setCouleurJoueur("noir");
+			}
+			
+		}
+		else{
+			System.out.println("Pas de deplcement possible avec les boules selectionnees");
+			// AFFICHER A L'ECRAN QUE LE DEPLACEMENT N'EST PAS POSSIBLE
+		}
+		
+*/
+
 
 
