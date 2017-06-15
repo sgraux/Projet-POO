@@ -20,7 +20,7 @@ import uidelegate.JeuAbalone;
 public class PlateauxAB extends JeuxPan implements ActionListener{
 	
 	
-	private String mode="mur";
+	private String mode=null;
 	
 	public PlateauxAB(Dimension dim) {
 		super(dim);
@@ -40,7 +40,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		        {0,0,0,0,2,0,2,0,2,0,2,0,2,0,0,0,0}};
 	
 	private BoutonCase button[][]=new BoutonCase[9][17];
-	private JeuAbalone jeuAb = new JeuAbalone(false, mode);
+	private JeuAbalone jeuAb = new JeuAbalone(false, null);
 	
 	public PlateauxAB(Dimension dim, String mode) {
 		super(dim);
@@ -49,6 +49,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	private ImageIcon bArg = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeargent.png")).getImage());
 	private ImageIcon bBla = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeblanc.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 	private ImageIcon bNoi = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoir.png")).getImage());
+	private ImageIcon bRou = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billerouge.png")).getImage().getScaledInstance(45, 45, Image.SCALE_DEFAULT));
 	
 	private JLabel label = new JLabel("J1(NOIR):");
 	private JLabel label1 = new JLabel("J2(BLANC):");
@@ -84,7 +85,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	    		
 	    		}
 	    }
-	    
+	    int compteur=0;
 	    for(int i=0;i<9;i++)
 	    {   
 	    	for(int j=0;j<17;j++)
@@ -92,31 +93,49 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	          if(plateau[i][j]==1)
 	          {
 	        	  button[i][j].setIcon(bArg);
+	        	  button[i][j].setCasePlateau(jeuAb.getDamier().getCase(compteur));
+	        	  compteur++;
+	        	  button[i][j].addActionListener(this);
 	          }
 	          else if(plateau[i][j]==2)
 	          {
 	        	  button[i][j].setIcon(bBla);
+	        	  button[i][j].setCasePlateau(jeuAb.getDamier().getCase(compteur));
+	        	  compteur++;
+	        	  button[i][j].addActionListener(this);
 	    	   }
 	          else if(plateau[i][j]==3)
 	          {
 	        	  button[i][j].setIcon(bNoi);
+	        	  button[i][j].setCasePlateau(jeuAb.getDamier().getCase(compteur));
+	        	  compteur++;
+	        	  button[i][j].addActionListener(this);
 	    	   }
 	          else 
 	          {
 	        	  button[i][j].setVisible(false);
 	    	   }
+	          if(mode=="mur"){
+	        	  button[4][8].setVisible(false);
+	          }
+	          else if(mode=="trounoir"){
+	        	  button[4][8].setIcon(bRou);
+	        	  button[4][7].setIcon(bRou);
+	        	  button[4][7].setVisible(true);
+	        	  button[4][6].setIcon(bRou);
+	        	  button[4][9].setIcon(bRou);
+	        	  button[4][9].setVisible(true);
+	        	  button[4][10].setIcon(bRou);
+	        	  button[4][8].setEnabled(false);
+	        	  button[4][7].setEnabled(false);
+	        	  button[4][6].setEnabled(false);
+	        	  button[4][9].setEnabled(false);
+	        	  button[4][10].setEnabled(false);
+	          }
+	          
 	    		}
-	    	
 	    }
-	    for(int i=0;i<9;i++)
-	    {   
-	    	for(int j=0;j<17;j++){
-	    		if(plateau[i][j]!=0)
-	    		{
-	    			button[i][j].addActionListener(this);
-	    		}	
-	    }
-	    }
+
 		this.panel.add(panel1);
 		
 		
