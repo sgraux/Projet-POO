@@ -39,12 +39,15 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 	
 	private CheckboxGroup joGroup = new CheckboxGroup();
 	private JRadioButton j2Button = new JRadioButton("2J");
-    
     private JRadioButton j3Button = new JRadioButton("3J");
     private JRadioButton j4Button = new JRadioButton("4J");
     private JRadioButton j5Button = new JRadioButton("5J");
     private JRadioButton j6Button = new JRadioButton("6J");
     private JRadioButton jaiButton = new JRadioButton("AI");
+    
+    private CheckboxGroup moGroup = new CheckboxGroup();
+	private JRadioButton mCButton = new JRadioButton("Classic");
+    private JRadioButton mRButton = new JRadioButton("Rapide");
     
     private JTextField tj1 = new JTextField("NomeJ1", 20);
     private JTextField tj2 = new JTextField("NomeJ2", 20);
@@ -60,10 +63,6 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
     private	JButton v5 = new JButton("Valider");
     private	JButton v6 = new JButton("Valider");
     
-	public void afficher(Fenetre frame){
-		
-		
-	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -136,17 +135,28 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 			    label2.setBounds(75,75,375,40);
 			    
 			    
+			    JLabel label3 = new JLabel("#Mode JEUX:#");	    
+			    this.panel.add(label3);
+			    label3.setFont(new Font("Verdana",1,30));
+			    label3.setForeground(Color.black);
+			    label3.setBounds(50,500,375,40);
+			    
 			    //choix
 			    jaiButton.setSelected(true);
 
 			    //Group the radio buttons.
-			    ButtonGroup group = new ButtonGroup();
-			    group.add(j2Button);
-			    group.add(j3Button);
-			    group.add(j4Button);
-			    group.add(j5Button);
-			    group.add(j6Button);
-			    group.add(jaiButton);
+			    ButtonGroup groupN = new ButtonGroup();
+			    groupN.add(j2Button);
+			    groupN.add(j3Button);
+			    groupN.add(j4Button);
+			    groupN.add(j5Button);
+			    groupN.add(j6Button);
+			    groupN.add(jaiButton);
+			    
+			    ButtonGroup groupM = new ButtonGroup();
+			    groupM.add(mCButton);
+			    groupM.add(mRButton);
+			    
 			    //Register a listener for the radio buttons.
 			    j2Button.addActionListener(this);
 			    j3Button.addActionListener(this);
@@ -154,6 +164,9 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 			    j5Button.addActionListener(this);
 			    j6Button.addActionListener(this);
 			    jaiButton.addActionListener(this);
+			    
+			    mCButton.addActionListener(this);
+			    mRButton.addActionListener(this);
 			    //
 			    
 			    this.panel.add(j2Button);
@@ -181,6 +194,15 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 		        jaiButton.setBackground(Color.GRAY);
 		        jaiButton.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
 			    
+		        this.panel.add(mCButton);
+		        mCButton.setBounds(410, 500, 100, 40);
+		        mCButton.setBackground(Color.GRAY);
+		        mCButton.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
+		        this.panel.add(mRButton);
+		        mRButton.setBounds(510, 500, 100, 40);
+		        mRButton.setBackground(Color.GRAY);
+		        mRButton.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
+		        
 		        this.panel.add(tj1);
 		        tj1.setBounds(300, 200, 100, 30);
 		        

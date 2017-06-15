@@ -22,7 +22,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		super(dim);
 		initPanel();
 	}
- //test
+	//test
 	int plateau[][]=
 				{
 		        {0,0,0,0,3,0,3,0,3,0,3,0,3,0,0,0,0},

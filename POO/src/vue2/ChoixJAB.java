@@ -1,4 +1,5 @@
 package vue2;
+import java.awt.CheckboxGroup;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -34,6 +35,11 @@ public class ChoixJAB extends JeuxPan implements ActionListener {
 	private JRadioButton j2Button = new JRadioButton("2J");
 	private	JRadioButton j3Button = new JRadioButton("AI");
 	
+	private CheckboxGroup moGroup = new CheckboxGroup();
+	private JRadioButton mCButton = new JRadioButton("Classic");
+    private JRadioButton mTNButton = new JRadioButton("Trou Noir");
+    private JRadioButton mMuButton = new JRadioButton("Mur");
+    
 	private JButton v2 = new JButton("Valider");
 	private	JButton v1 = new JButton("Valider");
 	
@@ -72,6 +78,12 @@ public class ChoixJAB extends JeuxPan implements ActionListener {
 			    label2.setForeground(Color.black);
 			    label2.setBounds(75,75,375,40);
 			    
+			    JLabel label3 = new JLabel("#Mode JEUX:#");	    
+			    this.panel.add(label3);
+			    label3.setFont(new Font("Verdana",1,30));
+			    label3.setForeground(Color.black);
+			    label3.setBounds(50,500,375,40);
+			    
 			    //radioButton
 			    
 			    j3Button.setSelected(true);
@@ -84,6 +96,15 @@ public class ChoixJAB extends JeuxPan implements ActionListener {
 			    j2Button.addActionListener(this);
 			    j3Button.addActionListener(this);
 			    
+			    ButtonGroup groupM = new ButtonGroup();
+			    groupM.add(mCButton);
+			    groupM.add(mTNButton);
+			    groupM.add(mMuButton);
+			    
+			    mCButton.addActionListener(this);
+			    mTNButton.addActionListener(this);
+			    mMuButton.addActionListener(this);
+			    
 			    this.panel.add(j2Button);
 		        j2Button.setBounds(200, 150, 50, 30);
 		        j2Button.setBackground(Color.GRAY);
@@ -93,6 +114,18 @@ public class ChoixJAB extends JeuxPan implements ActionListener {
 		        j3Button.setBackground(Color.GRAY);
 		        j3Button.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
 				
+		        this.panel.add(mCButton);
+		        mCButton.setBounds(410, 500, 100, 40);
+		        mCButton.setBackground(Color.GRAY);
+		        mCButton.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
+		        this.panel.add(mTNButton);
+		        mTNButton.setBounds(510, 500, 150, 40);
+		        mTNButton.setBackground(Color.GRAY);
+		        mTNButton.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
+		        this.panel.add(mMuButton);
+		        mMuButton.setBounds(660, 500, 100, 40);
+		        mMuButton.setBackground(Color.GRAY);
+		        mMuButton.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
 		        
 		        this.panel.add(tj1);
 		        tj1.setBounds(300, 200, 100, 30);
