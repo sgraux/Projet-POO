@@ -1191,7 +1191,7 @@ public class DamierAbalone extends Damier{
 				}
 				if(getCase(i).getPion().getCouleur()=="blanc")
 				{
-					System.out.print(""+"R");
+					System.out.print(""+"B");
 				}
 			}
 			
@@ -1199,7 +1199,7 @@ public class DamierAbalone extends Damier{
 	
 	public boolean sumito(Case a,String direction)
 	{ // Determine si il y a position de sumito
-		int cpt=0,cptnoir=0;
+		int cptblanc=0,cptnoir=0;
 		
 		String color =a.getPion().getCouleur();
 		
@@ -1207,7 +1207,7 @@ public class DamierAbalone extends Damier{
 		{
 			if (a.getPion().getCouleur()=="blanc")
 			{
-				cpt++;
+				cptblanc++;
 			}
 			if (a.getPion().getCouleur()=="noir")
 			{
@@ -1240,7 +1240,7 @@ public class DamierAbalone extends Damier{
 		}
 		if (color=="blanc")
 		{
-			if((cpt>cptnoir)&&(cpt<=3))
+			if((cptblanc>cptnoir)&&(cptblanc<=3))
 			{
 				return true;
 			}
@@ -1251,7 +1251,7 @@ public class DamierAbalone extends Damier{
 		}
 		if (color=="noir")
 		{
-			if((cpt<cptnoir)&&(cptnoir<=3))
+			if((cptblanc<cptnoir)&&(cptnoir<=3))
 			{
 				return true;
 			}
