@@ -54,13 +54,13 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 	JButton button[][]=new JButton[17][25];
 	
 	
-	private ImageIcon bArg = new ImageIcon(new ImageIcon(getClass().getResource("billeargent.png")).getImage());
-	private ImageIcon bBle = new ImageIcon(new ImageIcon(getClass().getResource("billebleu.png")).getImage());
-	private ImageIcon bJau = new ImageIcon(new ImageIcon(getClass().getResource("billejaune.png")).getImage());
-	private ImageIcon bBla = new ImageIcon(new ImageIcon(getClass().getResource("billeblanc.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-	private ImageIcon bVer = new ImageIcon(new ImageIcon(getClass().getResource("billevert.png")).getImage());
-	private ImageIcon bRou = new ImageIcon(new ImageIcon(getClass().getResource("billerouge.png")).getImage());
-	private ImageIcon bNoi = new ImageIcon(new ImageIcon(getClass().getResource("billenoir.png")).getImage());
+	private ImageIcon bArg = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeargent.png")).getImage());
+	private ImageIcon bBle = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billebleu.png")).getImage());
+	private ImageIcon bJau = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billejaune.png")).getImage());
+	private ImageIcon bBla = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeblanc.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+	private ImageIcon bVer = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billevert.png")).getImage());
+	private ImageIcon bRou = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billerouge.png")).getImage());
+	private ImageIcon bNoi = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoir.png")).getImage());
 	
 	private JLabel label = new JLabel("J1(JAUNE):");
 	private JLabel label1 = new JLabel("J2(BLEU):");

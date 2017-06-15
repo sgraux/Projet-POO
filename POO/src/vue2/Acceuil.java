@@ -17,8 +17,8 @@ public class Acceuil extends JeuxPan implements ActionListener{
 	}
 
 	//Fenetre frame = new Fenetre();
-	private ImageIcon icon = new ImageIcon(new ImageIcon(getClass().getResource("dc.jpg")).getImage().getScaledInstance(300, 250, Image.SCALE_DEFAULT));
-	private ImageIcon icon2 = new ImageIcon(new ImageIcon(getClass().getResource("ab.jpg")).getImage().getScaledInstance(300, 250, Image.SCALE_DEFAULT));
+	private ImageIcon icon = new ImageIcon(new ImageIcon(getClass().getResource("/Images/dc.jpg")).getImage().getScaledInstance(300, 250, Image.SCALE_DEFAULT));
+	private ImageIcon icon2 = new ImageIcon(new ImageIcon(getClass().getResource("/Images/ab.jpg")).getImage().getScaledInstance(300, 250, Image.SCALE_DEFAULT));
 	private JButton ab = new JButton(icon2);
 	public JButton dc = new JButton(icon);
 	private JLabel label = new JLabel("Bienvenue Dans DC & AB");

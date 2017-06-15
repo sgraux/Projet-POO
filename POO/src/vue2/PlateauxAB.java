@@ -37,9 +37,9 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	
 	JButton button[][]=new JButton[9][17];
 	
-	private ImageIcon bArg = new ImageIcon(new ImageIcon(getClass().getResource("billeargent.png")).getImage());
-	private ImageIcon bBla = new ImageIcon(new ImageIcon(getClass().getResource("billeblanc.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-	private ImageIcon bNoi = new ImageIcon(new ImageIcon(getClass().getResource("billenoir.png")).getImage());
+	private ImageIcon bArg = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeargent.png")).getImage());
+	private ImageIcon bBla = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeblanc.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+	private ImageIcon bNoi = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoir.png")).getImage());
 	
 	private JLabel label = new JLabel("J1(NOIR):");
 	private JLabel label1 = new JLabel("J2(BLANC):");

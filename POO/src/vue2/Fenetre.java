@@ -39,7 +39,7 @@ public class Fenetre extends JFrame implements ActionListener{
 	    menu2.add( info ) ;
 	    JMenuBar menuBarre2 = new JMenuBar() ; // créé une barre de menu
 	    menuBarre.add( menu2 ) ;
-	    this.setIconImage(Toolkit.getDefaultToolkit().getImage(Fenetre.class.getResource("abalonearr.png")));
+	    this.setIconImage(Toolkit.getDefaultToolkit().getImage(Fenetre.class.getResource("/Images/Logo.jpg")));
 	    
 	    
 	    this.setContentPane(pan);
