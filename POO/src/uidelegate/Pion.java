@@ -23,7 +23,7 @@ public class Pion {
 	}
 	
 	//PAS FORCEMENT UTILE
-	/*public void setCouleur(String parCouleur){
+	public void setCouleur(String parCouleur){
 		couleur = parCouleur;
-	}*/
+	}
 }
