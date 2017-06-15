@@ -244,7 +244,7 @@ public class DamierAbalone extends Damier{
 		}
 		return false;
 	}
-	
+	     
 	public void afficherC(){
 		/* ETAGE 0 */
 		
@@ -461,7 +461,7 @@ public class DamierAbalone extends Damier{
 		
 		return "AUCUNE";
 	}
-	
+	   
 	public boolean alignementBoule(Case case1,Case case2,Case case3,String direction){
 		// determine si la direction choisit est la meme que l'alignement des boules
 		

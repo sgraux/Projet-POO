@@ -12,7 +12,7 @@ public class JeuAbalone extends Jeu{
 
 		// creation du tableau de case selectionees
 		caseSelectione=new Case[3];
-		
+		       
 		for(int i=0;i<caseSelectione.length;i++){
 			caseSelectione[i]=new Case(-1, null,0,null,null,null,null,null,null);
 		}
