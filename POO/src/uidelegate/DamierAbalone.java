@@ -4,18 +4,9 @@ import java.lang.Math;
 
 public class DamierAbalone extends Damier{
 	
-	private Case caseSelectione[];
-	private String modeJeu;
-	
 	public DamierAbalone(){
 		super(61);
 		initialiseGraphe();
-	
-		caseSelectione=new Case[3];
-		
-		for(int i=0;i<caseSelectione.length;i++){
-			caseSelectione[i]=new Case(-1, null,0,null,null,null,null,null,null);
-		}
 	}
 
 	public void initialiseGraphe(){
@@ -47,7 +38,7 @@ public class DamierAbalone extends Damier{
 			}
 			tabCases[i].setVoisinBasGauche(tabCases[i+6]);
 			tabCases[i].setVoisinBasDroit(tabCases[i+7]);
-			
+			 
 			tabCases[i].setPion(new Pion("noir"));
 		}
 		
@@ -161,14 +152,6 @@ public class DamierAbalone extends Damier{
 		}
 	}
 	
-	public String getModeJeu(){
-		return modeJeu;
-	}
-	
-	public void setModeJeu(String mode){
-		modeJeu=mode;
-	}
-	
 	public boolean estBordureG(Case parCase, int etage){
 		
 		int id = parCase.getId();
@@ -261,7 +244,7 @@ public class DamierAbalone extends Damier{
 		}
 		return false;
 	}
-	
+	     
 	public void afficherC(){
 		/* ETAGE 0 */
 		
@@ -478,7 +461,7 @@ public class DamierAbalone extends Damier{
 		
 		return "AUCUNE";
 	}
-	
+	   
 	public boolean alignementBoule(Case case1,Case case2,Case case3,String direction){
 		// determine si la direction choisit est la meme que l'alignement des boules
 		
@@ -510,74 +493,6 @@ public class DamierAbalone extends Damier{
 		}
 		
 		return true;
-	}
-	
-	public void remplirTableau(Case parCase){
-		int i=0;
-		
-		for(int j=0;j<caseSelectione.length;j++){
-			if(parCase.getId()==caseSelectione[j].getId()){
-				System.out.println("La case a deja ete selectione");
-				return ;
-			}
-		}
-		
-		if(parCase.getPion()==null){
-			System.out.println("La case est vide");
-			return ;
-		}
-		
-		while(caseSelectione[i].getId()!=-1){
-			i++;
-			
-			if(i==3)
-			{break;}
-		}
-	
-		if(i<=2){
-			caseSelectione[i]=parCase;
-		}
-		else{
-			viderTableau();
-			caseSelectione[0]=parCase;
-		}
-	}
-	
-	public void viderTableau(){
-		for(int i=0;i<caseSelectione.length;i++){
-			caseSelectione[i]=new Case(-1, null,0,null,null,null,null,null,null);
-		}
-	}
-	
-	public void afficherTableau(){ // FONCTION DE DEBEUGUAGE
-		for(int i=0;i<3;i++){
-			if(caseSelectione[i].getId()==-1)
-			{System.out.print(" NULL ");}
-			else
-			{System.out.print(" "+caseSelectione[i].getId()+" ");}
-		}
-		System.out.println(" ");
-	}
-	
-	public int nbCaseSelectione(){ // determine le nombre de cases selectionées
-		int i=0;
-		
-		while(caseSelectione[i].getId()!=-1){
-			i++;
-			
-			if(i==3)
-			{break;}
-		}
-		
-		return i;
-	}
-
-	public Case getCaseSelectione(int indice){
-		return caseSelectione[indice];
-	}
-	
-	public int tirageAuSort(){ // renvoit 0 ou 1
-		 return (int)( Math.random()*2);
 	}
 	
 	public int nbBouleParCouleur(String couleur){ // Compte le nombre de boule d'une couleur sur le plateau
@@ -1378,7 +1293,6 @@ public class DamierAbalone extends Damier{
 		return true;
 	}
 
-	
 	public boolean deplacementPossible(Case case1,Case case2,Case case3,String direction){
 		// fonction prenant 3 boules et une direction, et determine si un deplacement est possible.
 		
@@ -1416,9 +1330,9 @@ public class DamierAbalone extends Damier{
 				return false;
 			}
 		}	
-	}
+	}	
+	// FONCTION DE TEST //
 	
-	// Fonction de test
 	public void testSumito(Case case1)
 	{
 		if(sumito(case1,"hautGauche"))
@@ -1450,31 +1364,31 @@ public class DamierAbalone extends Damier{
 	public void testDirection(Case case1,Case case2,Case case3){
 		// FONCTION DE TEST
 		
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"hautGauche")){
+		if(caseArriveeVide(case1,case2,case3,"hautGauche")){
 			System.out.println("hautGauche");
 		}
 				
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"hautDroite")){
+		if(caseArriveeVide(case1,case2,case3,"hautDroite")){
 			System.out.println("hautDroite");
 		}	
 		
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"droite")){
+		if(caseArriveeVide(case1,case2,case3,"droite")){
 			System.out.println("droite");
 		}
 		
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"basDroite")){
+		if(caseArriveeVide(case1,case2,case3,"basDroite")){
 			System.out.println("basDroite");
 		}
 		
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"basGauche")){
+		if(caseArriveeVide(case1,case2,case3,"basGauche")){
 			System.out.println("basGauche");
 		}
 		
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"gauche")){
+		if(caseArriveeVide(case1,case2,case3,"gauche")){
 			System.out.println("gauche");
 		}
 	}
-	
+	 
 	public void testChevauchementCouleur(Case case1){
 		// FONCTION DE TEST
 		if(chevauchementCouleur(case1,"hautGauche")){
@@ -1497,5 +1411,3 @@ public class DamierAbalone extends Damier{
 		}
 	}
 }
-
-
