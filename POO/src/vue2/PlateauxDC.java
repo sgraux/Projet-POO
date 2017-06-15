@@ -75,7 +75,7 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(new GridLayout(17, 25));
-		panel1.setPreferredSize(new Dimension(400, 400));
+		panel1.setPreferredSize(new Dimension(600, 600));
 		panel1.setLocation(0, 0);
 		panel1.setBackground(Color.gray);
 
@@ -147,7 +147,7 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		 */
 		this.panel.add(panel1);
 
-		label.setFont(new Font("Verdana", 1, 30));
+		/*label.setFont(new Font("Verdana", 1, 30));
 		label.setForeground(Color.black);
 		label.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		label.setBounds(150, 550, 100, 50);
@@ -220,7 +220,7 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		label11.setForeground(Color.black);
 		label11.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		label11.setBounds(110, 0, 575, 50);
-		// this.panel.add(label11);
+		// this.panel.add(label11);*/
 
 	}
 
@@ -238,7 +238,9 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 			
 			jeuDame.reinitialiseBouton();
 			
-			System.out.println(jeuDame.getDamier().toSTringCouleur());
+			//System.out.println(jeuDame.getDamier().toSTringCouleur());
+			
+			System.out.println(jeuDame.victoireRouge());
 		}
 		else if(resultatCoup == -1)jeuDame.reinitialiseBouton();
 	}

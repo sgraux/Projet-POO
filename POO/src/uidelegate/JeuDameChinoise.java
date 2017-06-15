@@ -21,19 +21,33 @@ public class JeuDameChinoise extends Jeu {
 	}
 
 	public void setCaseCourante(Case parCaseCourante) {
-		// caseCourante = parCaseCourante;
 	}
-
-	/*
-	 * public boolean appliquerCoup(){ //return
-	 * ((DamierDameChinoise)damier).deplacement(caseCourante, caseDestination);
-	 * 
-	 * }
-	 */
 
 	@Override
 	public boolean estVictoire() {
 		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public boolean victoireRouge(){
+		
+		try{
+		if(damier.getCase(120).getPion().getCouleur() == "rouge"
+			&& damier.getCase(119).getPion().getCouleur() == "rouge"
+			&& damier.getCase(118).getPion().getCouleur() == "rouge"
+			&& damier.getCase(117).getPion().getCouleur() == "rouge"
+			&& damier.getCase(116).getPion().getCouleur() == "rouge"
+			&& damier.getCase(115).getPion().getCouleur() == "rouge"
+			&& damier.getCase(114).getPion().getCouleur() == "rouge"
+			&& damier.getCase(113).getPion().getCouleur() == "rouge"
+			&& damier.getCase(112).getPion().getCouleur() == "rouge"
+			&& damier.getCase(111).getPion().getCouleur() == "rouge"){
+			
+			return true;
+				
+		}
+		}catch(Exception e){}
+		
 		return false;
 	}
 
@@ -50,7 +64,7 @@ public class JeuDameChinoise extends Jeu {
 			
 			boutonCourant = parBouton;
 			compteurClique++;
-			System.out.println(parBouton.getCasePlateau().getPion().getCouleur());
+			//System.out.println(parBouton.getCasePlateau().getPion().getCouleur());
 			return 0;
 		} else if (!damier.estVoisin(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())) {
 			if (((DamierDameChinoise)damier).saut(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())) {
