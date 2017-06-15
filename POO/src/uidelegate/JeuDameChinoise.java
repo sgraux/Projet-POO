@@ -68,7 +68,7 @@ public class JeuDameChinoise extends Jeu {
 		}
 
 	}
-
+	//remet le bouton courant et le compteur à leur valleur de départ
 	public void reinitialiseBouton() {
 		boutonCourant = null;
 		compteurClique = 0;
