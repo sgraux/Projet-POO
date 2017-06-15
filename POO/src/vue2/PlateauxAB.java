@@ -15,8 +15,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import uidelegate.JeuAbalone;
+
 public class PlateauxAB extends JeuxPan implements ActionListener{
 	
+	
+	private String mode="mur";
 	
 	public PlateauxAB(Dimension dim) {
 		super(dim);
@@ -35,8 +39,13 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		        {0,0,0,2,0,2,0,2,0,2,0,2,0,2,0,0,0},
 		        {0,0,0,0,2,0,2,0,2,0,2,0,2,0,0,0,0}};
 	
-	JButton button[][]=new JButton[9][17];
+	private BoutonCase button[][]=new BoutonCase[9][17];
+	private JeuAbalone jeuAb = new JeuAbalone(false, mode);
 	
+	public PlateauxAB(Dimension dim, String mode) {
+		super(dim);
+		this.mode = mode;
+	}
 	private ImageIcon bArg = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeargent.png")).getImage());
 	private ImageIcon bBla = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeblanc.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 	private ImageIcon bNoi = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoir.png")).getImage());
@@ -58,7 +67,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	    {  
 	    	for(int j=0;j<17;j++)
 	    		{
-	    			button[i][j]=new JButton(bArg);	
+	    			button[i][j]=new BoutonCase(bArg);	
 	    		}
 	    }
 	   
@@ -140,17 +149,9 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{	
-		for(int i=0;i<9;i++)
-		{   
-			for(int j=0;j<17;j++)
-    		{
-				if(plateau[i][j]==1)
-				{
-					//System.out.println("bleu");
-					button[i][j].setIcon(bNoi);	
-				}
-    		}
-    	}
+		BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
+		System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId()
+				+ " -- la couleur de mon pion est " + boutonTemp.getCasePlateau().getPion().getCouleur());
 	
 	}
 }
