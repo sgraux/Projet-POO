@@ -233,42 +233,53 @@ public class DamierDameChinoise extends Damier{
 	}
 	
 	public boolean saut(Case parCaseOri, Case parCaseDest){
-		if(parCaseOri.getVoisinHautGauche() != null){
+		try{
+		if(parCaseOri.getVoisinHautGauche().aUnPion() == true){
 			if(parCaseOri.getVoisinHautGauche().getVoisinHautGauche() == parCaseDest){
 				parCaseDest.setPion(parCaseOri.getPion());
 				parCaseOri.setPion(null);
 				return true;
 			}
 		}
-		if(parCaseOri.getVoisinGauche() != null){
+		}catch(Exception e){}
+		try{
+		if(parCaseOri.getVoisinGauche().aUnPion() == true){
 			if(parCaseOri.getVoisinGauche().getVoisinGauche() == parCaseDest){
 				parCaseDest.setPion(parCaseOri.getPion());
 				parCaseOri.setPion(null);
 				return true;
 			}
 		}
-		if(parCaseOri.getVoisinBasGauche() != null){
+		}catch(Exception e){}
+		try{
+		if(parCaseOri.getVoisinBasGauche().aUnPion() == true){
 			if(parCaseOri.getVoisinBasGauche().getVoisinBasGauche() == parCaseDest){
 				parCaseDest.setPion(parCaseOri.getPion());
 				parCaseOri.setPion(null);
 				return true;
 			}
 		}
-		if(parCaseOri.getVoisinBasDroit() != null){
+		}catch(Exception e){}
+		try{
+		if(parCaseOri.getVoisinBasDroit().aUnPion() == true){
 			if(parCaseOri.getVoisinBasDroit().getVoisinBasDroit() == parCaseDest){
 				parCaseDest.setPion(parCaseOri.getPion());
 				parCaseOri.setPion(null);
 				return true;	
 			}
 		}
-		if(parCaseOri.getVoisinDroit() != null){
+		}catch(Exception e){}
+		try{
+		if(parCaseOri.getVoisinDroit().aUnPion() == true){
 			if(parCaseOri.getVoisinDroit().getVoisinDroit() == parCaseDest){
 				parCaseDest.setPion(parCaseOri.getPion());
 				parCaseOri.setPion(null);
 				return true;
 			}
 		}
-		if(parCaseOri.getVoisinHautDroit() != null){
+		}catch(Exception e){}
+		try{
+		if(parCaseOri.getVoisinHautDroit().aUnPion() == true){
 			if(parCaseOri.getVoisinHautDroit().getVoisinHautDroit() == parCaseDest){
 				parCaseDest.setPion(parCaseOri.getPion());
 				parCaseOri.setPion(null);
@@ -276,6 +287,7 @@ public class DamierDameChinoise extends Damier{
 				
 			}
 		}
+		}catch(Exception e){}
 		return false;
 	}
 	

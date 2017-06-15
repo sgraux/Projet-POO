@@ -67,6 +67,12 @@ public class Case {
 		
 	}*/
 	
+	public boolean aUnPion(){
+		if(pion == null)
+			return false;
+		else return true;
+	}
+	
 	public int getId(){
 		return id;
 	}
