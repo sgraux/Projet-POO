@@ -165,6 +165,8 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	   // this.panel.add(label3);
 	}
 	
+	
+	//
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{	
