@@ -126,5 +126,19 @@ public class Case {
 	public Pion getPion(){
 		return pion;
 	}
+
+	public int getEtat() {
+		return etat;
+	}
+
+	public void setEtat(int etat) {
+		this.etat = etat;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 	
 }
