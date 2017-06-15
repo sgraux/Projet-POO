@@ -4,23 +4,9 @@ import java.lang.Math;
 
 public class DamierAbalone extends Damier{
 	
-	private Case caseSelectione[];
-	
-	// les 3 prochaines variables sont surement a mettre dans JeuAbalone
-	
-	private String modeJeu; // normal ou variante
-	private String couleurJoueur; // couleur du joueur actuel
-	private String direction; // direction selectione par un joueur
-	
 	public DamierAbalone(){
 		super(61);
 		initialiseGraphe();
-	
-		caseSelectione=new Case[3];
-		
-		for(int i=0;i<caseSelectione.length;i++){
-			caseSelectione[i]=new Case(-1, null,0,null,null,null,null,null,null);
-		}
 	}
 
 	public void initialiseGraphe(){
@@ -164,18 +150,6 @@ public class DamierAbalone extends Damier{
 			
 			tabCases[i].setPion(new Pion("rouge"));
 		}
-		
-
-	
-
-	}
-	
-	public String getModeJeu(){
-		return modeJeu;
-	}
-	
-	public void setModeJeu(String mode){
-		modeJeu=mode;
 	}
 	
 	public boolean estBordureG(Case parCase, int etage){
@@ -519,39 +493,6 @@ public class DamierAbalone extends Damier{
 		}
 		
 		return true;
-	}
-	
-	public void viderTableau(){
-		for(int i=0;i<caseSelectione.length;i++){
-			caseSelectione[i]=new Case(-1, null,0,null,null,null,null,null,null);
-		}
-	}
-	
-	public void afficherTableau(){ // FONCTION DE DEBEUGUAGE
-		for(int i=0;i<3;i++){
-			if(caseSelectione[i].getId()==-1)
-			{System.out.print(" NULL ");}
-			else
-			{System.out.print(" "+caseSelectione[i].getId()+" ");}
-		}
-		System.out.println(" ");
-	}
-	
-	public int nbCaseSelectione(){ // determine le nombre de cases selectionées
-		int i=0;
-		
-		while(caseSelectione[i].getId()!=-1){
-			i++;
-			
-			if(i==3)
-			{break;}
-		}
-		
-		return i;
-	}
-
-	public Case getCaseSelectione(int indice){
-		return caseSelectione[indice];
 	}
 	
 	public int tirageAuSort(){ // renvoit 0 ou 1
@@ -1393,47 +1334,7 @@ public class DamierAbalone extends Damier{
 				return false;
 			}
 		}	
-	}
-	
-	public void remplirTableau(Case parCase,String couleur){
-		int i=0;
-		
-		for(int j=0;j<caseSelectione.length;j++){
-			if(parCase.getId()==caseSelectione[j].getId()){
-				System.out.println("La case a deja ete selectione");
-				return ;
-			}
-		}
-		
-		if(parCase.getPion()==null){
-			System.out.println("La case est vide");
-			return ;
-		}
-		
-		while(caseSelectione[i].getId()!=-1){
-			i++;
-			
-			if(i==3)
-			{break;}
-		}
-	
-		if(i<=2){
-			if(parCase.getPion().getCouleur()!=couleur){
-				System.out.println("Choisissez une case de votre couleur");
-				return ;
-			}
-			caseSelectione[i]=parCase;
-		}
-		else{
-			if(parCase.getPion().getCouleur()!=couleur){
-				System.out.println("Choisissez une case de votre couleur");
-				return ;
-			}
-			viderTableau();
-			caseSelectione[0]=parCase;
-		}
-	}
-	
+	}	
 	// FONCTION DE TEST //
 	
 	public void testSumito(Case case1)
@@ -1467,27 +1368,27 @@ public class DamierAbalone extends Damier{
 	public void testDirection(Case case1,Case case2,Case case3){
 		// FONCTION DE TEST
 		
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"hautGauche")){
+		if(caseArriveeVide(case1,case2,case3,"hautGauche")){
 			System.out.println("hautGauche");
 		}
 				
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"hautDroite")){
+		if(caseArriveeVide(case1,case2,case3,"hautDroite")){
 			System.out.println("hautDroite");
 		}	
 		
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"droite")){
+		if(caseArriveeVide(case1,case2,case3,"droite")){
 			System.out.println("droite");
 		}
 		
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"basDroite")){
+		if(caseArriveeVide(case1,case2,case3,"basDroite")){
 			System.out.println("basDroite");
 		}
 		
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"basGauche")){
+		if(caseArriveeVide(case1,case2,case3,"basGauche")){
 			System.out.println("basGauche");
 		}
 		
-		if(caseArriveeVide(getCaseSelectione(0),getCaseSelectione(1),getCaseSelectione(2),"gauche")){
+		if(caseArriveeVide(case1,case2,case3,"gauche")){
 			System.out.println("gauche");
 		}
 	}
@@ -1513,60 +1414,4 @@ public class DamierAbalone extends Damier{
 			System.out.println("gauche");
 		}
 	}
-
-	public String getCouleurJoueur() {
-		return couleurJoueur;
-	}
-
-	public void setCouleurJoueur(String couleurJoueur) {
-		this.couleurJoueur = couleurJoueur;
-	}
-
-	public String getDirection() {
-		return direction;
-	}
-
-	public void setDirection(String direction) {
-		this.direction = direction;
-	}
 }
-
-/* 	    
-	    TANT QUE LE JOUEUR N'A PAS CLIQUE SUR UNE FLECHE DIRECTIONELLE 
-	    |
-	    |   // Des que le joueur clique sur une case
-		|	damier.remplirTableau(caseActuelle,((DamierAbalone)damier).getCouleurJoueur());
-		|_____	
-		
-		// Des que le joueur clique sur une fleche directionelle
-		
-		ON ENREGISTRE LA DIRECTION QUE LE JOUEUR A SELECTIONE
-
-		// CONVENTION DE CODE POUR LES NOMS DE DIRECTION
-		// hautGauche hautDroite droite gauche basGauche basDroite // 
-		
-		if(damier.deplacementPossible(LES 3 CASES SELECTONEES, DIRECTION)){
-			Case tmp=new Case();
-			
-			tmp=damier.determinerCaseADeplacer(LES 3 CASES SELECTIONEES, DIRECTION);
-			
-			damier.deplacerBoule(tmp, DIRECTION);
-			
-			// On change la couleur du joueur actuel
-			if(damier.getCouleurJoueur()=="noir"){
-				damier.setCouleurJoueur("rouge");
-			}
-			else{
-				damier.setCouleurJoueur("noir");
-			}
-			
-		}
-		else{
-			System.out.println("Pas de deplcement possible avec les boules selectionnees");
-			// AFFICHER A L'ECRAN QUE LE DEPLACEMENT N'EST PAS POSSIBLE
-		}
-		
-*/
-
-
-

@@ -2,9 +2,10 @@ package uidelegate;
 
 public abstract class Jeu {
 	
-	private boolean joueContreIA;
-	private String variante;
+	protected boolean joueContreIA;
+	protected String variante;
 	protected Damier damier;
+
 	
 	public Jeu(boolean parJoueContreIA, String parVariante){
 		joueContreIA = parJoueContreIA;
