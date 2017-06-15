@@ -42,6 +42,13 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	private BoutonCase button[][]=new BoutonCase[9][17];
 	private JeuAbalone jeuAb = new JeuAbalone(false, null);
 	
+	private JButton bHauG = new JButton("HG");
+	private JButton bBasG = new JButton("HD");
+	private JButton bHauD = new JButton("BG");
+	private JButton bBasD = new JButton("BD");
+	private JButton bDro = new JButton("G");
+	private JButton bGau = new JButton("D");
+	
 	public PlateauxAB(Dimension dim, String mode) {
 		super(dim);
 		this.mode = mode;
@@ -163,6 +170,31 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	    label3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 	    label3.setBounds(110,0,575,50);    
 	   // this.panel.add(label3);
+	    
+	    bHauG.setBounds(300,550,200,40);
+		this.panel.add(bHauG);
+		bHauG.addActionListener(this);
+		
+		bHauD.setBounds(300,550,200,40);
+		this.panel.add(bHauD);
+		bHauD.addActionListener(this);
+		
+		bBasG.setBounds(300,550,200,40);
+		this.panel.add(bBasG);
+		bBasG.addActionListener(this);
+		
+		bBasD.setBounds(300,550,200,40);
+		this.panel.add(bBasD);
+		bBasD.addActionListener(this);
+		
+		bGau.setBounds(300,550,200,40);
+		this.panel.add(bGau);
+		bGau.addActionListener(this);
+		
+		bDro.setBounds(300,550,200,40);
+		this.panel.add(bDro);
+		bDro.addActionListener(this);
+	    
 	}
 	
 	
@@ -171,8 +203,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) 
 	{	
 		BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
-		System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId()
-				+ " -- la couleur de mon pion est " + boutonTemp.getCasePlateau().getPion().getCouleur());
+		System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId());
 	
 	}
 }
