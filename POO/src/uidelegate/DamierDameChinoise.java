@@ -351,7 +351,7 @@ public class DamierDameChinoise extends Damier{
 	}
 	
 	public void initialiseNoir(){
-		tabCases[74].setPion(new Pion("vert"));
+		tabCases[74].setPion(new Pion("noir"));
 		
 		tabCases[84].setPion(new Pion("noir"));
 		tabCases[85].setPion(new Pion("noir"));
