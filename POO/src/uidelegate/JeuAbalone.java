@@ -44,6 +44,10 @@ public class JeuAbalone extends Jeu{
 	public void boucleJeu() {	
 		
 	}
+
+	public int tirageAuSort(){ // renvoit 0 ou 1
+		 return (int)( Math.random()*2);
+	}
 		
 	public void remplirTableau(Case parCase,String couleur){
 	// remplie le tableau des cases Selectione
@@ -124,9 +128,9 @@ public class JeuAbalone extends Jeu{
 TANT QUE LE JOUEUR N'A PAS CLIQUE SUR UNE FLECHE DIRECTIONELLE 
 |
 |   // Des que le joueur clique sur une case
-|	damier.remplirTableau(caseActuelle,((DamierAbalone)damier).getCouleurJoueur());
+|	damier.remplirTableau(CASE SUR LAQUEL LE JOUEUR A CLIQUER,couleurJoueur);
 |_____	
-
+ 
 // Des que le joueur clique sur une fleche directionelle
 
 if(damier.nbCaseSelectione()==0){

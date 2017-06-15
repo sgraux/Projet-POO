@@ -6,7 +6,7 @@ public abstract class Jeu {
 	protected String variante;
 	protected Damier damier;
 
-	
+	 
 	public Jeu(boolean parJoueContreIA, String parVariante){
 		joueContreIA = parJoueContreIA;
 		variante = parVariante;

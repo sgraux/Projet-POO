@@ -495,10 +495,6 @@ public class DamierAbalone extends Damier{
 		return true;
 	}
 	
-	public int tirageAuSort(){ // renvoit 0 ou 1
-		 return (int)( Math.random()*2);
-	}
-	
 	public int nbBouleParCouleur(String couleur){ // Compte le nombre de boule d'une couleur sur le plateau
 		int cpt=0;
 		
@@ -1392,7 +1388,7 @@ public class DamierAbalone extends Damier{
 			System.out.println("gauche");
 		}
 	}
-	
+	 
 	public void testChevauchementCouleur(Case case1){
 		// FONCTION DE TEST
 		if(chevauchementCouleur(case1,"hautGauche")){
