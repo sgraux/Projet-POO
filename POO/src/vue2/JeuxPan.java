@@ -6,8 +6,8 @@ import java.awt.Font;
 import javax.swing.JPanel;
 
 public abstract class JeuxPan{
-	protected JPanel panel;
 	
+	protected JPanel panel;
 	
 	public JeuxPan(Dimension dim){
 		this.panel = new JPanel();
