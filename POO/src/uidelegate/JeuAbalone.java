@@ -2,6 +2,7 @@ package uidelegate;
 
 public class JeuAbalone extends Jeu{
 	
+	private int numCase;
 	private String couleurJoueur; // couleur du joueur actuel
 	private String direction; // direction selectione par un joueur
 	private Case caseSelectione[];
@@ -48,6 +49,10 @@ public class JeuAbalone extends Jeu{
 	}
 	
 	public boolean appliquerCoup(){
+		if(nbCaseSelectione()==0){
+			return false;
+		}
+		
 		if(((DamierAbalone)damier).deplacementPossible(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
 			Case tmp=new Case();
 			
@@ -65,20 +70,24 @@ public class JeuAbalone extends Jeu{
 			return true;
 		}
 		else{
-			System.out.println("Pas de deplcement possible avec les boules selectionnees");
+			System.out.println("Pas de deplacement possible avec les boules selectionnees");
 			// AFFICHER A L'ECRAN QUE LE DEPLACEMENT N'EST PAS POSSIBLE
 			return false;
 		}
 	
 	}
-
-	public int tirageAuSort(){ // renvoit 0 ou 1
-		 return (int)( Math.random()*2);
-	}
-		
-	public void remplirTableau(Case parCase,String couleur){
-	// remplie le tableau des cases Selectione
 	
+	public Case recupererCase(int indice){
+		return ((DamierAbalone)damier).getCase(indice);
+	}
+	
+	public void remplirTableau(String couleur){
+	// remplie le tableau des cases Selectione
+		
+		Case parCase=new Case();
+		
+		parCase=((DamierAbalone)damier).getCase(this.numCase);
+		
 		int i=0;
 		
 		for(int j=0;j<caseSelectione.length;j++){
@@ -148,6 +157,14 @@ public class JeuAbalone extends Jeu{
 	
 	public Case getCaseSelectione(int indice){
 		return caseSelectione[indice];
+	}
+
+	public void setNumCase(int parNumCase){
+		numCase=parNumCase;
+	}
+	
+	public int getNumCase(){
+		return numCase;
 	}
 }
 
