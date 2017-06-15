@@ -166,20 +166,7 @@ public class DamierAbalone extends Damier{
 		}
 		
 
-	if(modeJeu=="TrouNoir"){
-		tabCases[21].setVoisinBasDroit(null);
-		tabCases[22].setVoisinBasGauche(null);
-		tabCases[29].setVoisinDroit(null);
-		tabCases[38].setVoisinHautDroit(null);
-		tabCases[39].setVoisinHautGauche(null);
-		tabCases[31].setVoisinGauche(null);
-	}
 	
-	if(modeJeu=="Mur"){
-		tabCases[29].setEtat(1);
-		tabCases[30].setEtat(1);
-		tabCases[31].setEtat(1);
-	}
 
 	}
 	
