@@ -32,6 +32,8 @@ public class JeuAbalone extends Jeu{
 			((DamierAbalone)damier).tabCases[30].setEtat(1);
 			((DamierAbalone)damier).tabCases[31].setEtat(1);
 		}
+		
+		couleurJoueur="blanc";
 	}
 
 	@Override
@@ -43,6 +45,31 @@ public class JeuAbalone extends Jeu{
 	@Override
 	public void boucleJeu() {	
 		
+	}
+	
+	public boolean appliquerCoup(){
+		if(((DamierAbalone)damier).deplacementPossible(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
+			Case tmp=new Case();
+			
+			tmp=((DamierAbalone)damier).determierCaseADeplacer(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction);
+			
+			((DamierAbalone)damier).deplacerBoule(tmp,direction);
+			
+			// On change la couleur du joueur actuel
+			if(couleurJoueur=="noir"){
+				couleurJoueur="blanc";
+			}
+			else{
+				couleurJoueur="noir";
+			}
+			return true;
+		}
+		else{
+			System.out.println("Pas de deplcement possible avec les boules selectionnees");
+			// AFFICHER A L'ECRAN QUE LE DEPLACEMENT N'EST PAS POSSIBLE
+			return false;
+		}
+	
 	}
 
 	public int tirageAuSort(){ // renvoit 0 ou 1
