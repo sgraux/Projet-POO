@@ -9,8 +9,8 @@ public class JeuDameChinoise extends Jeu{
 		super(parJoueContreIA, parVariante);
 		nbJoueur = parNBJoueur;
 		nbCouleur = parNBCouleur;
-		setDamier(new DamierDameChinoise());
-		((DamierDameChinoise)getDamier()).initialiseCouleur(nbCouleur);
+		damier = new DamierDameChinoise();
+		((DamierDameChinoise)damier).initialiseCouleur(nbCouleur);
 	}
 
 	@Override

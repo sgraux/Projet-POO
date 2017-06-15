@@ -4,7 +4,7 @@ public class JeuAbalone extends Jeu{
 
 	public JeuAbalone(boolean parJoueContreIA, String parVariante) {
 		super(parJoueContreIA, parVariante);
-		setDamier(new DamierAbalone());
+		damier = new DamierAbalone();
 	}
 
 	@Override
