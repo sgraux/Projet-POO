@@ -10,16 +10,20 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import uidelegate.Case;
+import uidelegate.DamierDameChinoise;
 import uidelegate.JeuDameChinoise;
+import uidelegate.Pion;
 
 public class PlateauxDC extends JeuxPan implements ActionListener {
 
 	private BoutonCase button[][] = new BoutonCase[17][25];
 	private JeuDameChinoise jeuDame = new JeuDameChinoise(false, null, 2, 6);
+	private int compteurClique = 0;
+	private BoutonCase boutonClique;
 
 	public PlateauxDC(Dimension dim) {
 		super(dim);
@@ -222,9 +226,48 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		
 		BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
-		System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId()
-				+ " -- la couleur de mon pion est " + boutonTemp.getCasePlateau().getPion().getCouleur());
-
+		if(compteurClique == 0){
+			boutonClique = boutonTemp;
+			System.out.println("caseSelect = " + boutonTemp.getCasePlateau().getId());
+			compteurClique ++;
+		/*System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId()
+				+ " -- la couleur de mon pion est " + boutonTemp.getCasePlateau().getPion().getCouleur());*/
+		}
+		else if(!jeuDame.getDamier().estVoisin(boutonClique.getCasePlateau(), boutonTemp.getCasePlateau())){
+			if(((DamierDameChinoise)jeuDame.getDamier()).saut(boutonClique.getCasePlateau(),boutonTemp.getCasePlateau())){
+				Pion pionTemp = boutonClique.getCasePlateau().getPion();
+				
+				boutonClique.getCasePlateau().setPion(null);
+				boutonTemp.getCasePlateau().setPion(pionTemp);
+				
+				
+				boutonTemp.setIcon(boutonClique.getIcon());
+				boutonClique.setIcon(bBla);
+				
+				boutonClique = null;
+				compteurClique = 0;
+			}
+			else{
+			boutonClique = boutonTemp;
+			System.out.println("caseSelect else if = " + boutonTemp.getCasePlateau().getId());
+			}
+		}
+		else{
+			System.out.println(((DamierDameChinoise)jeuDame.getDamier()).deplacement(boutonClique.getCasePlateau(),boutonTemp.getCasePlateau()));
+			Pion pionTemp = boutonClique.getCasePlateau().getPion();
+			
+			boutonClique.getCasePlateau().setPion(null);
+			boutonTemp.getCasePlateau().setPion(pionTemp);
+			
+			
+			boutonTemp.setIcon(boutonClique.getIcon());
+			boutonClique.setIcon(bBla);
+			
+			boutonClique = null;
+			compteurClique = 0;
+			
+		}
 	}
 }
