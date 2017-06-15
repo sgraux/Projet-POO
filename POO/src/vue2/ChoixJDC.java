@@ -1,0 +1,225 @@
+package vue2;
+import java.awt.BorderLayout;
+import java.awt.CheckboxGroup;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+public class ChoixJDC extends JeuxPan implements ActionListener {
+	
+	public ChoixJDC(Dimension dim) {
+		super(dim);
+		initPanel();
+	}
+
+
+	private String choixJ;
+	
+	public String getChoixJ() {
+		return choixJ;
+	}
+
+	public void setChoixJ(String choixJ) {
+		this.choixJ = choixJ;
+	}
+
+	
+	private CheckboxGroup joGroup = new CheckboxGroup();
+	private JRadioButton j2Button = new JRadioButton("2J");
+    
+    private JRadioButton j3Button = new JRadioButton("3J");
+    private JRadioButton j4Button = new JRadioButton("4J");
+    private JRadioButton j5Button = new JRadioButton("5J");
+    private JRadioButton j6Button = new JRadioButton("6J");
+    private JRadioButton jaiButton = new JRadioButton("AI");
+    
+    private JTextField tj1 = new JTextField("NomeJ1", 20);
+    private JTextField tj2 = new JTextField("NomeJ2", 20);
+    private JTextField tj3 = new JTextField("NomeJ3", 20);
+    private JTextField tj4 = new JTextField("NomeJ4", 20);
+    private JTextField tj5 = new JTextField("NomeJ5", 20);
+    private JTextField tj6 = new JTextField("NomeJ6", 20);
+    
+    private JButton v1 = new JButton("Valider");
+    private JButton v2 = new JButton("Valider");
+    private	JButton v3 = new JButton("Valider");
+    private JButton v4 = new JButton("Valider");
+    private	JButton v5 = new JButton("Valider");
+    private	JButton v6 = new JButton("Valider");
+    
+	public void afficher(Fenetre frame){
+		
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+		if(source==j2Button){
+			tj2.setBounds(300, 250, 100, 30);
+			v2.setBounds(425,250,100,30);
+		}
+		else if(source==j3Button){
+			tj2.setBounds(300, 250, 100, 30);
+			v2.setBounds(425,250,100,30);
+			v3.setBounds(425,300,100,30);
+			tj3.setBounds(300, 300, 100, 30);
+			
+		}
+		else if(source==j4Button){
+			tj2.setBounds(300, 250, 100, 30);
+			v2.setBounds(425,250,100,30);
+			v3.setBounds(425,300,100,30);
+			tj3.setBounds(300, 300, 100, 30);
+			v4.setBounds(425,350,100,30);
+			tj4.setBounds(300, 350, 100, 30);
+		}
+		else if(source==j5Button){
+			tj2.setBounds(300, 250, 100, 30);
+			v2.setBounds(425,250,100,30);
+			v3.setBounds(425,300,100,30);
+			tj3.setBounds(300, 300, 100, 30);
+			v4.setBounds(425,350,100,30);
+			tj4.setBounds(300, 350, 100, 30);
+			v5.setBounds(425,400,100,30);
+			tj5.setBounds(300, 400, 100, 30);
+		}
+		else if(source==j6Button){
+			tj2.setBounds(300, 250, 100, 30);
+			v2.setBounds(425,250,100,30);
+			v3.setBounds(425,300,100,30);
+			tj3.setBounds(300, 300, 100, 30);
+			v4.setBounds(425,350,100,30);
+			tj4.setBounds(300, 350, 100, 30);
+			v5.setBounds(425,400,100,30);
+			tj5.setBounds(300, 400, 100, 30);
+			v6.setBounds(425,450,100,30);
+			tj6.setBounds(300, 450, 100, 30);
+		}
+		else if(source==jaiButton){
+			
+		}
+		
+		
+	}
+
+	@Override
+	protected void initPanel() {
+		//titre
+				
+			    this.panel.setLayout(null);
+			    JLabel label = new JLabel("Dame Chinoise:");	    
+			    this.panel.add(label);
+			    label.setFont(new Font("Verdana",1,40));
+			    label.setForeground(Color.black);
+			    label.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+			    label.setBounds(10,0,375,50);
+				//nbJ
+			    
+			    JLabel label2 = new JLabel("#NB Joueur:#");	    
+			    this.panel.add(label2);
+			    label2.setFont(new Font("Verdana",1,40));
+			    label2.setForeground(Color.black);
+			    label2.setBounds(75,75,375,40);
+			    
+			    
+			    //choix
+			    jaiButton.setSelected(true);
+
+			    //Group the radio buttons.
+			    ButtonGroup group = new ButtonGroup();
+			    group.add(j2Button);
+			    group.add(j3Button);
+			    group.add(j4Button);
+			    group.add(j5Button);
+			    group.add(j6Button);
+			    group.add(jaiButton);
+			    //Register a listener for the radio buttons.
+			    j2Button.addActionListener(this);
+			    j3Button.addActionListener(this);
+			    j4Button.addActionListener(this);
+			    j5Button.addActionListener(this);
+			    j6Button.addActionListener(this);
+			    jaiButton.addActionListener(this);
+			    //
+			    
+			    this.panel.add(j2Button);
+		        j2Button.setBounds(140, 150, 50, 30);
+		        j2Button.setBackground(Color.GRAY);
+		        j2Button.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
+		        this.panel.add(j3Button);
+		        j3Button.setBounds(200, 150, 50, 30);
+		        j3Button.setBackground(Color.GRAY);
+		        j3Button.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
+		        this.panel.add(j4Button);
+		        j4Button.setBounds(260, 150, 50, 30);
+		        j4Button.setBackground(Color.GRAY);
+		        j4Button.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
+		        this.panel.add(j5Button);
+		        j5Button.setBounds(320, 150, 50, 30);
+		        j5Button.setBackground(Color.GRAY);
+		        j5Button.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
+		        this.panel.add(j6Button);
+		        j6Button.setBounds(380, 150, 50, 30);
+		        j6Button.setBackground(Color.GRAY);
+		        j6Button.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
+		        this.panel.add(jaiButton);
+		        jaiButton.setBounds(440, 150, 50, 30);
+		        jaiButton.setBackground(Color.GRAY);
+		        jaiButton.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
+			    
+		        this.panel.add(tj1);
+		        tj1.setBounds(300, 200, 100, 30);
+		        
+		        this.panel.add(tj2);
+		        
+		        this.panel.add(tj3);
+		        
+		        this.panel.add(tj4);
+		        
+		        this.panel.add(tj5);
+		        
+		        this.panel.add(tj6);
+		        
+		        
+				v1.setBounds(425,200,100,30);
+				this.panel.add(v1);
+				v1.addActionListener(this);
+				
+				this.panel.add(v2);
+				v2.addActionListener(this);
+				
+				this.panel.add(v3);
+				v3.addActionListener(this);
+				
+				this.panel.add(v4);
+				v4.addActionListener(this);
+				
+				this.panel.add(v5);
+				v5.addActionListener(this);
+				
+				this.panel.add(v6);
+				v6.addActionListener(this);
+				
+				JButton com = new JButton("Commencer");
+				com.setBounds(300,550,200,40);
+				this.panel.add(com);
+				com.addActionListener(this);
+		
+	}
+	
+	
+}
