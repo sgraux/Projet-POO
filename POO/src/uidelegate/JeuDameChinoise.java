@@ -3,11 +3,14 @@ package uidelegate;
 public class JeuDameChinoise extends Jeu{
 	
 	private int nbJoueur;
+	private int nbCouleur;
 
-	public JeuDameChinoise(boolean parJoueContreIA, String parVariante, int parNBJoueur) {
+	public JeuDameChinoise(boolean parJoueContreIA, String parVariante, int parNBJoueur, int parNBCouleur) {
 		super(parJoueContreIA, parVariante);
 		nbJoueur = parNBJoueur;
+		nbCouleur = parNBCouleur;
 		setDamier(new DamierDameChinoise());
+		((DamierDameChinoise)getDamier()).initialiseCouleur(nbCouleur);
 	}
 
 	@Override

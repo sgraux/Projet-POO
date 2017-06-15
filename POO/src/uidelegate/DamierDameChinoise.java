@@ -279,6 +279,17 @@ public class DamierDameChinoise extends Damier{
 		return false;
 	}
 	
+	public void initialiseCouleur(int parNombre){
+		switch(parNombre){
+		case 2: initialisePion2C();
+				break;
+		case 6: initialisePion6C();
+				break;
+		default: initialisePion6C();
+				 break;
+		}
+	}
+	
 	public void initialiseRouge(){
 		for(int i = 0; i < 10; i++){
 			tabCases[i].setPion(new Pion("rouge"));

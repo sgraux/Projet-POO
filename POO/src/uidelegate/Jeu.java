@@ -4,7 +4,7 @@ public abstract class Jeu {
 	
 	private boolean joueContreIA;
 	private String variante;
-	private Damier damier;
+	protected Damier damier;
 	
 	public Jeu(boolean parJoueContreIA, String parVariante){
 		joueContreIA = parJoueContreIA;
@@ -18,5 +18,9 @@ public abstract class Jeu {
 	public abstract boolean estVictoire();
 	
 	public abstract void boucleJeu();
+	
+	public Damier getDamier(){
+		return damier;
+	}
 
 }
