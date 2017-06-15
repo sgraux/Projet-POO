@@ -6,6 +6,8 @@ public class DamierAbalone extends Damier{
 	
 	private Case caseSelectione[];
 	private String modeJeu;
+	private String couleurJoueur;
+	private String direction;
 	
 	public DamierAbalone(){
 		super(61);
@@ -510,37 +512,6 @@ public class DamierAbalone extends Damier{
 		}
 		
 		return true;
-	}
-	
-	public void remplirTableau(Case parCase){
-		int i=0;
-		
-		for(int j=0;j<caseSelectione.length;j++){
-			if(parCase.getId()==caseSelectione[j].getId()){
-				System.out.println("La case a deja ete selectione");
-				return ;
-			}
-		}
-		
-		if(parCase.getPion()==null){
-			System.out.println("La case est vide");
-			return ;
-		}
-		
-		while(caseSelectione[i].getId()!=-1){
-			i++;
-			
-			if(i==3)
-			{break;}
-		}
-	
-		if(i<=2){
-			caseSelectione[i]=parCase;
-		}
-		else{
-			viderTableau();
-			caseSelectione[0]=parCase;
-		}
 	}
 	
 	public void viderTableau(){
@@ -1418,7 +1389,47 @@ public class DamierAbalone extends Damier{
 		}	
 	}
 	
-	// Fonction de test
+	public void remplirTableau(Case parCase,String couleur){
+		int i=0;
+		
+		for(int j=0;j<caseSelectione.length;j++){
+			if(parCase.getId()==caseSelectione[j].getId()){
+				System.out.println("La case a deja ete selectione");
+				return ;
+			}
+		}
+		
+		if(parCase.getPion()==null){
+			System.out.println("La case est vide");
+			return ;
+		}
+		
+		while(caseSelectione[i].getId()!=-1){
+			i++;
+			
+			if(i==3)
+			{break;}
+		}
+	
+		if(i<=2){
+			if(parCase.getPion().getCouleur()!=couleur){
+				System.out.println("Choisissez une case de votre couleur");
+				return ;
+			}
+			caseSelectione[i]=parCase;
+		}
+		else{
+			if(parCase.getPion().getCouleur()!=couleur){
+				System.out.println("Choisissez une case de votre couleur");
+				return ;
+			}
+			viderTableau();
+			caseSelectione[0]=parCase;
+		}
+	}
+	
+	// FONCTION DE TEST //
+	
 	public void testSumito(Case case1)
 	{
 		if(sumito(case1,"hautGauche"))
