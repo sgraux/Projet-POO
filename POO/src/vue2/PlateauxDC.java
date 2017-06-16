@@ -56,6 +56,8 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 	private ImageIcon bVer = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billevert.png")).getImage());
 	private ImageIcon bRou = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billerouge.png")).getImage());
 	private ImageIcon bNoi = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoir.png")).getImage());
+	
+	private ImageIcon bArgSel = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeargent.png")).getImage());
 
 	private JLabel label = new JLabel("J1(JAUNE):");
 	private JLabel label1 = new JLabel("J2(BLEU):");
@@ -232,6 +234,7 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		
 		if(jeuDame.getBoutonCourant() == null){
 			jeuDame.setBoutonCourant(boutonTemp);
+			//boutonTemp.setIcon(bArgSel);
 			System.out.println(jeuDame.getBoutonCourant().getCasePlateau().getId());
 		}
 		else if(jeuDame.getBoutonNouveau() == null){
