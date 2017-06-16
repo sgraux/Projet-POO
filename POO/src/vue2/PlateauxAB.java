@@ -65,7 +65,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	private JLabel label2 = new JLabel("scr");
 	private JLabel label3 = new JLabel("scr");
 
-	private Class<? extends Object> JButton;
+	
 	
 	@Override
 	protected void initPanel() {
@@ -201,28 +201,27 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	    
 	}
 	
-	private static final Class<? extends Object> BoutonCase = null;
+	
 	//
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{	
-		String couleur="noir";
+		Object source = arg0.getSource();
+		
+		String couleur=jeuAb.getCouleurJoueur();
 		
 		
-		if(arg0.getSource().getClass() == JButton){
-			if(  arg0.getSource() == bGau )
-			{
-				//jeuAb.setDirection("gauche");
+		if(source==bGau){
 				System.out.println("gauche");
-				} 
+				jeuAb.setDirection("gauche");
 		}
 		else{
 			BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
-			System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId());
+			System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId()+" le couleur est "+jeuAb.getCouleurJoueur());
 			
 			
 			jeuAb.setNumCase(boutonTemp.getCasePlateau().getId());
-			jeuAb.remplirTableau(couleur);
+			jeuAb.remplirTableau(boutonTemp.getCasePlateau(),couleur);
 			jeuAb.afficherTableau();
 			
 		}
