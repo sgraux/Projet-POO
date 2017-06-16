@@ -231,12 +231,10 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		if (jeuDame.getBoutonCourant() == null) {
 			jeuDame.setBoutonCourant(boutonTemp);
 			boutonTemp.setIcon(determineSelect(boutonTemp));
-			// System.out.println(jeuDame.getBoutonCourant().getCasePlateau().getId());
-		} else if (jeuDame.getBoutonNouveau() == null) {
+		} else if (jeuDame.getBoutonNouveau() == null && jeuDame.getBoutonCourant() != null) {
 			jeuDame.setBoutonNouveau(boutonTemp);
-			System.out.println(jeuDame.getBoutonNouveau().getCasePlateau().getId());
-
 			int resultatCoup = jeuDame.appliqueCoup();
+			redessinerIcons();
 			if (resultatCoup == 1) {
 
 				jeuDame.getBoutonNouveau().setIconBase(jeuDame.getBoutonCourant().getIconNonSelect());
@@ -272,6 +270,14 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		
 		return icon;
 		
+	}
+	
+	public void redessinerIcons(){
+		for(int i = 0; i < 17; i++){
+			for(int j = 0; j < 25; j++){
+				button[i][j].setIcon(button[i][j].getIconNonSelect());
+			}
+		}
 	}
 
 }

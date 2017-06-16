@@ -1,5 +1,7 @@
 package uidelegate;
 
+import java.util.ArrayList;
+
 import vue2.BoutonCase;
 
 public class JeuDameChinoise extends Jeu {
@@ -58,52 +60,32 @@ public class JeuDameChinoise extends Jeu {
 
 	}
 
-	public int appliqueCoup() {
-
-		if (!damier.estVoisin(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())) {
-			if (((DamierDameChinoise)damier).saut(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())){
-				
+	public int appliqueCoup() {// quand on select un pion, on peut pas le
+								// déselect pour le moment
+		if (boutonCourant.getCasePlateau().getId() == boutonNouveau.getCasePlateau().getId()) {
+			reinitialiseBouton();
+			return 0;
+		} else if (!damier.estVoisin(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())) {
+			if (((DamierDameChinoise) damier).saut(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())) {
+				compteurTour++;
 				return 1;
-			}
-			else {
-				reinitialiseBouton();
+			} else {
+				boutonCourant = boutonNouveau;
+				boutonNouveau = null;
 				return 0;
-				}
-		}
-		else {
-			if (((DamierDameChinoise) damier).deplacement(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())){
-				
-				return 1;
 			}
-			else{
-				reinitialiseBouton();
+		} else {
+			if (((DamierDameChinoise) damier).deplacement(boutonCourant.getCasePlateau(),
+					boutonNouveau.getCasePlateau())) {
+				compteurTour++;
+				return 1;
+			} else {
+				boutonCourant = boutonNouveau;
+				boutonNouveau = null;
 				return 0;
 			}
 		}
 	}
-
-		
-		
-		/*if (compteurClique == 0) {
-			
-			boutonCourant = parBouton;
-			compteurClique++;
-			//System.out.println(parBouton.getCasePlateau().getPion().getCouleur());
-			return 0;
-		} else if (!damier.estVoisin(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())) {
-			if (((DamierDameChinoise)damier).saut(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())) {
-				return 1;
-			} else {
-				boutonCourant = parBouton;
-				return 0;
-			}
-		} else {
-			if (((DamierDameChinoise) damier).deplacement(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())) {
-				return 1;
-			} else
-				return -1;
-
-		}*/
 
 	// remet le bouton courant et le compteur à leur valleur de départ
 	public void reinitialiseBouton() {
@@ -112,12 +94,110 @@ public class JeuDameChinoise extends Jeu {
 		// compteurClique = 0;
 	}
 
+	public ArrayList<String> couleurTour() {
+		if (nbCouleur == 2)
+			return couleurTour2C();
+		else if (nbCouleur == 3)
+			return couleurTour3C();
+		else if (nbCouleur == 4)
+			return couleurTour4C();
+		else
+			return couleurTour6C();
+
+	}
+
+	public ArrayList<String> couleurTour2C() {
+		ArrayList<String> listeCouleur = new ArrayList<String>();
+
+		if (compteurTour % 2 == 0) {
+			listeCouleur.add("rouge");
+		} else
+			listeCouleur.add("bleu");
+
+		return listeCouleur;
+	}
+
+	public ArrayList<String> couleurTour3C() {
+		ArrayList<String> listeCouleur = new ArrayList<String>();
+
+		if (compteurTour % 3 == 0) {
+			listeCouleur.add("rouge");
+		} else if (compteurTour % 3 == 1)
+			listeCouleur.add("vert");
+		else
+			listeCouleur.add("noir");
+
+		return listeCouleur;
+	}
+
+	public ArrayList<String> couleurTour4C() {
+		ArrayList<String> listeCouleur = new ArrayList<String>();
+
+		if (nbJoueur == 2) {
+			if (compteurTour % 2 == 0) {
+				listeCouleur.add("rouge");
+				listeCouleur.add("blanc");
+			} else {
+				listeCouleur.add("bleu");
+				listeCouleur.add("noir");
+			}
+		} else {
+			if (compteurTour % 4 == 0) {
+				listeCouleur.add("rouge");
+			} else if (compteurTour % 4 == 1) {
+				listeCouleur.add("bleu");
+			} else if (compteurTour % 4 == 2) {
+				listeCouleur.add("blanc");
+			} else
+				listeCouleur.add("noir");
+		}
+		return listeCouleur;
+	}
+
+	public ArrayList<String> couleurTour6C() {
+		ArrayList<String> listeCouleur = new ArrayList<String>();
+
+		if (nbJoueur == 2) {
+			if (compteurTour % 2 == 0) {
+				listeCouleur.add("rouge");
+				listeCouleur.add("blanc");
+				listeCouleur.add("jaune");
+			} else {
+				listeCouleur.add("bleu");
+				listeCouleur.add("noir");
+				listeCouleur.add("vert");
+			}
+		} else if (nbJoueur == 3) {
+			if (compteurTour % 3 == 0) {
+				listeCouleur.add("rouge");
+				listeCouleur.add("blanc");
+			} else if (compteurTour % 3 == 1) {
+				listeCouleur.add("bleu");
+				listeCouleur.add("vert");
+			} else if (compteurTour % 3 == 2) {
+				listeCouleur.add("jaune");
+				listeCouleur.add("noir");
+			}
+		} else if (nbJoueur == 4) {
+			if (compteurTour % 4 == 0) {
+				listeCouleur.add("rouge");
+			} else if (compteurTour % 4 == 1) {
+				listeCouleur.add("bleu");
+			} else if (compteurTour % 4 == 2) {
+				listeCouleur.add("blanc");
+			} else
+				listeCouleur.add("noir");
+		}
+		return listeCouleur;
+	}
+
 	public BoutonCase getBoutonCourant() {
 		return boutonCourant;
 	}
 
 	public void setBoutonCourant(BoutonCase boutonCourant) {
-		if (boutonCourant.getCasePlateau().aUnPion())
+		if (boutonCourant.getCasePlateau().aUnPion()
+				&& couleurTour().contains(boutonCourant.getCasePlateau().getPion().getCouleur()))
 			this.boutonCourant = boutonCourant;
 	}
 
@@ -129,5 +209,7 @@ public class JeuDameChinoise extends Jeu {
 		if (!boutonNouveau.getCasePlateau().aUnPion())
 			this.boutonNouveau = boutonNouveau;
 	}
+
+	
 
 }
