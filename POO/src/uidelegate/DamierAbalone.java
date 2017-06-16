@@ -1,5 +1,4 @@
 package uidelegate;
-import java.lang.Math; 
 
 public class DamierAbalone extends Damier{
 	
@@ -337,6 +336,26 @@ public class DamierAbalone extends Damier{
 		
 		System.out.println(" ");
 		System.out.print("       ");
+	}
+
+	public void afficher_couleur(int i)
+	{
+			if(getCase(i).getPion()==null)
+			{
+				System.out.print(""+"O");
+			}
+			else
+			{
+				if (getCase(i).getPion().getCouleur()=="noir")
+				{
+					System.out.print(""+"N");
+				}
+				if(getCase(i).getPion().getCouleur()=="blanc")
+				{
+					System.out.print(""+"B");
+				}
+			}
+			
 	}
 	
 	public void afficher(){
@@ -1172,28 +1191,6 @@ public class DamierAbalone extends Damier{
 		}
 	}
 	
-	
-
-	public void afficher_couleur(int i)
-	{
-			if(getCase(i).getPion()==null)
-			{
-				System.out.print(""+"O");
-			}
-			else
-			{
-				if (getCase(i).getPion().getCouleur()=="noir")
-				{
-					System.out.print(""+"N");
-				}
-				if(getCase(i).getPion().getCouleur()=="blanc")
-				{
-					System.out.print(""+"B");
-				}
-			}
-			
-	}
-	
 	public boolean sumito(Case a,String direction)
 	{ // Determine si il y a position de sumito
 		int cptblanc=0,cptnoir=0;
@@ -1346,314 +1343,5 @@ public class DamierAbalone extends Damier{
 			}
 		}	
 	}	
-	// FONCTION DE TEST //
-	
-	public void testSumito(Case case1)
-	{
-		if(sumito(case1,"hautGauche"))
-		{
-			System.out.println("hautGauche");
-		}
-		if(sumito(case1,"hautDroite"))
-		{
-			System.out.println("hautDroite");
-		}
-		if(sumito(case1,"droite"))
-		{
-			System.out.println("droite");
-		}
-		if(sumito(case1,"basDroite"))
-		{
-			System.out.println("basDroite");
-		}
-		if(sumito(case1,"basGauche"))
-		{
-			System.out.println("basGauche");
-		}
-		if(sumito(case1,"gauche"))
-		{
-			System.out.println("gauche");
-		}
-	}
-	
-	public void testDirection(Case case1,Case case2,Case case3){
-		// FONCTION DE TEST
-		
-		if(caseArriveeVide(case1,case2,case3,"hautGauche")){
-			System.out.println("hautGauche");
-		}
-				
-		if(caseArriveeVide(case1,case2,case3,"hautDroite")){
-			System.out.println("hautDroite");
-		}	
-		
-		if(caseArriveeVide(case1,case2,case3,"droite")){
-			System.out.println("droite");
-		}
-		
-		if(caseArriveeVide(case1,case2,case3,"basDroite")){
-			System.out.println("basDroite");
-		}
-		
-		if(caseArriveeVide(case1,case2,case3,"basGauche")){
-			System.out.println("basGauche");
-		}
-		
-		if(caseArriveeVide(case1,case2,case3,"gauche")){
-			System.out.println("gauche");
-		}
-	}
-	 
-	public void testChevauchementCouleur(Case case1){
-		// FONCTION DE TEST
-		if(chevauchementCouleur(case1,"hautGauche")){
-			System.out.println("hautGauche");
-		}
-		if(chevauchementCouleur(case1,"hautDroite")){
-			System.out.println("hautDroite");
-		}
-		if(chevauchementCouleur(case1,"droite")){
-			System.out.println("droite");
-		}
-		if(chevauchementCouleur(case1,"basDroite")){
-			System.out.println("basDroite");
-		}
-		if(chevauchementCouleur(case1,"basGauche")){
-			System.out.println("basGauche");
-		}
-		if(chevauchementCouleur(case1,"gauche")){
-			System.out.println("gauche");
-		}
-	}
-	
-	private int positionBouleIA[];
-	private int possibiliteDeplacement[];
-	
-	public void IA(){
-		int cpt=0;
-		initIA();
-		initPossibiliteDeplacementBoule();
-		
-		for(int i=0;i<tabCases.length;i++){
-			if(tabCases[i].getPion()!=null){
-				if(tabCases[i].getPion().getCouleur()=="noir"){
-					cpt++;
-					remplirBouleIA(i);
-				}
-				
-			}
-		}
-		
-		Case utile=new Case();
-		Case innutile=new Case(-1, null,0,null,null,null,null,null,null);		
-		boolean a=true;
-		
-		for(int i=0;i<cpt;i++){ // si on peut faire bouger une boule de l'adversaire
-			
-			utile=tabCases[positionBouleIA[i]];
-			
-			if((a)&&deplacementPossible(utile,innutile,innutile,"hautGauche")&&(colleBouleAdverse(utile,"hautGauche"))){
-				a=false;
-				deplacerBoule(utile,"hautGauche");
-			}
-			if((a)&&deplacementPossible(utile,innutile,innutile,"hautDroite")&&(colleBouleAdverse(utile,"hautDroite"))){
-				a=false;
-				deplacerBoule(utile,"hautDroite");
-			}
-			if((a)&&deplacementPossible(utile,innutile,innutile,"droite")&&(colleBouleAdverse(utile,"droite"))){
-				a=false;
-				deplacerBoule(utile,"droite");
-			}
-			if((a)&&deplacementPossible(utile,innutile,innutile,"gauche")&&(colleBouleAdverse(utile,"gauche"))){
-				a=false;
-				deplacerBoule(utile,"gauche");
-			}
-			if((a)&&deplacementPossible(utile,innutile,innutile,"basGauche")&&(colleBouleAdverse(utile,"basGauche"))){
-				a=false;
-				deplacerBoule(utile,"basGauche");
-			}
-			if((a)&&deplacementPossible(utile,innutile,innutile,"basDroite")&&(colleBouleAdverse(utile,"basDroite"))){
-				a=false;
-				deplacerBoule(utile,"basDroite");
-			}
-		}
-		
-		boolean b=true;
-		boolean c=true;
-		int nb=0;
-		int alea=0;
-		
-		if(a){ // si on arrive ici, c'est que l'IA n'a pas reussit a faire bouger de boule adverse
-			for(int i=0;i<tabCases.length;i++){
-				b=true;
-				
-				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"basGauche")){
-					remplirPossibiliteDeplacement(i);
-					nb++;
-					b=false;
-				}
-				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"basDroite")){
-					remplirPossibiliteDeplacement(i);
-					nb++;
-					b=false;			
-				}
-				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"droite")){
-					remplirPossibiliteDeplacement(i);
-					nb++;
-					b=false;				
-				}
-				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"gauche")){
-					remplirPossibiliteDeplacement(i);
-					nb++;
-					b=false;				
-				}
-				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"hautGauche")){
-					remplirPossibiliteDeplacement(i);
-					nb++;
-					b=false;
-				}
-				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"hautDroite")){
-					remplirPossibiliteDeplacement(i);
-					nb++;
-					b=false;
-				}
-			}
-			
-			alea=petitNombreAlea(nb/3);
-						
-			if( (c)&&(deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basGauche")
-					&&(deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basDroite"))) ){
-				int x=petitNombreAlea(1);
-				
-				if(x==0){
-					deplacerBoule(tabCases[possibiliteDeplacement[alea]],"basDroite");
-					c=false;
-				}
-				else{
-					deplacerBoule(tabCases[possibiliteDeplacement[alea]],"basGauche");
-					c=false;
-				}
-			
-			}
-			if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basDroite")){
-				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"basDroite");
-				c=false;			
-			}
-			if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basGauche")){
-				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"basGauche");
-				c=false;			
-			}
-			if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"gauche")){
-				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"gauche");
-				c=false;			
-			}
-			if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"droite")){
-				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"droite");
-				c=false;			
-			}
-			if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"hautGauche")){
-				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"hautGauche");
-				c=false;			
-			}if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"hautDroite")){
-				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"hautDroite");
-				c=false;			
-			}
-		}
-	}	
-
-	public static void main(String argv[]){
-		DamierAbalone a=new DamierAbalone();
-		
-		a.afficherC();
-		System.out.println(" ");
-		a.IA();
-		a.afficherC();
-		a.IA();
-		System.out.println(" ");
-		a.afficherC();
-		a.IA();
-		System.out.println(" ");
-		a.afficherC();
-		a.IA();
-		System.out.println(" ");
-		a.afficherC();
-		a.IA();
-		System.out.println(" ");
-		a.afficherC();
-	}
-	
-	public void remplirBouleIA(int indice){
-		for(int i=0;i<positionBouleIA.length;i++){
-			if(positionBouleIA[i]==-1){
-				positionBouleIA[i]=indice;
-				i=positionBouleIA.length;
-			}
-		}
-	}
-	
-	public boolean colleBouleAdverse(Case case1,String direction){
-		
-		while(case1!=null){
-			if(case1.getPion()!=null){
-				if(case1.getPion().getCouleur()=="blanc"){
-					return true;
-				}
-				else{
-					if(direction=="hautGauche"){
-						case1=case1.getVoisinHautGauche();
-					}
-					if(direction=="hautDroite"){
-						case1=case1.getVoisinHautDroit();
-					}
-					if(direction=="droite"){
-						case1=case1.getVoisinDroit();
-					}
-					if(direction=="gauche"){
-						case1=case1.getVoisinGauche();
-					}
-					if(direction=="basDroite"){
-						case1=case1.getVoisinBasDroit();
-					}
-					if(direction=="basGauche"){
-						case1=case1.getVoisinBasGauche();
-					}
-				}
-			}
-			else{
-				return false;
-			}
-		}
-		return false;
-	}
-	
-	public void initIA(){
-		positionBouleIA=new int[14];
-		
-		for(int i=0;i<positionBouleIA.length;i++){
-			positionBouleIA[i]=-1;
-		}
-	}
-	
-	public void initPossibiliteDeplacementBoule(){
-		possibiliteDeplacement=new int[14];
-		
-		for(int i=0;i<possibiliteDeplacement.length;i++){
-			possibiliteDeplacement[i]=-1;
-		}
-	}
-	
-	public void remplirPossibiliteDeplacement(int indice){
-		for(int i=0;i<possibiliteDeplacement.length;i++){
-			if(possibiliteDeplacement[i]==-1){
-				possibiliteDeplacement[i]=indice;
-				i=possibiliteDeplacement.length;
-			}
-		}
-	}
-	
-	
-	public int petitNombreAlea(int nb){
-		return (int) (Math.random() * (nb+1));
-	}
 	
 }
