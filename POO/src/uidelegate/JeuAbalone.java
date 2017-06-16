@@ -74,6 +74,29 @@ public class JeuAbalone extends Jeu{
 			if(((DamierAbalone)damier).deplacementPossible(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
 				Case tmp=new Case();
 				
+				if(!((DamierAbalone)damier).alignementBoule(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
+					// si la direction d'alignement des boules =/= direction choisit par le Joueur
+					
+					((DamierAbalone)damier).deplacerBoule(caseSelectione[0],direction);
+					
+					if(caseSelectione[1].getId()!=-1){
+						((DamierAbalone)damier).deplacerBoule(caseSelectione[1],direction);
+					}
+					if(caseSelectione[2].getId()!=-1){
+						((DamierAbalone)damier).deplacerBoule(caseSelectione[2],direction);
+					}
+					
+					if(couleurJoueur=="noir"){
+						couleurJoueur="blanc";
+					}
+					else{
+						couleurJoueur="noir";
+					}
+					viderTableau();
+					
+					return 1;
+				}
+				
 				tmp=((DamierAbalone)damier).determierCaseADeplacer(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction);
 				
 				((DamierAbalone)damier).deplacerBoule(tmp,direction);
