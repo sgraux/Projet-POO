@@ -250,23 +250,19 @@ public class JeuAbalone extends Jeu{
 		}
 	}
 	
-	public void remplirTableau(String couleur){
+	public void remplirTableau(Case case1,String couleur){
 	// remplie le tableau des cases Selectione
-		
-		Case parCase=new Case();
-		
-		parCase=((DamierAbalone)damier).getCase(this.numCase);
 		
 		int i=0;
 		
 		for(int j=0;j<caseSelectione.length;j++){
-			if(parCase.getId()==caseSelectione[j].getId()){
+			if(case1.getId()==caseSelectione[j].getId()){
 				System.out.println("La case a deja ete selectione");
 				return ;
 			}
 		}
 		
-		if(parCase.getPion()==null){
+		if(case1.getPion()==null){
 			System.out.println("La case est vide");
 			return ;
 		}
@@ -279,19 +275,19 @@ public class JeuAbalone extends Jeu{
 		}
 	
 		if(i<=2){
-			if(parCase.getPion().getCouleur()!=couleur){
+			if(case1.getPion().getCouleur()!=couleur){
 				System.out.println("Choisissez une case de votre couleur");
 				return ;
 			}
-			caseSelectione[i]=parCase;
+			caseSelectione[i]=case1;
 		}
 		else{
-			if(parCase.getPion().getCouleur()!=couleur){
+			if(case1.getPion().getCouleur()!=couleur){
 				System.out.println("Choisissez une case de votre couleur");
 				return ;
 			}
 			viderTableau();
-			caseSelectione[0]=parCase;
+			caseSelectione[0]=case1;
 		}
 	}	
 	
@@ -412,6 +408,10 @@ public class JeuAbalone extends Jeu{
 	
 	public void setDirection(String parDirecion){
 		direction=parDirecion;
+	}
+	
+	public String getCouleurJoueur(){
+		return couleurJoueur;
 	}
 }
 
