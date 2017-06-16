@@ -146,7 +146,7 @@ public class DamierAbalone extends Damier{
 			tabCases[i].setVoisinHautGauche(tabCases[i-6]);
 			tabCases[i].setVoisinHautDroit(tabCases[i-5]);
 			
-			//tabCases[i].setPion(new Pion("blanc"));
+			tabCases[i].setPion(new Pion("blanc"));
 		}
 	}
 	
@@ -1311,6 +1311,7 @@ public class DamierAbalone extends Damier{
 		// fonction prenant 3 boules et une direction, et determine si un deplacement est possible.
 		
 		Case caseTest=new Case();
+		
 		
 		if(estAligne(case1,case2,case3)=="AUCUNE"){
 			return false;

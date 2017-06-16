@@ -81,9 +81,11 @@ public class JeuAbalone extends Jeu{
 				
 				if( (((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8) || (((DamierAbalone)damier).nbBouleParCouleur("noir")<=8) ){
 					if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
+						viderTableau();
 						return 2;
 					}
 					if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
+						viderTableau();
 						return 3;
 					}
 				}
@@ -95,11 +97,13 @@ public class JeuAbalone extends Jeu{
 				else{
 					couleurJoueur="noir";
 				}
+				viderTableau();
 				return 1;
 			}
 			else{
 				System.out.println("Pas de deplacement possible avec les boules selectionnees");
 				// AFFICHER A L'ECRAN QUE LE DEPLACEMENT N'EST PAS POSSIBLE
+				viderTableau();
 				return 0;
 			}
 		}
