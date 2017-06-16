@@ -218,6 +218,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 					System.out.println("pas de deplac");
 				}
 				else if(var==1){
+					System.out.println("deplacement");
 					jeuAb.afficherTableau();
 				}
 				
@@ -231,6 +232,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				System.out.println("pas de deplac");
 			}
 			else if(var==1){
+				System.out.println("deplacement");
 				jeuAb.afficherTableau();
 			}
 			
@@ -244,6 +246,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				System.out.println("pas de deplac");
 			}
 			else if(var==1){
+				System.out.println("deplacement");
 				jeuAb.afficherTableau();
 			}
 			
@@ -257,6 +260,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				System.out.println("pas de deplac");
 			}
 			else if(var==1){
+				System.out.println("deplacement");
 				jeuAb.afficherTableau();
 			}
 			
@@ -270,6 +274,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				System.out.println("pas de deplac");
 			}
 			else if(var==1){
+				System.out.println("deplacement");
 				jeuAb.afficherTableau();
 			}
 			
@@ -283,6 +288,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				System.out.println("pas de deplac");
 			}
 			else if(var==1){
+				System.out.println("deplacement");
 				jeuAb.afficherTableau();
 			}
 			
