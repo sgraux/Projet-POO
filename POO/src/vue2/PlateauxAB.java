@@ -214,7 +214,81 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		if(source==bGau){
 				System.out.println("gauche");
 				jeuAb.setDirection("gauche");
+				jeuAb.appliquerCoup();
+				if(jeuAb.appliquerCoup()==0){
+					System.out.println("pas de deplac");
+				}
+				else if(jeuAb.appliquerCoup()==1){
+					jeuAb.afficherTableau();
+				}
+				
+				
 		}
+		else if(source==bDro){
+			System.out.println("droite");
+			jeuAb.setDirection("droite");
+			jeuAb.appliquerCoup();
+			if(jeuAb.appliquerCoup()==0){
+				System.out.println("pas de deplac");
+			}
+			else if(jeuAb.appliquerCoup()==1){
+				jeuAb.afficherTableau();
+			}
+			
+			
+	}
+		else if(source==bHauG){
+			System.out.println("hautGauche");
+			jeuAb.setDirection("hautGauche");
+			jeuAb.appliquerCoup();
+			if(jeuAb.appliquerCoup()==0){
+				System.out.println("pas de deplac");
+			}
+			else if(jeuAb.appliquerCoup()==1){
+				jeuAb.afficherTableau();
+			}
+			
+		
+	}
+		else if(source==bBasG){
+			System.out.println("basGauche");
+			jeuAb.setDirection("basGauche");
+			jeuAb.appliquerCoup();
+			if(jeuAb.appliquerCoup()==0){
+				System.out.println("pas de deplac");
+			}
+			else if(jeuAb.appliquerCoup()==1){
+				jeuAb.afficherTableau();
+			}
+			
+		
+	}
+		else if(source==bHauD){
+			System.out.println("hautDroite");
+			jeuAb.setDirection("hautDroite");
+			jeuAb.appliquerCoup();
+			if(jeuAb.appliquerCoup()==0){
+				System.out.println("pas de deplac");
+			}
+			else if(jeuAb.appliquerCoup()==1){
+				jeuAb.afficherTableau();
+			}
+			
+		
+	}
+		else if(source==bBasD){
+			System.out.println("basDroite");
+			jeuAb.setDirection("basDroite");
+			jeuAb.appliquerCoup();
+			if(jeuAb.appliquerCoup()==0){
+				System.out.println("pas de deplac");
+			}
+			else if(jeuAb.appliquerCoup()==1){
+				jeuAb.afficherTableau();
+			}
+			
+		
+	}
 		else{
 			BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
 			System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId()+" le couleur est "+jeuAb.getCouleurJoueur());
