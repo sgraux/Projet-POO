@@ -20,6 +20,8 @@ import uidelegate.JeuAbalone;
 public class PlateauxAB extends JeuxPan implements ActionListener{
 	
 	
+	
+
 	private String mode=null;
 	
 	public PlateauxAB(Dimension dim) {
@@ -46,8 +48,8 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	private JButton bBasG = new JButton("HD");
 	private JButton bHauD = new JButton("BG");
 	private JButton bBasD = new JButton("BD");
-	private JButton bDro = new JButton("G");
-	private JButton bGau = new JButton("D");
+	private JButton bDro = new JButton("D");
+	private JButton bGau = new JButton("G");
 	
 	public PlateauxAB(Dimension dim, String mode) {
 		super(dim);
@@ -62,6 +64,8 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	private JLabel label1 = new JLabel("J2(BLANC):");
 	private JLabel label2 = new JLabel("scr");
 	private JLabel label3 = new JLabel("scr");
+
+	private Class<? extends Object> JButton;
 	
 	@Override
 	protected void initPanel() {
@@ -197,23 +201,31 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	    
 	}
 	
-	
+	private static final Class<? extends Object> BoutonCase = null;
 	//
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{	
 		String couleur="noir";
-		BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
-		System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId());
 		
 		
-		
-		jeuAb.setNumCase(boutonTemp.getCasePlateau().getId());
-		jeuAb.remplirTableau(couleur);
-		jeuAb.afficherTableau();
-		
-		
-		
+		if(arg0.getSource().getClass() == JButton){
+			if(  arg0.getSource() == bGau )
+			{
+				//jeuAb.setDirection("gauche");
+				System.out.println("gauche");
+				} 
+		}
+		else{
+			BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
+			System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId());
+			
+			
+			jeuAb.setNumCase(boutonTemp.getCasePlateau().getId());
+			jeuAb.remplirTableau(couleur);
+			jeuAb.afficherTableau();
+			
+		}
 		
 	}
 }
