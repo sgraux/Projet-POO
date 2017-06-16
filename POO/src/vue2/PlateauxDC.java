@@ -57,6 +57,14 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 	private ImageIcon bRou = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billerouge.png")).getImage());
 	private ImageIcon bNoi = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoir.png")).getImage());
 
+	private ImageIcon bArgSel = new ImageIcon(
+			new ImageIcon(getClass().getResource("/Images/billeargentselect.png")).getImage());
+	private ImageIcon bBleSel = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billebleuselect.png")).getImage());
+	private ImageIcon bJauSel = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billejauneselect.png")).getImage());
+	private ImageIcon bVerSel = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billevertselect.png")).getImage());
+	private ImageIcon bRouSel = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billerougeselect.png")).getImage());
+	private ImageIcon bNoiSel = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoirselect.png")).getImage());
+
 	private JLabel label = new JLabel("J1(JAUNE):");
 	private JLabel label1 = new JLabel("J2(BLEU):");
 	private JLabel label2 = new JLabel("scr");
@@ -101,37 +109,37 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		for (int i = 0; i < 17; i++) {
 			for (int j = 0; j < 25; j++) {
 				if (plateau[i][j] == 1) {
-					button[i][j].setIcon(bBla);
+					button[i][j].setIconBase(bBla);
 					button[i][j].setCasePlateau(jeuDame.getDamier().getCase(compteur));
 					compteur++;
 					button[i][j].addActionListener(this);
 				} else if (plateau[i][j] == 2) {
-					button[i][j].setIcon(bNoi);
+					button[i][j].setIconBase(bNoi);
 					button[i][j].setCasePlateau(jeuDame.getDamier().getCase(compteur));
 					compteur++;
 					button[i][j].addActionListener(this);
 				} else if (plateau[i][j] == 3) {
-					button[i][j].setIcon(bJau);
+					button[i][j].setIconBase(bJau);
 					button[i][j].setCasePlateau(jeuDame.getDamier().getCase(compteur));
 					compteur++;
 					button[i][j].addActionListener(this);
 				} else if (plateau[i][j] == 4) {
-					button[i][j].setIcon(bRou);
+					button[i][j].setIconBase(bRou);
 					button[i][j].setCasePlateau(jeuDame.getDamier().getCase(compteur));
 					compteur++;
 					button[i][j].addActionListener(this);
 				} else if (plateau[i][j] == 5) {
-					button[i][j].setIcon(bArg);
+					button[i][j].setIconBase(bArg);
 					button[i][j].setCasePlateau(jeuDame.getDamier().getCase(compteur));
 					compteur++;
 					button[i][j].addActionListener(this);
 				} else if (plateau[i][j] == 6) {
-					button[i][j].setIcon(bVer);
+					button[i][j].setIconBase(bVer);
 					button[i][j].setCasePlateau(jeuDame.getDamier().getCase(compteur));
 					compteur++;
 					button[i][j].addActionListener(this);
 				} else if (plateau[i][j] == 7) {
-					button[i][j].setIcon(bBle);
+					button[i][j].setIconBase(bBle);
 					button[i][j].setCasePlateau(jeuDame.getDamier().getCase(compteur));
 					compteur++;
 					button[i][j].addActionListener(this);
@@ -147,101 +155,123 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		 */
 		this.panel.add(panel1);
 
-		/*label.setFont(new Font("Verdana", 1, 30));
-		label.setForeground(Color.black);
-		label.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label.setBounds(150, 550, 100, 50);
-		this.panel.add(label);
-
-		label1.setFont(new Font("Verdana", 1, 30));
-		label1.setForeground(Color.black);
-		label1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label1.setBounds(300, 550, 100, 50);
-		this.panel.add(label1);
-
-		label2.setFont(new Font("Verdana", 1, 30));
-		label2.setForeground(Color.black);
-		label2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label2.setBounds(110, 0, 575, 50);
-		// this.panel.setLayout(null);
-		// this.panel.add(label2);
-
-		label3.setFont(new Font("Verdana", 1, 30));
-		label3.setForeground(Color.black);
-		label3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label3.setBounds(110, 0, 575, 50);
-		// this.panel.add(label3);
-
-		label4.setFont(new Font("Verdana", 1, 30));
-		label4.setForeground(Color.black);
-		label4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label4.setBounds(150, 550, 100, 50);
-		this.panel.add(label4);
-
-		label5.setFont(new Font("Verdana", 1, 30));
-		label5.setForeground(Color.black);
-		label5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label5.setBounds(300, 550, 100, 50);
-		this.panel.add(label5);
-
-		label6.setFont(new Font("Verdana", 1, 30));
-		label6.setForeground(Color.black);
-		label6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label6.setBounds(110, 0, 575, 50);
-		// this.panel.setLayout(null);
-		// this.panel.add(label6);
-
-		label7.setFont(new Font("Verdana", 1, 30));
-		label7.setForeground(Color.black);
-		label7.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label7.setBounds(110, 0, 575, 50);
-		// this.panel.add(label7);
-
-		label8.setFont(new Font("Verdana", 1, 30));
-		label8.setForeground(Color.black);
-		label8.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label8.setBounds(150, 550, 100, 50);
-		this.panel.add(label8);
-
-		label9.setFont(new Font("Verdana", 1, 30));
-		label9.setForeground(Color.black);
-		label9.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label9.setBounds(300, 550, 100, 50);
-		this.panel.add(label9);
-
-		label10.setFont(new Font("Verdana", 1, 30));
-		label10.setForeground(Color.black);
-		label10.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label10.setBounds(110, 0, 575, 50);
-		// this.panel.setLayout(null);
-		// this.panel.add(label10);
-
-		label11.setFont(new Font("Verdana", 1, 30));
-		label11.setForeground(Color.black);
-		label11.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-		label11.setBounds(110, 0, 575, 50);
-		// this.panel.add(label11);*/
+		/*
+		 * label.setFont(new Font("Verdana", 1, 30));
+		 * label.setForeground(Color.black);
+		 * label.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label.setBounds(150, 550, 100, 50); this.panel.add(label);
+		 * 
+		 * label1.setFont(new Font("Verdana", 1, 30));
+		 * label1.setForeground(Color.black);
+		 * label1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label1.setBounds(300, 550, 100, 50); this.panel.add(label1);
+		 * 
+		 * label2.setFont(new Font("Verdana", 1, 30));
+		 * label2.setForeground(Color.black);
+		 * label2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label2.setBounds(110, 0, 575, 50); // this.panel.setLayout(null); //
+		 * this.panel.add(label2);
+		 * 
+		 * label3.setFont(new Font("Verdana", 1, 30));
+		 * label3.setForeground(Color.black);
+		 * label3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label3.setBounds(110, 0, 575, 50); // this.panel.add(label3);
+		 * 
+		 * label4.setFont(new Font("Verdana", 1, 30));
+		 * label4.setForeground(Color.black);
+		 * label4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label4.setBounds(150, 550, 100, 50); this.panel.add(label4);
+		 * 
+		 * label5.setFont(new Font("Verdana", 1, 30));
+		 * label5.setForeground(Color.black);
+		 * label5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label5.setBounds(300, 550, 100, 50); this.panel.add(label5);
+		 * 
+		 * label6.setFont(new Font("Verdana", 1, 30));
+		 * label6.setForeground(Color.black);
+		 * label6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label6.setBounds(110, 0, 575, 50); // this.panel.setLayout(null); //
+		 * this.panel.add(label6);
+		 * 
+		 * label7.setFont(new Font("Verdana", 1, 30));
+		 * label7.setForeground(Color.black);
+		 * label7.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label7.setBounds(110, 0, 575, 50); // this.panel.add(label7);
+		 * 
+		 * label8.setFont(new Font("Verdana", 1, 30));
+		 * label8.setForeground(Color.black);
+		 * label8.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label8.setBounds(150, 550, 100, 50); this.panel.add(label8);
+		 * 
+		 * label9.setFont(new Font("Verdana", 1, 30));
+		 * label9.setForeground(Color.black);
+		 * label9.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label9.setBounds(300, 550, 100, 50); this.panel.add(label9);
+		 * 
+		 * label10.setFont(new Font("Verdana", 1, 30));
+		 * label10.setForeground(Color.black);
+		 * label10.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label10.setBounds(110, 0, 575, 50); // this.panel.setLayout(null); //
+		 * this.panel.add(label10);
+		 * 
+		 * label11.setFont(new Font("Verdana", 1, 30));
+		 * label11.setForeground(Color.black);
+		 * label11.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		 * label11.setBounds(110, 0, 575, 50); // this.panel.add(label11);
+		 */
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
+
 		BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
-		//System.out.println(boutonTemp.getCasePlateau().toString());
-		
-		int resultatCoup = jeuDame.appliqueCoup(boutonTemp);
-		if(resultatCoup == 1){
-			
-			boutonTemp.setIcon(jeuDame.getBoutonCourant().getIcon());
-			jeuDame.getBoutonCourant().setIcon(bBla);
-			
-			jeuDame.reinitialiseBouton();
-			
-			//System.out.println(jeuDame.getDamier().toSTringCouleur());
-			
-			System.out.println(jeuDame.victoireRouge());
+		// System.out.println(boutonTemp.getCasePlateau().toString());
+
+		if (jeuDame.getBoutonCourant() == null) {
+			jeuDame.setBoutonCourant(boutonTemp);
+			boutonTemp.setIcon(determineSelect(boutonTemp));
+			// System.out.println(jeuDame.getBoutonCourant().getCasePlateau().getId());
+		} else if (jeuDame.getBoutonNouveau() == null) {
+			jeuDame.setBoutonNouveau(boutonTemp);
+			System.out.println(jeuDame.getBoutonNouveau().getCasePlateau().getId());
+
+			int resultatCoup = jeuDame.appliqueCoup();
+			if (resultatCoup == 1) {
+
+				jeuDame.getBoutonNouveau().setIconBase(jeuDame.getBoutonCourant().getIconNonSelect());
+				jeuDame.getBoutonCourant().setIconBase(bBla);
+
+				jeuDame.reinitialiseBouton();
+
+				// System.out.println(jeuDame.getDamier().toSTringCouleur());
+
+				// System.out.println(jeuDame.victoireRouge());
+			}
+			// else if(resultatCoup == -1)jeuDame.reinitialiseBouton();
 		}
-		else if(resultatCoup == -1)jeuDame.reinitialiseBouton();
+
 	}
+	
+	public ImageIcon determineSelect(BoutonCase parBouton){
+		
+		ImageIcon icon = new ImageIcon();
+		if(parBouton.getIcon() == bRou)
+			icon = bRouSel;
+		else if(parBouton.getIcon() == bArg)
+			icon = bArgSel;
+		else if(parBouton.getIcon() == bJau)
+			icon = bJauSel;
+		else if(parBouton.getIcon() == bVer)
+			icon = bVerSel;
+		else if(parBouton.getIcon() == bNoi)
+			icon = bNoiSel;
+		else if(parBouton.getIcon() == bBle)
+			icon = bBleSel;
+		else icon = bBla;
+		
+		return icon;
+		
+	}
+
 }

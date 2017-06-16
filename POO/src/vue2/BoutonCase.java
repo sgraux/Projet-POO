@@ -8,6 +8,7 @@ import uidelegate.Case;
 public class BoutonCase extends JButton{
 	
 	private Case casePlateau = null;
+	private ImageIcon iconNonSelect;
 	
 	public BoutonCase(){
 		casePlateau = null;
@@ -20,7 +21,13 @@ public class BoutonCase extends JButton{
 
 	public BoutonCase(ImageIcon parImage) {
 		super(parImage);
+		iconNonSelect = parImage;
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void setIconBase(ImageIcon parIcon){
+		this.setIcon(parIcon);
+		iconNonSelect = parIcon;
 	}
 
 	public Case getCasePlateau() {
@@ -29,6 +36,10 @@ public class BoutonCase extends JButton{
 
 	public void setCasePlateau(Case casePlateau) {
 		this.casePlateau = casePlateau;
+	}
+	
+	public ImageIcon getIconNonSelect(){
+		return iconNonSelect;
 	}
 	
 	

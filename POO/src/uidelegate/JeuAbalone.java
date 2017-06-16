@@ -49,8 +49,15 @@ public class JeuAbalone extends Jeu{
 	}
 	
 	public boolean appliquerCoup(){
+		if((joueContreIA)&&(couleurJoueur=="noir")){
+			((DamierAbalone)damier).IA();
+			couleurJoueur="blanc";
+		}
+		
+		
 		if(nbCaseSelectione()==0){
 			return false;
+			// si le joueur n'a pas selectioner de case, alors pas de deplacement possible
 		}
 		
 		if(((DamierAbalone)damier).deplacementPossible(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
@@ -75,10 +82,6 @@ public class JeuAbalone extends Jeu{
 			return false;
 		}
 	
-	}
-	
-	public Case recupererCase(int indice){
-		return ((DamierAbalone)damier).getCase(indice);
 	}
 	
 	public void remplirTableau(String couleur){
