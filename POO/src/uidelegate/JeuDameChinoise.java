@@ -58,10 +58,10 @@ public class JeuDameChinoise extends Jeu {
 
 	}
 
-	public int appliqueCoup(BoutonCase parBouton) {
+	public int appliqueCoup() {
 
-		if (!damier.estVoisin(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())) {
-			if (((DamierDameChinoise)damier).saut(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())){
+		if (!damier.estVoisin(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())) {
+			if (((DamierDameChinoise)damier).saut(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())){
 				
 				return 1;
 			}
@@ -71,7 +71,7 @@ public class JeuDameChinoise extends Jeu {
 				}
 		}
 		else {
-			if (((DamierDameChinoise) damier).deplacement(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())){
+			if (((DamierDameChinoise) damier).deplacement(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())){
 				
 				return 1;
 			}
