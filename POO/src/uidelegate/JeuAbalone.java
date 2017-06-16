@@ -409,6 +409,10 @@ public class JeuAbalone extends Jeu{
 	public int petitNombreAlea(int nb){
 		return (int) (Math.random() * (nb+1));
 	}
+	
+	public void setDirection(String parDirecion){
+		direction=parDirecion;
+	}
 }
 
 /* 	    

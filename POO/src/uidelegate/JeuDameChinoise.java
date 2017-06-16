@@ -31,6 +31,18 @@ public class JeuDameChinoise extends Jeu {
 		return false;
 	}
 
+	public int victoire(){
+		if(victoireRouge()) return 2;
+		else if(victoireBlanc()) return 3;
+		else if(victoireVert()) return 4;
+		else if(victoireBleu()) return 5;
+		else if(victoireNoir()) return 6;
+		else if(victoireJaune()) return 7;
+		
+		
+		return 1;
+	}
+	
 	public boolean victoireRouge() {
 
 		try {
@@ -48,11 +60,114 @@ public class JeuDameChinoise extends Jeu {
 				return true;
 
 			}
-		} catch (Exception e) {
-		}
-
+		} catch (Exception e) {}
 		return false;
-	}
+		}
+		
+		public boolean victoireBlanc() {
+
+			try {
+				if (damier.getCase(74).getPion().getCouleur() == "blanc"
+						&& damier.getCase(84).getPion().getCouleur() == "blanc"
+						&& damier.getCase(85).getPion().getCouleur() == "blanc"
+						&& damier.getCase(95).getPion().getCouleur() == "blanc"
+						&& damier.getCase(96).getPion().getCouleur() == "blanc"
+						&& damier.getCase(97).getPion().getCouleur() == "blanc"
+						&& damier.getCase(107).getPion().getCouleur() == "blanc"
+						&& damier.getCase(108).getPion().getCouleur() == "blanc"
+						&& damier.getCase(109).getPion().getCouleur() == "blanc"
+						&& damier.getCase(110).getPion().getCouleur() == "blanc") {
+
+					return true;
+
+				}
+			} catch (Exception e) {}
+		return false;
+		}
+		
+		public boolean victoireJaune() {
+
+			try {
+				if (damier.getCase(65).getPion().getCouleur() == "jaune"
+						&& damier.getCase(75).getPion().getCouleur() == "jaune"
+						&& damier.getCase(76).getPion().getCouleur() == "jaune"
+						&& damier.getCase(86).getPion().getCouleur() == "jaune"
+						&& damier.getCase(87).getPion().getCouleur() == "jaune"
+						&& damier.getCase(88).getPion().getCouleur() == "jaune"
+						&& damier.getCase(98).getPion().getCouleur() == "jaune"
+						&& damier.getCase(99).getPion().getCouleur() == "jaune"
+						&& damier.getCase(100).getPion().getCouleur() == "jaune"
+						&& damier.getCase(101).getPion().getCouleur() == "jaune") {
+
+					return true;
+
+				}
+			} catch (Exception e) {}
+		return false;
+		}	
+		
+		public boolean victoireVert() {
+
+			try {
+				if (damier.getCase(19).getPion().getCouleur() == "vert"
+						&& damier.getCase(20).getPion().getCouleur() == "vert"
+						&& damier.getCase(21).getPion().getCouleur() == "vert"
+						&& damier.getCase(22).getPion().getCouleur() == "vert"
+						&& damier.getCase(32).getPion().getCouleur() == "vert"
+						&& damier.getCase(33).getPion().getCouleur() == "vert"
+						&& damier.getCase(34).getPion().getCouleur() == "vert"
+						&& damier.getCase(44).getPion().getCouleur() == "vert"
+						&& damier.getCase(450).getPion().getCouleur() == "vert"
+						&& damier.getCase(55).getPion().getCouleur() == "vert") {
+
+					return true;
+
+				}
+			} catch (Exception e) {}
+		return false;
+		}
+		
+		public boolean victoireBleu() {
+
+			try {
+				if (damier.getCase(0).getPion().getCouleur() == "vert"
+						&& damier.getCase(1).getPion().getCouleur() == "vert"
+						&& damier.getCase(2).getPion().getCouleur() == "vert"
+						&& damier.getCase(3).getPion().getCouleur() == "vert"
+						&& damier.getCase(4).getPion().getCouleur() == "vert"
+						&& damier.getCase(5).getPion().getCouleur() == "vert"
+						&& damier.getCase(6).getPion().getCouleur() == "vert"
+						&& damier.getCase(7).getPion().getCouleur() == "vert"
+						&& damier.getCase(8).getPion().getCouleur() == "vert"
+						&& damier.getCase(9).getPion().getCouleur() == "vert") {
+
+					return true;
+
+				}
+			} catch (Exception e) {}
+		return false;
+		}
+		
+		public boolean victoireNoir() {
+
+			try {
+				if (damier.getCase(10).getPion().getCouleur() == "vert"
+						&& damier.getCase(11).getPion().getCouleur() == "vert"
+						&& damier.getCase(12).getPion().getCouleur() == "vert"
+						&& damier.getCase(13).getPion().getCouleur() == "vert"
+						&& damier.getCase(23).getPion().getCouleur() == "vert"
+						&& damier.getCase(24).getPion().getCouleur() == "vert"
+						&& damier.getCase(25).getPion().getCouleur() == "vert"
+						&& damier.getCase(35).getPion().getCouleur() == "vert"
+						&& damier.getCase(36).getPion().getCouleur() == "vert"
+						&& damier.getCase(46).getPion().getCouleur() == "vert") {
+
+					return true;
+
+				}
+			} catch (Exception e) {}
+		return false;
+		}
 
 	@Override
 	public void boucleJeu() {
@@ -68,7 +183,7 @@ public class JeuDameChinoise extends Jeu {
 		} else if (!damier.estVoisin(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())) {
 			if (((DamierDameChinoise) damier).saut(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())) {
 				compteurTour++;
-				return 1;
+				return victoire();
 			} else {
 				boutonCourant = boutonNouveau;
 				boutonNouveau = null;
@@ -78,7 +193,7 @@ public class JeuDameChinoise extends Jeu {
 			if (((DamierDameChinoise) damier).deplacement(boutonCourant.getCasePlateau(),
 					boutonNouveau.getCasePlateau())) {
 				compteurTour++;
-				return 1;
+				return victoire();
 			} else {
 				boutonCourant = boutonNouveau;
 				boutonNouveau = null;
