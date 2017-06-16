@@ -230,18 +230,30 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
 		//System.out.println(boutonTemp.getCasePlateau().toString());
 		
-		int resultatCoup = jeuDame.appliqueCoup(boutonTemp);
-		if(resultatCoup == 1){
-			
-			boutonTemp.setIcon(jeuDame.getBoutonCourant().getIcon());
-			jeuDame.getBoutonCourant().setIcon(bBla);
-			
-			jeuDame.reinitialiseBouton();
-			
-			//System.out.println(jeuDame.getDamier().toSTringCouleur());
-			
-			System.out.println(jeuDame.victoireRouge());
+		if(jeuDame.getBoutonCourant() == null){
+			jeuDame.setBoutonCourant(boutonTemp);
+			System.out.println(jeuDame.getBoutonCourant().getCasePlateau().getId());
 		}
-		else if(resultatCoup == -1)jeuDame.reinitialiseBouton();
-	}
+		else if(jeuDame.getBoutonNouveau() == null){
+			jeuDame.setBoutonNouveau(boutonTemp);
+			System.out.println(jeuDame.getBoutonNouveau().getCasePlateau().getId());
+			
+			int resultatCoup = jeuDame.appliqueCoup(boutonTemp);
+			if(resultatCoup == 1){
+				
+				jeuDame.getBoutonNouveau().setIcon(jeuDame.getBoutonCourant().getIcon());
+				jeuDame.getBoutonCourant().setIcon(bBla);
+				
+				jeuDame.reinitialiseBouton();
+				
+				//System.out.println(jeuDame.getDamier().toSTringCouleur());
+				
+				//System.out.println(jeuDame.victoireRouge());
+			}
+			//else if(resultatCoup == -1)jeuDame.reinitialiseBouton();
+		}
+			
+		}
+		
+		
 }

@@ -10,7 +10,7 @@ public class JeuDameChinoise extends Jeu {
 
 	private BoutonCase boutonCourant;
 	private BoutonCase boutonNouveau;
-	private int compteurClique = 0;
+	// private int compteurClique = 0;
 
 	public JeuDameChinoise(boolean parJoueContreIA, String parVariante, int parNBJoueur, int parNBCouleur) {
 		super(parJoueContreIA, parVariante);
@@ -28,26 +28,27 @@ public class JeuDameChinoise extends Jeu {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	public boolean victoireRouge(){
-		
-		try{
-		if(damier.getCase(120).getPion().getCouleur() == "rouge"
-			&& damier.getCase(119).getPion().getCouleur() == "rouge"
-			&& damier.getCase(118).getPion().getCouleur() == "rouge"
-			&& damier.getCase(117).getPion().getCouleur() == "rouge"
-			&& damier.getCase(116).getPion().getCouleur() == "rouge"
-			&& damier.getCase(115).getPion().getCouleur() == "rouge"
-			&& damier.getCase(114).getPion().getCouleur() == "rouge"
-			&& damier.getCase(113).getPion().getCouleur() == "rouge"
-			&& damier.getCase(112).getPion().getCouleur() == "rouge"
-			&& damier.getCase(111).getPion().getCouleur() == "rouge"){
-			
-			return true;
-				
+
+	public boolean victoireRouge() {
+
+		try {
+			if (damier.getCase(120).getPion().getCouleur() == "rouge"
+					&& damier.getCase(119).getPion().getCouleur() == "rouge"
+					&& damier.getCase(118).getPion().getCouleur() == "rouge"
+					&& damier.getCase(117).getPion().getCouleur() == "rouge"
+					&& damier.getCase(116).getPion().getCouleur() == "rouge"
+					&& damier.getCase(115).getPion().getCouleur() == "rouge"
+					&& damier.getCase(114).getPion().getCouleur() == "rouge"
+					&& damier.getCase(113).getPion().getCouleur() == "rouge"
+					&& damier.getCase(112).getPion().getCouleur() == "rouge"
+					&& damier.getCase(111).getPion().getCouleur() == "rouge") {
+
+				return true;
+
+			}
+		} catch (Exception e) {
 		}
-		}catch(Exception e){}
-		
+
 		return false;
 	}
 
@@ -59,8 +60,31 @@ public class JeuDameChinoise extends Jeu {
 
 	public int appliqueCoup(BoutonCase parBouton) {
 
+		if (!damier.estVoisin(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())) {
+			if (((DamierDameChinoise)damier).saut(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())){
+				
+				return 1;
+			}
+			else {
+				reinitialiseBouton();
+				return 0;
+				}
+		}
+		else {
+			if (((DamierDameChinoise) damier).deplacement(boutonCourant.getCasePlateau(), parBouton.getCasePlateau())){
+				
+				return 1;
+			}
+			else{
+				reinitialiseBouton();
+				return 0;
+			}
+		}
+	}
+
 		
-		if (compteurClique == 0) {
+		
+		/*if (compteurClique == 0) {
 			
 			boutonCourant = parBouton;
 			compteurClique++;
@@ -79,13 +103,13 @@ public class JeuDameChinoise extends Jeu {
 			} else
 				return -1;
 
-		}
+		}*/
 
-	}
-	//remet le bouton courant et le compteur à leur valleur de départ
+	// remet le bouton courant et le compteur à leur valleur de départ
 	public void reinitialiseBouton() {
 		boutonCourant = null;
-		compteurClique = 0;
+		boutonNouveau = null;
+		// compteurClique = 0;
 	}
 
 	public BoutonCase getBoutonCourant() {
@@ -93,7 +117,8 @@ public class JeuDameChinoise extends Jeu {
 	}
 
 	public void setBoutonCourant(BoutonCase boutonCourant) {
-		this.boutonCourant = boutonCourant;
+		if (boutonCourant.getCasePlateau().aUnPion())
+			this.boutonCourant = boutonCourant;
 	}
 
 	public BoutonCase getBoutonNouveau() {
@@ -101,7 +126,8 @@ public class JeuDameChinoise extends Jeu {
 	}
 
 	public void setBoutonNouveau(BoutonCase boutonNouveau) {
-		this.boutonNouveau = boutonNouveau;
+		if (!boutonNouveau.getCasePlateau().aUnPion())
+			this.boutonNouveau = boutonNouveau;
 	}
 
 }
