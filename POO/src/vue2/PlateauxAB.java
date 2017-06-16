@@ -1,5 +1,4 @@
 package vue2;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -11,7 +10,6 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -110,14 +108,15 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	          }
 	          else if(plateau[i][j]==2)
 	          {
-	        	  button[i][j].setIcon(bNoi);
+	        	  button[i][j].setIcon(bBla);
 	        	  button[i][j].setCasePlateau(jeuAb.getDamier().getCase(compteur));
 	        	  compteur++;
 	        	  button[i][j].addActionListener(this);
 	    	   }
 	          else if(plateau[i][j]==3)
 	          {
-	        	  button[i][j].setIcon(bBla);
+	        	  button[i][j].setIcon(bNoi
+	        			  );
 	        	  button[i][j].setCasePlateau(jeuAb.getDamier().getCase(compteur));
 	        	  compteur++;
 	        	  button[i][j].addActionListener(this);
