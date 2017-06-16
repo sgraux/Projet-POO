@@ -204,6 +204,14 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	{	
 		BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
 		System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId());
+		
+		
+		
+		JButton deplac = ((JButton) arg0.getSource());
+		if(deplac==bGau){
+			jeuAb.setNumCase(boutonTemp.getCasePlateau().getId());
+			jeuAb.appliquerCoup();
+		}
 	
 	}
 }
