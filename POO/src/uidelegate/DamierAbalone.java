@@ -1,5 +1,4 @@
 package uidelegate;
-// package uidelegate;
 import java.lang.Math; 
 
 public class DamierAbalone extends Damier{
@@ -148,7 +147,7 @@ public class DamierAbalone extends Damier{
 			tabCases[i].setVoisinHautGauche(tabCases[i-6]);
 			tabCases[i].setVoisinHautDroit(tabCases[i-5]);
 			
-			tabCases[i].setPion(new Pion("blanc"));
+			//tabCases[i].setPion(new Pion("blanc"));
 		}
 	}
 	
@@ -466,7 +465,7 @@ public class DamierAbalone extends Damier{
 		// determine si la direction choisit est la meme que l'alignement des boules
 		
 		if((direction=="hautGauche")||(direction=="basDroite")){
-			if(estAligne(case1,case2,case3)=="HAUT_GAUCHE"){
+			if((estAligne(case1,case2,case3)=="HAUT_GAUCHE")||(estAligne(case1,case2,case3)=="TOUTES")){
 				return true;
 			}
 			else{
@@ -475,7 +474,7 @@ public class DamierAbalone extends Damier{
 		}
 		
 		if((direction=="droite")||(direction=="gauche")){
-			if(estAligne(case1,case2,case3)=="DROITE"){
+			if((estAligne(case1,case2,case3)=="DROITE")||(estAligne(case1,case2,case3)=="TOUTES")){
 				return true;
 			}
 			else{
@@ -484,7 +483,7 @@ public class DamierAbalone extends Damier{
 		}
 		
 		if((direction=="hautDroite")||(direction=="basGauche")){
-			if(estAligne(case1,case2,case3)=="HAUT_DROITE"){
+			if((estAligne(case1,case2,case3)=="HAUT_DROITE")||(estAligne(case1,case2,case3)=="TOUTES")){
 				return true;
 			}
 			else{
@@ -984,8 +983,8 @@ public class DamierAbalone extends Damier{
 		if(direction=="basDroite"){
 			deplacerBouleBasDroite(case1);
 		}
-		if(direction=="hautGauche"){
-			deplacerBouleHautGauche(case1);
+		if(direction=="basGauche"){
+			deplacerBouleBasGauche(case1);
 		}
 	}
 	
@@ -1081,7 +1080,7 @@ public class DamierAbalone extends Damier{
 			{break;}
 		}
 	}
-	
+
 	public void deplacerBouleGauche(Case case1){
 		
 		String caseTmp1;
@@ -1114,7 +1113,6 @@ public class DamierAbalone extends Damier{
 	}
 	
 	public void deplacerBouleHautGauche(Case case1){
-		
 		String caseTmp1;
 		String caseTmp2;
 		
@@ -1125,7 +1123,6 @@ public class DamierAbalone extends Damier{
 		{return ;}
 		
 		while(true){
-			
 			case1=case1.getVoisinHautGauche();
 			
 			if(case1.getPion()==null){
@@ -1306,7 +1303,6 @@ public class DamierAbalone extends Damier{
 			}
 			if(direction=="gauche"){
 				if(case1.getVoisinGauche().getEtat()==1){
-					return false;
 				}
 				case1=case1.getVoisinGauche();
 			}
@@ -1329,11 +1325,9 @@ public class DamierAbalone extends Damier{
 			if(!pasDeMur(caseTest,direction)){
 				return false;
 			}
-			
 			if(chevauchementCouleur(caseTest,direction)){
 				return false;
 			}
-			
 			if(!sumito(caseTest,direction)){
 				return false;
 			}
@@ -1431,4 +1425,235 @@ public class DamierAbalone extends Damier{
 			System.out.println("gauche");
 		}
 	}
+	
+	private int positionBouleIA[];
+	private int possibiliteDeplacement[];
+	
+	public void IA(){
+		int cpt=0;
+		initIA();
+		initPossibiliteDeplacementBoule();
+		
+		for(int i=0;i<tabCases.length;i++){
+			if(tabCases[i].getPion()!=null){
+				if(tabCases[i].getPion().getCouleur()=="noir"){
+					cpt++;
+					remplirBouleIA(i);
+				}
+				
+			}
+		}
+		
+		Case utile=new Case();
+		Case innutile=new Case(-1, null,0,null,null,null,null,null,null);		
+		boolean a=true;
+		
+		for(int i=0;i<cpt;i++){ // si on peut faire bouger une boule de l'adversaire
+			
+			utile=tabCases[positionBouleIA[i]];
+			
+			if((a)&&deplacementPossible(utile,innutile,innutile,"hautGauche")&&(colleBouleAdverse(utile,"hautGauche"))){
+				a=false;
+				deplacerBoule(utile,"hautGauche");
+			}
+			if((a)&&deplacementPossible(utile,innutile,innutile,"hautDroite")&&(colleBouleAdverse(utile,"hautDroite"))){
+				a=false;
+				deplacerBoule(utile,"hautDroite");
+			}
+			if((a)&&deplacementPossible(utile,innutile,innutile,"droite")&&(colleBouleAdverse(utile,"droite"))){
+				a=false;
+				deplacerBoule(utile,"droite");
+			}
+			if((a)&&deplacementPossible(utile,innutile,innutile,"gauche")&&(colleBouleAdverse(utile,"gauche"))){
+				a=false;
+				deplacerBoule(utile,"gauche");
+			}
+			if((a)&&deplacementPossible(utile,innutile,innutile,"basGauche")&&(colleBouleAdverse(utile,"basGauche"))){
+				a=false;
+				deplacerBoule(utile,"basGauche");
+			}
+			if((a)&&deplacementPossible(utile,innutile,innutile,"basDroite")&&(colleBouleAdverse(utile,"basDroite"))){
+				a=false;
+				deplacerBoule(utile,"basDroite");
+			}
+		}
+		
+		boolean b=true;
+		boolean c=true;
+		int nb=0;
+		int alea=0;
+		
+		if(a){ // si on arrive ici, c'est que l'IA n'a pas reussit a faire bouger de boule adverse
+			for(int i=0;i<tabCases.length;i++){
+				b=true;
+				
+				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"basGauche")){
+					remplirPossibiliteDeplacement(i);
+					nb++;
+					b=false;
+				}
+				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"basDroite")){
+					remplirPossibiliteDeplacement(i);
+					nb++;
+					b=false;			
+				}
+				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"droite")){
+					remplirPossibiliteDeplacement(i);
+					nb++;
+					b=false;				
+				}
+				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"gauche")){
+					remplirPossibiliteDeplacement(i);
+					nb++;
+					b=false;				
+				}
+				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"hautGauche")){
+					remplirPossibiliteDeplacement(i);
+					nb++;
+					b=false;
+				}
+				if((b)&&(tabCases[i].getPion()!=null)&&(tabCases[i].getPion().getCouleur()=="noir")&&deplacementPossible(tabCases[i],innutile,innutile,"hautDroite")){
+					remplirPossibiliteDeplacement(i);
+					nb++;
+					b=false;
+				}
+			}
+			
+			alea=petitNombreAlea(nb/3);
+						
+			if( (c)&&(deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basGauche")
+					&&(deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basDroite"))) ){
+				int x=petitNombreAlea(1);
+				
+				if(x==0){
+					deplacerBoule(tabCases[possibiliteDeplacement[alea]],"basDroite");
+					c=false;
+				}
+				else{
+					deplacerBoule(tabCases[possibiliteDeplacement[alea]],"basGauche");
+					c=false;
+				}
+			
+			}
+			if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basDroite")){
+				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"basDroite");
+				c=false;			
+			}
+			if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basGauche")){
+				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"basGauche");
+				c=false;			
+			}
+			if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"gauche")){
+				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"gauche");
+				c=false;			
+			}
+			if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"droite")){
+				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"droite");
+				c=false;			
+			}
+			if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"hautGauche")){
+				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"hautGauche");
+				c=false;			
+			}if((c)&&deplacementPossible(tabCases[possibiliteDeplacement[alea]],innutile,innutile,"hautDroite")){
+				deplacerBoule(tabCases[possibiliteDeplacement[alea]],"hautDroite");
+				c=false;			
+			}
+		}
+	}	
+
+	public static void main(String argv[]){
+		DamierAbalone a=new DamierAbalone();
+		
+		a.afficherC();
+		System.out.println(" ");
+		a.IA();
+		a.afficherC();
+		a.IA();
+		System.out.println(" ");
+		a.afficherC();
+		a.IA();
+		System.out.println(" ");
+		a.afficherC();
+		a.IA();
+		System.out.println(" ");
+		a.afficherC();
+		a.IA();
+		System.out.println(" ");
+		a.afficherC();
+	}
+	
+	public void remplirBouleIA(int indice){
+		for(int i=0;i<positionBouleIA.length;i++){
+			if(positionBouleIA[i]==-1){
+				positionBouleIA[i]=indice;
+				i=positionBouleIA.length;
+			}
+		}
+	}
+	
+	public boolean colleBouleAdverse(Case case1,String direction){
+		
+		while(case1!=null){
+			if(case1.getPion()!=null){
+				if(case1.getPion().getCouleur()=="blanc"){
+					return true;
+				}
+				else{
+					if(direction=="hautGauche"){
+						case1=case1.getVoisinHautGauche();
+					}
+					if(direction=="hautDroite"){
+						case1=case1.getVoisinHautDroit();
+					}
+					if(direction=="droite"){
+						case1=case1.getVoisinDroit();
+					}
+					if(direction=="gauche"){
+						case1=case1.getVoisinGauche();
+					}
+					if(direction=="basDroite"){
+						case1=case1.getVoisinBasDroit();
+					}
+					if(direction=="basGauche"){
+						case1=case1.getVoisinBasGauche();
+					}
+				}
+			}
+			else{
+				return false;
+			}
+		}
+		return false;
+	}
+	
+	public void initIA(){
+		positionBouleIA=new int[14];
+		
+		for(int i=0;i<positionBouleIA.length;i++){
+			positionBouleIA[i]=-1;
+		}
+	}
+	
+	public void initPossibiliteDeplacementBoule(){
+		possibiliteDeplacement=new int[14];
+		
+		for(int i=0;i<possibiliteDeplacement.length;i++){
+			possibiliteDeplacement[i]=-1;
+		}
+	}
+	
+	public void remplirPossibiliteDeplacement(int indice){
+		for(int i=0;i<possibiliteDeplacement.length;i++){
+			if(possibiliteDeplacement[i]==-1){
+				possibiliteDeplacement[i]=indice;
+				i=possibiliteDeplacement.length;
+			}
+		}
+	}
+	
+	
+	public int petitNombreAlea(int nb){
+		return (int) (Math.random() * (nb+1));
+	}
+	
 }
