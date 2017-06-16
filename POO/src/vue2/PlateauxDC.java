@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import uidelegate.Case;
@@ -21,12 +22,13 @@ import uidelegate.Pion;
 public class PlateauxDC extends JeuxPan implements ActionListener {
 
 	private BoutonCase button[][] = new BoutonCase[17][25];
-	private JeuDameChinoise jeuDame = new JeuDameChinoise(false, null, 2, 6);
+	private JeuDameChinoise jeuDame;
 	private int compteurClique = 0;
 	private BoutonCase boutonClique;
 
-	public PlateauxDC(Dimension dim) {
+	public PlateauxDC(Dimension dim, boolean optionIA, String optionVariante, int nbJoueur, int nbCouleur) {
 		super(dim);
+		jeuDame = new JeuDameChinoise(false, null, 2, 6);
 		initPanel();
 	}
 
@@ -149,10 +151,6 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 			}
 
 		}
-		/*
-		 * for (int i = 0; i < 17; i++) { for (int j = 0; j < 25; j++) { if
-		 * (plateau[i][j] == 1) { button[i][j].addActionListener(this); } } }
-		 */
 		this.panel.add(panel1);
 
 		/*
@@ -226,7 +224,6 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 
 		BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
-		// System.out.println(boutonTemp.getCasePlateau().toString());
 
 		if (jeuDame.getBoutonCourant() == null) {
 			jeuDame.setBoutonCourant(boutonTemp);
@@ -239,14 +236,12 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 
 				jeuDame.getBoutonNouveau().setIconBase(jeuDame.getBoutonCourant().getIconNonSelect());
 				jeuDame.getBoutonCourant().setIconBase(bBla);
-
 				jeuDame.reinitialiseBouton();
-
-				// System.out.println(jeuDame.getDamier().toSTringCouleur());
-
-				// System.out.println(jeuDame.victoireRouge());
 			}
-			// else if(resultatCoup == -1)jeuDame.reinitialiseBouton();
+			else if (resultatCoup == 2) {
+				JOptionPane.showMessageDialog(null, "victoire du rouge");
+				System.out.println("victoire du rouge");
+			}
 		}
 
 	}

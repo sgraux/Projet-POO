@@ -31,6 +31,12 @@ public class JeuDameChinoise extends Jeu {
 		return false;
 	}
 
+	public int victoire(){
+		if(victoireRouge()) return 2;
+		
+		return 1;
+	}
+	
 	public boolean victoireRouge() {
 
 		try {
@@ -68,7 +74,7 @@ public class JeuDameChinoise extends Jeu {
 		} else if (!damier.estVoisin(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())) {
 			if (((DamierDameChinoise) damier).saut(boutonCourant.getCasePlateau(), boutonNouveau.getCasePlateau())) {
 				compteurTour++;
-				return 1;
+				return victoire();
 			} else {
 				boutonCourant = boutonNouveau;
 				boutonNouveau = null;
@@ -78,7 +84,7 @@ public class JeuDameChinoise extends Jeu {
 			if (((DamierDameChinoise) damier).deplacement(boutonCourant.getCasePlateau(),
 					boutonNouveau.getCasePlateau())) {
 				compteurTour++;
-				return 1;
+				return victoire();
 			} else {
 				boutonCourant = boutonNouveau;
 				boutonNouveau = null;
