@@ -242,6 +242,26 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 				JOptionPane.showMessageDialog(null, "victoire du rouge");
 				System.out.println("victoire du rouge");
 			}
+			else if (resultatCoup == 3) {
+				JOptionPane.showMessageDialog(null, "victoire du blanc");
+				System.out.println("victoire du blanc");
+			}
+			else if (resultatCoup == 4) {
+				JOptionPane.showMessageDialog(null, "victoire du vert");
+				System.out.println("victoire du vert");
+			}
+			else if (resultatCoup == 5) {
+				JOptionPane.showMessageDialog(null, "victoire du bleu");
+				System.out.println("victoire du bleu");
+			}
+			else if (resultatCoup == 6) {
+				JOptionPane.showMessageDialog(null, "victoire du noir");
+				System.out.println("victoire du noir");
+			}
+			else if (resultatCoup == 7) {
+				JOptionPane.showMessageDialog(null, "victoire du jaune");
+				System.out.println("victoire du jaune");
+			}
 		}
 
 	}
