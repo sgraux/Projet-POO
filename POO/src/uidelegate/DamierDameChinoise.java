@@ -383,6 +383,19 @@ public class DamierDameChinoise extends Damier{
 		initialiseBleu();
 	}
 	
+	public void initialisePion3C(){
+		initialiseRouge();
+		initialiseVert();
+		initialiseNoir();
+	}
+	
+	public void initialisePion4C(){
+		initialiseRouge();
+		initialiseBlanc();
+		initialiseBleu();
+		initialiseNoir();
+	}
+	
 	public void initialisePion6C(){
 		initialiseRouge();
 		initialiseJaune();
