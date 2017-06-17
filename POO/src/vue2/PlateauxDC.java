@@ -234,10 +234,10 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 
 		BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
 
-		if (jeuDame.getBoutonCourant() == null) {
+		if (jeuDame.getBoutonCourant() == null && boutonTemp.getIcon() != bBla) {
 			jeuDame.setBoutonCourant(boutonTemp);
 			boutonTemp.setIcon(determineSelect(boutonTemp));
-		} else if (jeuDame.getBoutonNouveau() == null && jeuDame.getBoutonCourant() != null) {
+		} else if (jeuDame.getBoutonNouveau() == null && jeuDame.getBoutonCourant() != null && boutonTemp.getIcon() == bBla) {
 			jeuDame.setBoutonNouveau(boutonTemp);
 			int resultatCoup = jeuDame.appliqueCoup();
 			redessinerIcons();
