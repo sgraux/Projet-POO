@@ -20,7 +20,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	
 	
 
-	private String mode=null;
+	private String mode="mur";
 	
 	public PlateauxAB(Dimension dim) {
 		super(dim);
@@ -40,7 +40,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		        {0,0,0,0,2,0,2,0,2,0,2,0,2,0,0,0,0}};
 	
 	private BoutonCase button[][]=new BoutonCase[9][17];
-	private JeuAbalone jeuAb = new JeuAbalone(false, null);
+	private JeuAbalone jeuAb = new JeuAbalone(false, "mur");
 	//==//
 	private JButton bHauG = new JButton("HG");
 	private JButton bBasG = new JButton("BG");
@@ -127,27 +127,11 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	          {
 	        	  button[i][j].setVisible(false);
 	    	   }
-	          if(mode=="mur"){
-	        	  button[4][8].setVisible(false);
-	          }
-	          else if(mode=="trounoir"){
-	        	  button[4][8].setIcon(bRou);
-	        	  button[4][7].setIcon(bRou);
-	        	  button[4][7].setVisible(true);
-	        	  button[4][6].setIcon(bRou);
-	        	  button[4][9].setIcon(bRou);
-	        	  button[4][9].setVisible(true);
-	        	  button[4][10].setIcon(bRou);
-	        	  button[4][8].setEnabled(false);
-	        	  button[4][7].setEnabled(false);
-	        	  button[4][6].setEnabled(false);
-	        	  button[4][9].setEnabled(false);
-	        	  button[4][10].setEnabled(false);
-	          }
-	          
 	    		}
 	    }
-
+	    
+	    
+	    
 		this.panel.add(panel1);
 		
 		
@@ -201,6 +185,27 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		bDro.addActionListener(this);
 	    
 	}
+	
+	public void modeJeux(String mode){
+    	
+    		if(mode=="trounoir"){
+        	  button[4][8].setVisible(false);
+          }
+    		else if(mode=="mur"){
+        	  button[4][8].setIcon(bRou);
+        	  button[4][7].setIcon(bRou);
+        	  button[4][7].setVisible(true);
+        	  button[4][6].setIcon(bRou);
+        	  button[4][9].setIcon(bRou);
+        	  button[4][9].setVisible(true);
+        	  button[4][10].setIcon(bRou);
+        	  button[4][8].setEnabled(false);
+        	  button[4][7].setEnabled(false);
+        	  button[4][6].setEnabled(false);
+        	  button[4][9].setEnabled(false);
+        	  button[4][10].setEnabled(false);
+          }
+    }
 	
 	public void redessinerIcons(){
 		int cpt=0;
@@ -389,91 +394,98 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		
 		
 		if(source==bGau){
-				System.out.println("gauche");
 				jeuAb.setDirection("gauche");
 				int var=jeuAb.appliquerCoup();
 				if(var==0){
-					System.out.println("pas de deplac");
+					
 				}
 				else if(var==1){
-					System.out.println("deplacement");
-					jeuAb.afficherTableau();
 					redessinerIcons();
+					if(jeuAb.getJoueContreIA()){
+						jeuAb.appliquerCoupIA();
+						redessinerIcons();
+					}
 				}
 				
 				
 		}
 		else if(source==bDro){
-			System.out.println("droite");
 			jeuAb.setDirection("droite");
 			int var=jeuAb.appliquerCoup();
 			if(var==0){
-				System.out.println("pas de deplac");
+				
 			}
 			else if(var==1){
-				System.out.println("deplacement");
-				jeuAb.afficherTableau();
 				redessinerIcons();
+				if(jeuAb.getJoueContreIA()){
+					jeuAb.appliquerCoupIA();
+					redessinerIcons();
+				}
 			}
 			
 			
 	}
 		else if(source==bHauG){
-			System.out.println("hautGauche");
 			jeuAb.setDirection("hautGauche");
 			int var=jeuAb.appliquerCoup();
 			if(var==0){
-				System.out.println("pas de deplac");
+				
 			}
 			else if(var==1){
-				System.out.println("deplacement");
-				jeuAb.afficherTableau();
 				redessinerIcons();
+				if(jeuAb.getJoueContreIA()){
+					jeuAb.appliquerCoupIA();
+					redessinerIcons();
+				}
 			}
 			
 		
 	}
 		else if(source==bBasG){
-			System.out.println("basGauche");
 			jeuAb.setDirection("basGauche");
 			int var=jeuAb.appliquerCoup();
 			if(var==0){
-				System.out.println("pas de deplac");
+				
 			}
 			else if(var==1){
-				System.out.println("deplacement");
 				jeuAb.afficherTableau();
 				redessinerIcons();
+				if(jeuAb.getJoueContreIA()){
+					jeuAb.appliquerCoupIA();
+					redessinerIcons();
+				}
 			}
 			
 		
 	}
 		else if(source==bHauD){
-			System.out.println("hautDroite");
 			jeuAb.setDirection("hautDroite");
 			int var=jeuAb.appliquerCoup();
 			if(var==0){
-				System.out.println("pas de deplac");
+				
 			}
 			else if(var==1){
-				System.out.println("deplacement");
-				jeuAb.afficherTableau();
 				redessinerIcons();
+				if(jeuAb.getJoueContreIA()){
+					jeuAb.appliquerCoupIA();
+					redessinerIcons();
+				}
 			}
 			
 		
 	}
 		else if(source==bBasD){
-			System.out.println("basDroite");
 			jeuAb.setDirection("basDroite");
 			int var=jeuAb.appliquerCoup();
 			if(var==0){
-				System.out.println("pas de deplac");
+				
 			}
 			else if(var==1){
-				System.out.println("deplacement");
-				jeuAb.afficherTableau();
 				redessinerIcons();
+				if(jeuAb.getJoueContreIA()){
+					jeuAb.appliquerCoupIA();
+					redessinerIcons();
+				}
 			}
 			
 		

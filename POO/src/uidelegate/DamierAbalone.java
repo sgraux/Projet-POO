@@ -1306,7 +1306,7 @@ public class DamierAbalone extends Damier{
 		}
 		return true;
 	}
-
+	//
 	public boolean deplacementPossible(Case case1,Case case2,Case case3,String direction){
 		// fonction prenant 3 boules et une direction, et determine si un deplacement est possible.
 		
