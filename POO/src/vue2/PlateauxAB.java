@@ -211,18 +211,15 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 					cpt++;
 				}
 				else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
-					if(button[0][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
-						if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
-							button[0][j].setIcon(bBla);
-						}
-						else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
-							button[0][j].setIcon(bNoi);
-						}
-						cpt++;
+					
+					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+						button[0][j].setIcon(bBla);
 					}
-					else{	
-						cpt++;
+					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+						button[0][j].setIcon(bNoi);
 					}
+					cpt++;
+					
 				
 				}
 			}
@@ -232,18 +229,15 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				cpt++;
 			}
 			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
-				if(button[1][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
-					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
-						button[1][j].setIcon(bBla);
-					}
-					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
-						button[1][j].setIcon(bNoi);
-					}
-					cpt++;
-			}
-			else{
+				
+				if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+					button[1][j].setIcon(bBla);
+				}
+				else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+					button[1][j].setIcon(bNoi);
+				}
 				cpt++;
-			}
+		
 			
 			}
 		}
@@ -253,18 +247,15 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				cpt++;
 			}
 			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
-				if(button[2][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
-					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
-						button[2][j].setIcon(bBla);
-					}
-					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
-						button[2][j].setIcon(bNoi);
-					}
-					cpt++;
-			}
-			else{
+				
+				if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+					button[2][j].setIcon(bBla);
+				}
+				else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+					button[2][j].setIcon(bNoi);
+				}
 				cpt++;
-			}
+			
 			
 			}
 			
@@ -275,18 +266,15 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				cpt++;
 			}
 			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
-				if(button[3][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
-					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
-						button[3][j].setIcon(bBla);
-					}
-					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
-						button[3][j].setIcon(bNoi);
-					}
-					cpt++;
-			}
-			else{
+				
+				if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+					button[3][j].setIcon(bBla);
+				}
+				else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+					button[3][j].setIcon(bNoi);
+				}
 				cpt++;
-			}
+			
 			
 			}
 	}
@@ -296,18 +284,15 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				cpt++;
 			}
 			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
-				if(button[4][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
-					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
-						button[4][j].setIcon(bBla);
-					}
-					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
-						button[4][j].setIcon(bNoi);
-					}
-					cpt++;
-			}
-			else{
+				
+				if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+					button[4][j].setIcon(bBla);
+				}
+				else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+					button[4][j].setIcon(bNoi);
+				}
 				cpt++;
-			}
+			
 			
 			}
 	}
@@ -317,18 +302,14 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				cpt++;
 			}
 			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
-				if(button[5][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
-					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
-						button[5][j].setIcon(bBla);
-					}
-					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
-						button[5][j].setIcon(bNoi);
-					}
-					cpt++;
-			}
-			else{
+				
+				if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+					button[5][j].setIcon(bBla);
+				}
+				else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+					button[5][j].setIcon(bNoi);
+				}
 				cpt++;
-			}
 			
 			}
 	}
@@ -338,18 +319,15 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				cpt++;
 			}
 			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
-				if(button[6][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
-					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
-						button[6][j].setIcon(bBla);
-					}
-					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
-						button[6][j].setIcon(bNoi);
-					}
-					cpt++;
-			}
-			else{
+				
+				if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+					button[6][j].setIcon(bBla);
+				}
+				else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+					button[6][j].setIcon(bNoi);
+				}
 				cpt++;
-			}
+			
 			
 			}
 	}
@@ -359,18 +337,14 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				cpt++;
 			}
 			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
-				if(button[7][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
-					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
-						button[7][j].setIcon(bBla);
-					}
-					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
-						button[7][j].setIcon(bNoi);
-					}
-					cpt++;
-			}
-			else{
+		
+				if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+					button[7][j].setIcon(bBla);
+				}
+				else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+					button[7][j].setIcon(bNoi);
+				}
 				cpt++;
-			}
 			
 			}
 	}
@@ -380,23 +354,20 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				cpt++;
 			}
 			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
-				if(button[8][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
-					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
-						button[8][j].setIcon(bBla);
-					}
-					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
-						button[8][j].setIcon(bNoi);
-					}
-					cpt++;
-			}
-			else{
+				
+				if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+					button[8][j].setIcon(bBla);
+				}
+				else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+					button[8][j].setIcon(bNoi);
+				}
 				cpt++;
-			}
+			
 			
 			}
 	}
-	}
 
+	}
 	private BoutonCase ButtonSelec;
 	
 	public BoutonCase getButtonSelec() {
