@@ -41,7 +41,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	
 	private BoutonCase button[][]=new BoutonCase[9][17];
 	private JeuAbalone jeuAb = new JeuAbalone(false, null);
-	
+	//
 	private JButton bHauG = new JButton("HG");
 	private JButton bBasG = new JButton("BG");
 	private JButton bHauD = new JButton("HD");
@@ -210,7 +210,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 					button[0][j].setIcon(bArg);
 					cpt++;
 				}
-				else{
+				else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
 					if(button[0][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
 						if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
 							button[0][j].setIcon(bBla);
@@ -219,10 +219,10 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 							button[0][j].setIcon(bNoi);
 						}
 						cpt++;
-				}
-				else{
-					cpt++;
-				}
+					}
+					else{	
+						cpt++;
+					}
 				
 				}
 			}
@@ -231,7 +231,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				button[1][j].setIcon(bArg);
 				cpt++;
 			}
-			else{
+			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
 				if(button[1][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
 					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
 						button[1][j].setIcon(bBla);
@@ -252,7 +252,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				button[2][j].setIcon(bArg);
 				cpt++;
 			}
-			else{
+			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
 				if(button[2][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
 					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
 						button[2][j].setIcon(bBla);
@@ -274,7 +274,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				button[3][j].setIcon(bArg);
 				cpt++;
 			}
-			else{
+			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
 				if(button[3][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
 					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
 						button[3][j].setIcon(bBla);
@@ -295,7 +295,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				button[4][j].setIcon(bArg);
 				cpt++;
 			}
-			else{
+			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
 				if(button[4][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
 					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
 						button[4][j].setIcon(bBla);
@@ -316,7 +316,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				button[5][j].setIcon(bArg);
 				cpt++;
 			}
-			else{
+			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
 				if(button[5][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
 					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
 						button[5][j].setIcon(bBla);
@@ -337,7 +337,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				button[6][j].setIcon(bArg);
 				cpt++;
 			}
-			else{
+			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
 				if(button[6][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
 					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
 						button[6][j].setIcon(bBla);
@@ -358,7 +358,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				button[7][j].setIcon(bArg);
 				cpt++;
 			}
-			else{
+			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
 				if(button[7][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
 					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
 						button[7][j].setIcon(bBla);
@@ -379,7 +379,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				button[8][j].setIcon(bArg);
 				cpt++;
 			}
-			else{
+			else if(jeuAb.getDamier().getCase(cpt).getPion()!=null){
 				if(button[8][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
 					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
 						button[8][j].setIcon(bBla);
