@@ -28,7 +28,8 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 
 	public PlateauxDC(Dimension dim, boolean optionIA, String optionVariante, int nbJoueur, int nbCouleur) {
 		super(dim);
-		jeuDame = new JeuDameChinoise(false, null, 2, 6);
+		jeuDame = new JeuDameChinoise(optionIA, optionVariante, nbJoueur, nbCouleur);
+		selectionneCouleur();
 		initPanel();
 	}
 
@@ -58,6 +59,8 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 	private ImageIcon bVer = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billevert.png")).getImage());
 	private ImageIcon bRou = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billerouge.png")).getImage());
 	private ImageIcon bNoi = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoir.png")).getImage());
+	private ImageIcon bGri = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billegrise.png")).getImage());
+
 
 	private ImageIcon bArgSel = new ImageIcon(
 			new ImageIcon(getClass().getResource("/Images/billeargentselect.png")).getImage());
@@ -145,7 +148,13 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 					button[i][j].setCasePlateau(jeuDame.getDamier().getCase(compteur));
 					compteur++;
 					button[i][j].addActionListener(this);
-				} else {
+				} else if (plateau[i][j] == 8) {
+					button[i][j].setIconBase(bBla);
+					button[i][j].setCasePlateau(jeuDame.getDamier().getCase(compteur));
+					compteur++;
+					button[i][j].addActionListener(this);
+				}
+					else {
 					button[i][j].setVisible(false);
 				}
 			}
@@ -291,6 +300,47 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		for(int i = 0; i < 17; i++){
 			for(int j = 0; j < 25; j++){
 				button[i][j].setIcon(button[i][j].getIconNonSelect());
+			}
+		}
+	}
+	
+	public void selectionneCouleur(){
+		if(jeuDame.getNBCouleur() == 2)
+			selectionneCouleur2C();
+		else if(jeuDame.getNBCouleur() == 3)
+			selectionneCouleur3C();
+		else if(jeuDame.getNBCouleur() == 4)
+			selectionneCouleur4C();
+	}
+	
+	public void selectionneCouleur2C(){
+		for(int i = 0; i < 17; i++){
+			for(int j = 0; j < 25; j++){
+				if(plateau[i][j] == 5 || plateau[i][j] == 3 || plateau[i][j] == 6 || plateau[i][j] == 2){
+					plateau[i][j] = 1;
+				}
+				
+			}
+		}
+	}
+	
+	public void selectionneCouleur3C(){
+		for(int i = 0; i < 17; i++){
+			for(int j = 0; j < 25; j++){
+				if(plateau[i][j] == 5 || plateau[i][j] == 3 || plateau[i][j] == 7){
+					plateau[i][j] = 1;
+				}
+				
+			}
+		}
+	}
+	public void selectionneCouleur4C(){
+		for(int i = 0; i < 17; i++){
+			for(int j = 0; j < 25; j++){
+				if(plateau[i][j] == 6 || plateau[i][j] == 3){
+					plateau[i][j] = 1;
+				}
+				
 			}
 		}
 	}
