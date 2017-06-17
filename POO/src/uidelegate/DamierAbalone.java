@@ -444,7 +444,7 @@ public class DamierAbalone extends Damier{
 				if((case1.getVoisinHautGauche()==case2)||(case1.getVoisinBasDroit()==case2))
 				{return "HAUT_GAUCHE";}
 				if((case1.getVoisinHautDroit()==case2)||(case1.getVoisinBasGauche()==case2))
-				{return "HAUT_DROITE";}
+				{return "HAUT_DROIT";}
 				if((case1.getVoisinDroit()==case2)||(case1.getVoisinGauche()==case2))
 				{return "DROITE";}
 				return "AUCUNE";
@@ -502,7 +502,7 @@ public class DamierAbalone extends Damier{
 		}
 		
 		if((direction=="hautDroite")||(direction=="basGauche")){
-			if((estAligne(case1,case2,case3)=="HAUT_DROITE")||(estAligne(case1,case2,case3)=="TOUTES")){
+			if((estAligne(case1,case2,case3)=="HAUT_DROIT")||(estAligne(case1,case2,case3)=="TOUTES")){
 				return true;
 			}
 			else{
@@ -1333,6 +1333,7 @@ public class DamierAbalone extends Damier{
 			return true; // si il n'y a pas de mur, pas de chevauchement de couleur et sumito alors c'est bon
 		}
 		else{
+			System.out.println("SI ON EST LA C'EST QU'IL Y A UN GROS PROBLEME");
 			if( (caseArriveeVide(case1,case2,case3,direction))
 					&&(pasDeMur(case1,direction))
 					&&(pasDeMur(case2,direction))

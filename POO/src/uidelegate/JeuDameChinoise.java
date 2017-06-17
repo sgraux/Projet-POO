@@ -324,6 +324,10 @@ public class JeuDameChinoise extends Jeu {
 		if (!boutonNouveau.getCasePlateau().aUnPion())
 			this.boutonNouveau = boutonNouveau;
 	}
+	
+	public int getNBCouleur(){
+		return nbCouleur;
+	}
 
 	
 
