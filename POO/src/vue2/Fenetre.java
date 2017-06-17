@@ -98,8 +98,8 @@ public class Fenetre extends JFrame implements ActionListener{
 		//frame.actionPerformed(e);
 		//frame.choixPanDC();
 		//frame.choixPanAB();
-		frame.platDC();
-		//frame.platAB();
+		//frame.platDC();
+		frame.platAB();
 }
 }
 

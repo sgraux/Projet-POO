@@ -203,44 +203,200 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	}
 	
 	public void redessinerIcons(){
-		for(int i = 0; i < 9; i++){
-			for(int j = 0; j < 17; j++){
+		int cpt=0;
+		
+		for(int j = 4; j <=12; j=j+2){
+				if(jeuAb.getDamier().getCase(cpt).getPion()==null){
+					button[0][j].setIcon(bArg);
+					cpt++;
+				}
+				else{
+					if(button[0][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
+						if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+							button[0][j].setIcon(bBla);
+						}
+						else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+							button[0][j].setIcon(bNoi);
+						}
+						cpt++;
+				}
+				else{
+					cpt++;
+				}
 				
-					button[i][j].setIcon(bArg);
-				
+				}
 			}
+		for(int j = 3; j <=13; j=j+2){
+			if(jeuAb.getDamier().getCase(cpt).getPion()==null){
+				button[1][j].setIcon(bArg);
+				cpt++;
 			}
-	}
-	
-	
-	public void redissiner(BoutonCase button,String direction){
-		if(direction=="G"){
-			//button.setIcon(bArg);
+			else{
+				if(button[1][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
+					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+						button[1][j].setIcon(bBla);
+					}
+					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+						button[1][j].setIcon(bNoi);
+					}
+					cpt++;
+			}
+			else{
+				cpt++;
+			}
 			
-			System.out.println(""+button.getCasePlateau().getVoisinGauche().getId());
-			redessinerIcons();
+			}
 		}
-		else if(direction=="D"){
-			button.setIcon(bArg);
+		for(int j = 2; j <=14; j=j+2){
+			if(jeuAb.getDamier().getCase(cpt).getPion()==null){
+				button[2][j].setIcon(bArg);
+				cpt++;
+			}
+			else{
+				if(button[2][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
+					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+						button[2][j].setIcon(bBla);
+					}
+					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+						button[2][j].setIcon(bNoi);
+					}
+					cpt++;
+			}
+			else{
+				cpt++;
+			}
+			
+			}
+			
 		}
-
-		else if(direction=="HG"){
-			button.setIcon(bArg);
-		}
-
-		else if(direction=="HD"){
-			button.setIcon(bArg);
-		}
-
-		else if(direction=="BG"){
-			button.setIcon(bArg);
-		}
-
-		else{
-			button.setIcon(bArg);
-		}
-
+		for(int j = 1; j <=15; j=j+2){
+			if(jeuAb.getDamier().getCase(cpt).getPion()==null){
+				button[3][j].setIcon(bArg);
+				cpt++;
+			}
+			else{
+				if(button[3][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
+					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+						button[3][j].setIcon(bBla);
+					}
+					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+						button[3][j].setIcon(bNoi);
+					}
+					cpt++;
+			}
+			else{
+				cpt++;
+			}
+			
+			}
 	}
+		for(int j = 0; j <=16; j=j+2){
+			if(jeuAb.getDamier().getCase(cpt).getPion()==null){
+				button[4][j].setIcon(bArg);
+				cpt++;
+			}
+			else{
+				if(button[4][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
+					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+						button[4][j].setIcon(bBla);
+					}
+					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+						button[4][j].setIcon(bNoi);
+					}
+					cpt++;
+			}
+			else{
+				cpt++;
+			}
+			
+			}
+	}
+		for(int j = 1; j <=15; j=j+2){
+			if(jeuAb.getDamier().getCase(cpt).getPion()==null){
+				button[5][j].setIcon(bArg);
+				cpt++;
+			}
+			else{
+				if(button[5][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
+					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+						button[5][j].setIcon(bBla);
+					}
+					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+						button[5][j].setIcon(bNoi);
+					}
+					cpt++;
+			}
+			else{
+				cpt++;
+			}
+			
+			}
+	}
+		for(int j = 2; j <=14; j=j+2){
+			if(jeuAb.getDamier().getCase(cpt).getPion()==null){
+				button[6][j].setIcon(bArg);
+				cpt++;
+			}
+			else{
+				if(button[6][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
+					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+						button[6][j].setIcon(bBla);
+					}
+					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+						button[6][j].setIcon(bNoi);
+					}
+					cpt++;
+			}
+			else{
+				cpt++;
+			}
+			
+			}
+	}
+		for(int j = 3; j <=13; j=j+2){
+			if(jeuAb.getDamier().getCase(cpt).getPion()==null){
+				button[7][j].setIcon(bArg);
+				cpt++;
+			}
+			else{
+				if(button[7][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
+					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+						button[7][j].setIcon(bBla);
+					}
+					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+						button[7][j].setIcon(bNoi);
+					}
+					cpt++;
+			}
+			else{
+				cpt++;
+			}
+			
+			}
+	}
+		for(int j = 4; j <=12; j=j+2){
+			if(jeuAb.getDamier().getCase(cpt).getPion()==null){
+				button[8][j].setIcon(bArg);
+				cpt++;
+			}
+			else{
+				if(button[8][j].getCasePlateau().getPion().getCouleur() != jeuAb.getDamier().getCase(cpt).getPion().getCouleur()){
+					if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="blanc"){
+						button[8][j].setIcon(bBla);
+					}
+					else if(jeuAb.getDamier().getCase(cpt).getPion().getCouleur()=="noir"){
+						button[8][j].setIcon(bNoi);
+					}
+					cpt++;
+			}
+			else{
+				cpt++;
+			}
+			
+			}
+	}
+	}
+
 	private BoutonCase ButtonSelec;
 	
 	public BoutonCase getButtonSelec() {
@@ -250,9 +406,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	public void setButtonSelec(BoutonCase ButtonSelec) {
 		this.ButtonSelec = ButtonSelec;
 	}
-	
-	
-	
+
 	//
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
@@ -272,8 +426,8 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				}
 				else if(var==1){
 					System.out.println("deplacement");
-					redissiner(ButtonSelec,"G");
 					jeuAb.afficherTableau();
+					redessinerIcons();
 				}
 				
 				
@@ -288,6 +442,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 			else if(var==1){
 				System.out.println("deplacement");
 				jeuAb.afficherTableau();
+				redessinerIcons();
 			}
 			
 			
@@ -302,6 +457,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 			else if(var==1){
 				System.out.println("deplacement");
 				jeuAb.afficherTableau();
+				redessinerIcons();
 			}
 			
 		
@@ -316,6 +472,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 			else if(var==1){
 				System.out.println("deplacement");
 				jeuAb.afficherTableau();
+				redessinerIcons();
 			}
 			
 		
@@ -330,6 +487,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 			else if(var==1){
 				System.out.println("deplacement");
 				jeuAb.afficherTableau();
+				redessinerIcons();
 			}
 			
 		
@@ -344,6 +502,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 			else if(var==1){
 				System.out.println("deplacement");
 				jeuAb.afficherTableau();
+				redessinerIcons();
 			}
 			
 		
