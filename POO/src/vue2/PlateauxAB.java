@@ -41,7 +41,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	
 	private BoutonCase button[][]=new BoutonCase[9][17];
 	private JeuAbalone jeuAb = new JeuAbalone(false, null);
-	//
+	//==//
 	private JButton bHauG = new JButton("HG");
 	private JButton bBasG = new JButton("BG");
 	private JButton bHauD = new JButton("HD");
