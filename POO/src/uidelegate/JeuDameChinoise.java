@@ -191,7 +191,7 @@ public class JeuDameChinoise extends Jeu {
 			}
 		} else {
 			if (((DamierDameChinoise) damier).deplacement(boutonCourant.getCasePlateau(),
-					boutonNouveau.getCasePlateau())) {
+				boutonNouveau.getCasePlateau())) {
 				compteurTour++;
 				return victoire();
 			} else {
