@@ -73,9 +73,13 @@ public class Acceuil extends JeuxPan implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Fenetre frame=new Fenetre();
 		source= e.getSource();
-		
+		if(source==dc){
+			
+		}
+		else if(source==ab){
+			
+		}
 		
 	}
 

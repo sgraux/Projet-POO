@@ -57,6 +57,8 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	private ImageIcon bBla = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeblanc.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 	private ImageIcon bNoi = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoir.png")).getImage());
 	private ImageIcon bRou = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billerouge.png")).getImage().getScaledInstance(45, 45, Image.SCALE_DEFAULT));
+	private ImageIcon bNoiSel = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoirselect.png")).getImage());
+	private ImageIcon bBlaSel = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeblancselect.png")).getImage());
 	
 	private JLabel label = new JLabel("J1(NOIR):");
 	private JLabel label1 = new JLabel("J2(BLANC):");
@@ -200,12 +202,63 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	    
 	}
 	
+	public void redessinerIcons(){
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 17; j++){
+				
+					button[i][j].setIcon(bArg);
+				
+			}
+			}
+	}
+	
+	
+	public void redissiner(BoutonCase button,String direction){
+		if(direction=="G"){
+			//button.setIcon(bArg);
+			
+			System.out.println(""+button.getCasePlateau().getVoisinGauche().getId());
+			redessinerIcons();
+		}
+		else if(direction=="D"){
+			button.setIcon(bArg);
+		}
+
+		else if(direction=="HG"){
+			button.setIcon(bArg);
+		}
+
+		else if(direction=="HD"){
+			button.setIcon(bArg);
+		}
+
+		else if(direction=="BG"){
+			button.setIcon(bArg);
+		}
+
+		else{
+			button.setIcon(bArg);
+		}
+
+	}
+	private BoutonCase ButtonSelec;
+	
+	public BoutonCase getButtonSelec() {
+		return ButtonSelec;
+	}
+
+	public void setButtonSelec(BoutonCase ButtonSelec) {
+		this.ButtonSelec = ButtonSelec;
+	}
+	
+	
 	
 	//
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{	
 		Object source = arg0.getSource();
+
 		
 		String couleur=jeuAb.getCouleurJoueur();
 		
@@ -219,6 +272,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 				}
 				else if(var==1){
 					System.out.println("deplacement");
+					redissiner(ButtonSelec,"G");
 					jeuAb.afficherTableau();
 				}
 				
@@ -296,6 +350,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	}
 		else{
 			BoutonCase boutonTemp = ((BoutonCase) arg0.getSource());
+			setButtonSelec(boutonTemp);
 			System.out.println("le bouton cliqué a la case :" + boutonTemp.getCasePlateau().getId()+" le couleur est "+jeuAb.getCouleurJoueur());
 			
 			
