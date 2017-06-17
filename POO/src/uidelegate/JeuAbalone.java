@@ -52,68 +52,26 @@ public class JeuAbalone extends Jeu{
 	}
 	
 	public int appliquerCoup(){
-		if((joueContreIA)&&(couleurJoueur=="noir")){ // tour de l'IA
-			IA();
-			couleurJoueur="blanc";
-			
-			if( (((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8) || (((DamierAbalone)damier).nbBouleParCouleur("noir")<=8) ){
-				if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
-					return 2;
-				}
-				if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
-					return 3;
-				}
-			}
+		if(nbCaseSelectione()==0){
+			return 0;
+			// si le joueur n'a pas selectioner de case, alors pas de deplacement possible
 		}
-		else{ // tour d'un joueur
-			if(nbCaseSelectione()==0){
-				return 0;
-				// si le joueur n'a pas selectioner de case, alors pas de deplacement possible
-			}
+		
+		if(((DamierAbalone)damier).deplacementPossible(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
+			Case tmp=new Case();
 			
-			if(((DamierAbalone)damier).deplacementPossible(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
-				Case tmp=new Case();
+			if(!((DamierAbalone)damier).alignementBoule(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
+				// si la direction d'alignement des boules =/= direction choisit par le Joueur
 				
-				if(!((DamierAbalone)damier).alignementBoule(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
-					// si la direction d'alignement des boules =/= direction choisit par le Joueur
-					
-					((DamierAbalone)damier).deplacerBoule(caseSelectione[0],direction);
-					
-					if(caseSelectione[1].getId()!=-1){
-						((DamierAbalone)damier).deplacerBoule(caseSelectione[1],direction);
-					}
-					if(caseSelectione[2].getId()!=-1){
-						((DamierAbalone)damier).deplacerBoule(caseSelectione[2],direction);
-					}
-					
-					if(couleurJoueur=="noir"){
-						couleurJoueur="blanc";
-					}
-					else{
-						couleurJoueur="noir";
-					}
-					viderTableau();
-					
-					return 1;
+				((DamierAbalone)damier).deplacerBoule(caseSelectione[0],direction);
+				
+				if(caseSelectione[1].getId()!=-1){
+					((DamierAbalone)damier).deplacerBoule(caseSelectione[1],direction);
+				}
+				if(caseSelectione[2].getId()!=-1){
+					((DamierAbalone)damier).deplacerBoule(caseSelectione[2],direction);
 				}
 				
-				tmp=((DamierAbalone)damier).determierCaseADeplacer(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction);
-				
-				((DamierAbalone)damier).deplacerBoule(tmp,direction);
-				
-				
-				if( (((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8) || (((DamierAbalone)damier).nbBouleParCouleur("noir")<=8) ){
-					if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
-						viderTableau();
-						return 2;
-					}
-					if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
-						viderTableau();
-						return 3;
-					}
-				}
-				
-				// On change la couleur du joueur actuel
 				if(couleurJoueur=="noir"){
 					couleurJoueur="blanc";
 				}
@@ -121,17 +79,74 @@ public class JeuAbalone extends Jeu{
 					couleurJoueur="noir";
 				}
 				viderTableau();
+				
 				return 1;
 			}
+			
+			tmp=((DamierAbalone)damier).determierCaseADeplacer(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction);
+			
+			((DamierAbalone)damier).deplacerBoule(tmp,direction);
+			
+			
+			if( (((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8) || (((DamierAbalone)damier).nbBouleParCouleur("noir")<=8) ){
+				if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
+					viderTableau();
+					return 2;
+				}
+				if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
+					viderTableau();
+					return 3;
+				}
+			}
+			
+			// On change la couleur du joueur actuel
+			if(couleurJoueur=="noir"){
+				couleurJoueur="blanc";
+			}
 			else{
-				System.out.println("Pas de deplacement possible avec les boules selectionnees");
-				// AFFICHER A L'ECRAN QUE LE DEPLACEMENT N'EST PAS POSSIBLE
-				viderTableau();
-				return 0;
+				couleurJoueur="noir";
+			}
+			viderTableau();
+			return 1;
+		}
+		else{
+			System.out.println("Pas de deplacement possible avec les boules selectionnees");
+			// AFFICHER A L'ECRAN QUE LE DEPLACEMENT N'EST PAS POSSIBLE
+			viderTableau();
+			return 0;
+		}
+	}
+	
+	public int appliquerCoupIA(){
+		
+		IA();
+		couleurJoueur="blanc";
+		
+		if( (((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8) || (((DamierAbalone)damier).nbBouleParCouleur("noir")<=8) ){
+			if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
+				return 2;
+			}
+			if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
+				return 3;
 			}
 		}
-		
-		return 0;
+		return 1;
+	}
+
+	public Case[] getCaseSelectione() {
+		return caseSelectione;
+	}
+
+	public void setCaseSelectione(Case[] caseSelectione) {
+		this.caseSelectione = caseSelectione;
+	}
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setCouleurJoueur(String couleurJoueur) {
+		this.couleurJoueur = couleurJoueur;
 	}
 
 	public void IA(){
