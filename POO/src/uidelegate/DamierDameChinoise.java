@@ -295,6 +295,10 @@ public class DamierDameChinoise extends Damier{
 		switch(parNombre){
 		case 2: initialisePion2C();
 				break;
+		case 3: initialisePion3C();
+				break;
+		case 4: initialisePion4C();
+				break;
 		case 6: initialisePion6C();
 				break;
 		default: initialisePion6C();
@@ -404,7 +408,4 @@ public class DamierDameChinoise extends Damier{
 		initialiseVert();
 		initialiseBlanc();
 	}
-	
-	
-	
 }

@@ -31,7 +31,7 @@ public class JeuDameChinoise extends Jeu {
 		return false;
 	}
 
-	public int victoire(){
+	public int victoire(){ // BESOIN DE FAIRE LA VICTOIRE POUR LE MODE 3 COULEURS
 		if(victoireRouge()) return 2;
 		else if(victoireBlanc()) return 3;
 		else if(victoireVert()) return 4;
@@ -191,7 +191,7 @@ public class JeuDameChinoise extends Jeu {
 			}
 		} else {
 			if (((DamierDameChinoise) damier).deplacement(boutonCourant.getCasePlateau(),
-					boutonNouveau.getCasePlateau())) {
+				boutonNouveau.getCasePlateau())) {
 				compteurTour++;
 				return victoire();
 			} else {

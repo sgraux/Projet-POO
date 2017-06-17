@@ -23,5 +23,9 @@ public abstract class Jeu {
 	public Damier getDamier(){
 		return damier;
 	}
+	
+	public boolean getJoueContreIA(){
+		return joueContreIA;
+	}
 
 }
