@@ -54,6 +54,16 @@ public class ChoixJAB extends JeuxPan implements ActionListener,Var {
 	
 	private String var;
 	private boolean ia;
+	private String nom;
+	
+	
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 	
 	private String getVar() {
 		return var;
@@ -201,6 +211,12 @@ public class ChoixJAB extends JeuxPan implements ActionListener,Var {
 				frame.platABIA();
 			}
 		}
-	}
+		if(source==v1){
+			setNom(tj1.getText());
+		}
+		else if(source==v2){
+			setNom(tj2.getText());
+		}
 
+}
 }

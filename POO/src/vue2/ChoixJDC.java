@@ -41,7 +41,6 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 	private JRadioButton j2Button = new JRadioButton("2J");
     private JRadioButton j3Button = new JRadioButton("3J");
     private JRadioButton j4Button = new JRadioButton("4J");
-    private JRadioButton j5Button = new JRadioButton("5J");
     private JRadioButton j6Button = new JRadioButton("6J");
     private JRadioButton jaiButton = new JRadioButton("AI");
     
@@ -68,7 +67,17 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
     private String var;
 	private boolean ia;
 	private int nbJ;
+	private String nom;
 	
+	
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	public int getNbJ() {
 		return nbJ;
 	}
@@ -128,7 +137,6 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 			    groupN.add(j2Button);
 			    groupN.add(j3Button);
 			    groupN.add(j4Button);
-			    groupN.add(j5Button);
 			    groupN.add(j6Button);
 			    groupN.add(jaiButton);
 			    
@@ -140,7 +148,6 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 			    j2Button.addActionListener(this);
 			    j3Button.addActionListener(this);
 			    j4Button.addActionListener(this);
-			    j5Button.addActionListener(this);
 			    j6Button.addActionListener(this);
 			    jaiButton.addActionListener(this);
 			    
@@ -160,12 +167,8 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 		        j4Button.setBounds(260, 150, 50, 30);
 		        j4Button.setBackground(Color.GRAY);
 		        j4Button.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
-		        this.panel.add(j5Button);
-		        j5Button.setBounds(320, 150, 50, 30);
-		        j5Button.setBackground(Color.GRAY);
-		        j5Button.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
 		        this.panel.add(j6Button);
-		        j6Button.setBounds(380, 150, 50, 30);
+		        j6Button.setBounds(320, 150, 50, 30);
 		        j6Button.setBackground(Color.GRAY);
 		        j6Button.setFont(new java.awt.Font("Tahoma", Font.BOLD, 16));
 		        this.panel.add(jaiButton);
@@ -249,18 +252,6 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 			setNbJ(4);
 			setIa(false);
 		}
-		else if(source==j5Button){
-			tj2.setBounds(300, 250, 100, 30);
-			v2.setBounds(425,250,100,30);
-			v3.setBounds(425,300,100,30);
-			tj3.setBounds(300, 300, 100, 30);
-			v4.setBounds(425,350,100,30);
-			tj4.setBounds(300, 350, 100, 30);
-			v5.setBounds(425,400,100,30);
-			tj5.setBounds(300, 400, 100, 30);
-			setNbJ(5);
-			setIa(false);
-		}
 		else if(source==j6Button){
 			tj2.setBounds(300, 250, 100, 30);
 			v2.setBounds(425,250,100,30);
@@ -302,7 +293,24 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 			}
 		}
 		
-		
+		if(source==v1){
+			setNom(tj1.getText());
+		}
+		else if(source==v2){
+			setNom(tj2.getText());
+		}
+		else if(source==v3){
+			setNom(tj3.getText());
+		}
+		else if(source==v4){
+			setNom(tj4.getText());
+		}
+		else if(source==v5){
+			setNom(tj5.getText());
+		}
+		else if(source==v6){
+			setNom(tj6.getText());
+		}
 	}
 	
 }
