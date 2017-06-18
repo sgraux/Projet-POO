@@ -7,19 +7,6 @@ public class DamierAbalone extends Damier{
 		initialiseGraphe();
 	}
 	
-	/*public static void main(String argv[]){
-		DamierAbalone a=new DamierAbalone();
-		a.tabCases[29].setEtat(1);
-		a.tabCases[30].setEtat(1);
-		a.tabCases[31].setEtat(1);
-		//System.out.println(a.tabCases[15].getEtat());
-		a.tabCases[38].setPion(new Pion("blanc"));
-		a.afficherC();
-		if(a.deplacementPossible(a.tabCases[51], a.tabCases[45], a.tabCases[38], "hautDroite")){
-			System.out.println("hautDroite");
-		}
-	}*/
-
 	public void initialiseGraphe(){
 		
 		/* ETAGE 0 */
@@ -1359,11 +1346,10 @@ public class DamierAbalone extends Damier{
 			if(!sumito(caseTest,direction)){
 				return false;
 			}
-			
 			return true; // si il n'y a pas de mur, pas de chevauchement de couleur et sumito alors c'est bon
 		}
 		else{
-
+			
 			if(variante=="mur"){
 				if( (caseArriveeVide(case1,case2,case3,direction))
 					&&(pasDeMur(case1,direction))
@@ -1383,9 +1369,14 @@ public class DamierAbalone extends Damier{
 					return false;
 				}
 			}
+			if((caseArriveeVide(case1,case2,case3,direction))){
+					return true;
+			}
+			else{
+				return false;
+			}
 			
 		}
-		return false;
 	}	
 	
 }

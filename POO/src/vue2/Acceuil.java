@@ -1,5 +1,8 @@
 package vue2;
 import javax.swing.*;
+
+import controler.Controle;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -75,10 +78,12 @@ public class Acceuil extends JeuxPan implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		source= e.getSource();
 		if(source==dc){
-			
+			setChoix("dc");
+			frame.choixPanDC();
 		}
 		else if(source==ab){
-			
+			setChoix("ab");
+			frame.choixPanAB();
 		}
 		
 	}
@@ -90,4 +95,5 @@ public class Acceuil extends JeuxPan implements ActionListener{
 	public void setChoix(String choix) {
 		this.choix = choix;
 	}
+	
 }

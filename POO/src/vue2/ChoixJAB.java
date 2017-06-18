@@ -46,21 +46,10 @@ public class ChoixJAB extends JeuxPan implements ActionListener {
 	private JTextField tj2 = new JTextField("NomeJ2", 20);
 	private JTextField tj1 = new JTextField("NomeJ1", 20);
 	
+	JButton com = new JButton("Commencer");
+	
 	private Object source;
 	
-
-	@Override	
-	public void actionPerformed(ActionEvent e) {
-		source = e.getSource();
-		if(source==j2Button){
-			v2.setBounds(425,250,100,30);
-			tj2.setBounds(300, 250, 100, 30);
-		}
-		else if(source==j3Button){
-			
-		}
-	}
-
 	@Override
 	protected void initPanel() {
 		//titre
@@ -142,7 +131,6 @@ public class ChoixJAB extends JeuxPan implements ActionListener {
 				this.panel.add(v2);
 				v2.addActionListener(this);
 				
-				JButton com = new JButton("Commencer");
 				com.setBounds(300,550,200,40);
 				this.panel.add(com);
 				com.addActionListener(this);
@@ -150,4 +138,19 @@ public class ChoixJAB extends JeuxPan implements ActionListener {
 		
 	}
 	
+	@Override	
+	public void actionPerformed(ActionEvent e) {
+		source = e.getSource();
+		if(source==j2Button){
+			v2.setBounds(425,250,100,30);
+			tj2.setBounds(300, 250, 100, 30);
+		}
+		else if(source==j3Button){
+			
+		}
+		else if(source==com){
+			frame.platAB();
+		}
+	}
+
 }

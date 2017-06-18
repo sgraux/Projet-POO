@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public abstract class JeuxPan{
 	
 	protected JPanel panel;
-	
+	public static Fenetre frame = new Fenetre();
 	public JeuxPan(Dimension dim){
 		this.panel = new JPanel();
 		this.panel.setPreferredSize(dim);

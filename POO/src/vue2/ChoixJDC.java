@@ -63,57 +63,9 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
     private	JButton v5 = new JButton("Valider");
     private	JButton v6 = new JButton("Valider");
     
+    JButton com = new JButton("Commencer");
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object source = e.getSource();
-		if(source==j2Button){
-			tj2.setBounds(300, 250, 100, 30);
-			v2.setBounds(425,250,100,30);
-		}
-		else if(source==j3Button){
-			tj2.setBounds(300, 250, 100, 30);
-			v2.setBounds(425,250,100,30);
-			v3.setBounds(425,300,100,30);
-			tj3.setBounds(300, 300, 100, 30);
-			
-		}
-		else if(source==j4Button){
-			tj2.setBounds(300, 250, 100, 30);
-			v2.setBounds(425,250,100,30);
-			v3.setBounds(425,300,100,30);
-			tj3.setBounds(300, 300, 100, 30);
-			v4.setBounds(425,350,100,30);
-			tj4.setBounds(300, 350, 100, 30);
-		}
-		else if(source==j5Button){
-			tj2.setBounds(300, 250, 100, 30);
-			v2.setBounds(425,250,100,30);
-			v3.setBounds(425,300,100,30);
-			tj3.setBounds(300, 300, 100, 30);
-			v4.setBounds(425,350,100,30);
-			tj4.setBounds(300, 350, 100, 30);
-			v5.setBounds(425,400,100,30);
-			tj5.setBounds(300, 400, 100, 30);
-		}
-		else if(source==j6Button){
-			tj2.setBounds(300, 250, 100, 30);
-			v2.setBounds(425,250,100,30);
-			v3.setBounds(425,300,100,30);
-			tj3.setBounds(300, 300, 100, 30);
-			v4.setBounds(425,350,100,30);
-			tj4.setBounds(300, 350, 100, 30);
-			v5.setBounds(425,400,100,30);
-			tj5.setBounds(300, 400, 100, 30);
-			v6.setBounds(425,450,100,30);
-			tj6.setBounds(300, 450, 100, 30);
-		}
-		else if(source==jaiButton){
-			
-		}
-		
-		
-	}
+	
 
 	@Override
 	protected void initPanel() {
@@ -236,12 +188,65 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 				this.panel.add(v6);
 				v6.addActionListener(this);
 				
-				JButton com = new JButton("Commencer");
+				
 				com.setBounds(300,550,200,40);
 				this.panel.add(com);
 				com.addActionListener(this);
 		
 	}
 	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+		if(source==j2Button){
+			tj2.setBounds(300, 250, 100, 30);
+			v2.setBounds(425,250,100,30);
+		}
+		else if(source==j3Button){
+			tj2.setBounds(300, 250, 100, 30);
+			v2.setBounds(425,250,100,30);
+			v3.setBounds(425,300,100,30);
+			tj3.setBounds(300, 300, 100, 30);
+			
+		}
+		else if(source==j4Button){
+			tj2.setBounds(300, 250, 100, 30);
+			v2.setBounds(425,250,100,30);
+			v3.setBounds(425,300,100,30);
+			tj3.setBounds(300, 300, 100, 30);
+			v4.setBounds(425,350,100,30);
+			tj4.setBounds(300, 350, 100, 30);
+		}
+		else if(source==j5Button){
+			tj2.setBounds(300, 250, 100, 30);
+			v2.setBounds(425,250,100,30);
+			v3.setBounds(425,300,100,30);
+			tj3.setBounds(300, 300, 100, 30);
+			v4.setBounds(425,350,100,30);
+			tj4.setBounds(300, 350, 100, 30);
+			v5.setBounds(425,400,100,30);
+			tj5.setBounds(300, 400, 100, 30);
+		}
+		else if(source==j6Button){
+			tj2.setBounds(300, 250, 100, 30);
+			v2.setBounds(425,250,100,30);
+			v3.setBounds(425,300,100,30);
+			tj3.setBounds(300, 300, 100, 30);
+			v4.setBounds(425,350,100,30);
+			tj4.setBounds(300, 350, 100, 30);
+			v5.setBounds(425,400,100,30);
+			tj5.setBounds(300, 400, 100, 30);
+			v6.setBounds(425,450,100,30);
+			tj6.setBounds(300, 450, 100, 30);
+		}
+		else if(source==jaiButton){
+			
+		}
+		else if(source==com){
+			frame.platDC();
+		}
+		
+		
+	}
 	
 }

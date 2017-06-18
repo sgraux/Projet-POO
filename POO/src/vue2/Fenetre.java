@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class Fenetre extends JFrame implements ActionListener{
 
 	
-	
+	private ImageIcon arr = new ImageIcon(new ImageIcon(getClass().getResource("/Images/arriereplan.jpg")).getImage());
 	JPanel pan = new JPanel();
 	
 	private Dimension size = new Dimension(800,700);
@@ -20,8 +20,8 @@ public class Fenetre extends JFrame implements ActionListener{
 	    this.setLayout(null);
 	    this.setSize(800,700);
 	    this.setLocationRelativeTo(null);             
-	    
-	    pan.setBackground(Color.gray);
+
+	    //pan.setBackground(Color.gray);
 	    JMenu menu = new JMenu( "Jeux" ) ;
 	    JMenuItem redem = new JMenuItem( "Redémarer" ) ;
 	    menu.add( redem ) ;
@@ -86,20 +86,5 @@ public class Fenetre extends JFrame implements ActionListener{
 			choixPanDC();
 		}
 	}
-	
-	
-	
-	public static void main(String[] args){
-		
-		Fenetre frame = new Fenetre();
-		//ActionEvent e=null;
-		//frame.accueil();
-		
-		//frame.actionPerformed(e);
-		//frame.choixPanDC();
-		//frame.choixPanAB();
-		//frame.platDC();
-		frame.platAB();
-}
 }
 
