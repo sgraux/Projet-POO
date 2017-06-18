@@ -20,8 +20,17 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	
 	
 
-	private String mode="mur";
+	private String mode="trouNoir";
+	private boolean contreIA=true;
 	
+	public boolean isContreIA() {
+		return contreIA;
+	}
+
+	public void setContreIA(boolean contreIA) {
+		this.contreIA = contreIA;
+	}
+
 	public PlateauxAB(Dimension dim) {
 		super(dim);
 		initPanel();
@@ -40,7 +49,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		        {0,0,0,0,2,0,2,0,2,0,2,0,2,0,0,0,0}};
 	
 	private BoutonCase button[][]=new BoutonCase[9][17];
-	private JeuAbalone jeuAb = new JeuAbalone(false, "mur");
+	private JeuAbalone jeuAb = new JeuAbalone(contreIA, mode);
 	//==//
 	private JButton bHauG = new JButton("HG");
 	private JButton bBasG = new JButton("BG");
@@ -127,11 +136,27 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	          {
 	        	  button[i][j].setVisible(false);
 	    	   }
+	          if(mode=="trouNoir"){
+	        	  button[4][8].setVisible(false);
+	          }
+	          else if(mode=="mur"){
+	        	  button[4][8].setIcon(bRou);
+	        	  button[4][7].setIcon(bRou);
+	        	  button[4][7].setVisible(true);
+	        	  button[4][6].setIcon(bRou);
+	        	  button[4][9].setIcon(bRou);
+	        	  button[4][9].setVisible(true);
+	        	  button[4][10].setIcon(bRou);
+	        	  button[4][8].setEnabled(false);
+	        	  button[4][7].setEnabled(false);
+	        	  button[4][6].setEnabled(false);
+	        	  button[4][9].setEnabled(false);
+	        	  button[4][10].setEnabled(false);
+	          }
+	          
 	    		}
 	    }
-	    
-	    
-	    
+
 		this.panel.add(panel1);
 		
 		
@@ -185,27 +210,6 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		bDro.addActionListener(this);
 	    
 	}
-	
-	public void modeJeux(String mode){
-    	
-    		if(mode=="trounoir"){
-        	  button[4][8].setVisible(false);
-          }
-    		else if(mode=="mur"){
-        	  button[4][8].setIcon(bRou);
-        	  button[4][7].setIcon(bRou);
-        	  button[4][7].setVisible(true);
-        	  button[4][6].setIcon(bRou);
-        	  button[4][9].setIcon(bRou);
-        	  button[4][9].setVisible(true);
-        	  button[4][10].setIcon(bRou);
-        	  button[4][8].setEnabled(false);
-        	  button[4][7].setEnabled(false);
-        	  button[4][6].setEnabled(false);
-        	  button[4][9].setEnabled(false);
-        	  button[4][10].setEnabled(false);
-          }
-    }
 	
 	public void redessinerIcons(){
 		int cpt=0;
