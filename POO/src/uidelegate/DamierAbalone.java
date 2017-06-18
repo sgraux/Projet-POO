@@ -224,15 +224,9 @@ public class DamierAbalone extends Damier{
     return false;
 	}
 	
-	public boolean estBordure(Case parCase,String variante){
-		
+	public boolean estBordure(Case parCase){
+		// determine si une case est une bordure	
 		int id = parCase.getId();
-		
-		if(variante=="trouNoir"){
-			if((id==21)||(id==22)||(id==29)||(id==31)||(id==38)||(id==39)){
-				return true;
-			}
-		}
 		
 		if((id==0)||(id==1)||(id==2)||(id==3)||(id==4)){
 			return true;
@@ -247,196 +241,6 @@ public class DamierAbalone extends Damier{
 			return true;
 		}
 		return false;
-	}
-	     
-	public void afficherC(){
-		/* ETAGE 0 */
-		
-		System.out.print("    ");
-		
-		for(int i = 0; i < 5; i++)
-		{
-			System.out.print(" ");
-			this.afficher_couleur(i);
-			
-		}
-		
-		System.out.println(" ");
-		System.out.print("   ");
-		
-		/* ETAGE 1 */
-		for(int i = 5; i < 11; i++)
-		{
-			System.out.print(" ");
-			this.afficher_couleur(i);
-		}
-		
-		System.out.println(" ");
-		System.out.print("  ");
-		
-		/* ETAGE 2 */
-		for(int i = 11; i < 18; i++)
-		{
-			System.out.print(" ");
-			this.afficher_couleur(i);
-		}
-		System.out.println(" ");
-		System.out.print(" ");
-
-		/* ETAGE 3 */
-		for(int i = 18; i < 26; i++)
-		{
-			System.out.print(" ");
-			this.afficher_couleur(i);
-		}
-		
-		
-		System.out.println("");
-		/* ETAGE 4 */
-		for(int i = 26; i < 35; i++)
-		{
-			System.out.print(" ");
-			this.afficher_couleur(i);
-		}
-		
-		System.out.println(" ");
-		System.out.print(" ");
-				
-		/* ETAGE 5 */
-		for(int i = 35; i < 43; i++)
-		{
-			System.out.print(" ");
-			this.afficher_couleur(i);
-		}
-		
-		System.out.println(" ");
-		System.out.print("  ");
-		
-		/* ETAGE 6 */
-		for(int i = 43; i < 50; i++)
-		{
-			System.out.print(" ");
-			this.afficher_couleur(i);
-			
-		}
-		System.out.println(" ");
-		System.out.print("   ");
-		
-		/* ETAGE 7 */
-		for(int i = 50; i < 56; i++)
-		{
-			System.out.print(" ");
-			this.afficher_couleur(i);
-		}
-		
-		
-		System.out.println(" ");
-		System.out.print("    ");
-		/* ETAGE 8 */
-		for(int i = 56; i < 61; i++)
-		{
-			System.out.print(" ");
-			this.afficher_couleur(i);
-		}
-		
-		
-		System.out.println(" ");
-		System.out.print("       ");
-	}
-
-	public void afficher_couleur(int i)
-	{
-			if(getCase(i).getPion()==null)
-			{
-				System.out.print(""+"O");
-			}
-			else
-			{
-				if (getCase(i).getPion().getCouleur()=="noir")
-				{
-					System.out.print(""+"N");
-				}
-				if(getCase(i).getPion().getCouleur()=="blanc")
-				{
-					System.out.print(""+"B");
-				}
-			}
-			
-	}
-	
-	public void afficher(){
-		/* ETAGE 0 */
-		
-		System.out.print("        ");
-		
-		for(int i = 0; i < 5; i++){
-			System.out.print("  0"+tabCases[i].getId());
-			}
-		
-		System.out.println(" ");
-		System.out.print("      ");
-		
-		/* ETAGE 1 */
-		for(int i = 5; i < 11; i++){
-			System.out.print("  0"+tabCases[i].getId());
-			}
-		
-		System.out.println(" ");
-		System.out.print("    ");
-		
-		/* ETAGE 2 */
-		for(int i = 11; i < 18; i++){
-			System.out.print("  "+tabCases[i].getId());
-			}
-		
-		System.out.println(" ");
-		System.out.print("  ");
-
-		/* ETAGE 3 */
-		for(int i = 18; i < 26; i++){
-			System.out.print("  "+tabCases[i].getId());
-			}
-		
-		System.out.println(" ");
-		
-		/* ETAGE 4 */
-		for(int i = 26; i < 35; i++){
-			System.out.print("  "+tabCases[i].getId());
-			}
-		
-		System.out.println(" ");
-		System.out.print("  ");
-		
-		/* ETAGE 5 */
-		for(int i = 35; i < 43; i++){
-			System.out.print("  "+tabCases[i].getId());
-			}
-		
-		System.out.println(" ");
-		System.out.print("    ");
-		
-		/* ETAGE 6 */
-		for(int i = 43; i < 50; i++){
-			System.out.print("  "+tabCases[i].getId());
-			}
-		
-		System.out.println(" ");
-		System.out.print("      ");
-		
-		/* ETAGE 7 */
-		for(int i = 50; i < 56; i++){
-			System.out.print("  "+tabCases[i].getId());
-			}
-		
-		System.out.println(" ");	
-		System.out.print("        ");
-		
-		/* ETAGE 8 */
-		for(int i = 56; i < 61; i++){
-			System.out.print("  "+tabCases[i].getId());
-		}
-		
-		System.out.println(" ");
 	}
 	
 	public String estAligne(Case case1,Case case2,Case case3){
@@ -456,9 +260,7 @@ public class DamierAbalone extends Damier{
 				return "AUCUNE";
 			}
 		}
-		
-		  
-		
+
 		if( (((case1.getVoisinHautDroit()==case2)||(case1.getVoisinHautDroit()==case3))
 			&&((case1.getVoisinHautDroit().getVoisinHautDroit()==case2)||(case1.getVoisinHautDroit().getVoisinHautDroit()==case3)))
 			||(((case1.getVoisinHautDroit()==case2)||(case1.getVoisinHautDroit()==case3))
@@ -487,7 +289,7 @@ public class DamierAbalone extends Damier{
 	}
 	   
 	public boolean alignementBoule(Case case1,Case case2,Case case3,String direction){
-		// determine si la direction choisit est la meme que l'alignement des boules
+		// determine si la direction choisit par le joueur est la meme que l'alignement des boules qui a selectione
 		
 		if((direction=="hautGauche")||(direction=="basDroite")){
 			if((estAligne(case1,case2,case3)=="HAUT_GAUCHE")||(estAligne(case1,case2,case3)=="TOUTES")){
@@ -519,7 +321,9 @@ public class DamierAbalone extends Damier{
 		return true;
 	}
 	
-	public int nbBouleParCouleur(String couleur){ // Compte le nombre de boule d'une couleur sur le plateau
+	public int nbBouleParCouleur(String couleur){ 
+		// Compte le nombre de boule d'une couleur sur le plateau
+		
 		int cpt=0;
 		
 		for(int i=0;i<tabCases.length;i++){
@@ -532,115 +336,56 @@ public class DamierAbalone extends Damier{
 		return cpt;
 	}
 	
-	public boolean chevauchementCouleur(Case case1,String direction,String variante){ // determine si il y a un chevauchement de couleur suivant une direction
-		Case case2=new Case();
-		int a=0;
-		int cpt=0;
+	public boolean chevauchementCouleur(Case case1,String direction,String variante){ 
+		// determine si il y a un chevauchement de couleur suivant une direction
 		
-		if(estBordure(case1,variante)){
+		String couleur=case1.getPion().getCouleur();
+		int cpt=0;
+		           
+		while(true){
+			if(direction=="hautGauche"){
+				case1=case1.getVoisinHautGauche();
+			}
+			if(direction=="hautDroite"){
+				case1=case1.getVoisinHautDroit();
+			}
+			if(direction=="droite"){
+				case1=case1.getVoisinDroit();
+			}
+			if(direction=="gauche"){
+				case1=case1.getVoisinGauche();
+			}
+			if(direction=="basDroite"){
+				case1=case1.getVoisinBasDroit();
+			}
+			if(direction=="basGauche"){
+				case1=case1.getVoisinBasGauche();
+			}
+			
+			if((case1!=null)&&(case1.getPion()!=null)){
+				if(case1.getPion().getCouleur()!=couleur){
+					cpt++;
+				}
+				couleur=case1.getPion().getCouleur();
+			}
+			else{
+				break ;
+			}
+			
+		}
+		
+		if(cpt>=2){
+			return true;
+		}
+		else{
 			return false;
 		}
 		
-		while(case1.getPion()!=null){
-			
-			
-			if(direction=="hautDroite"){ // HAUT DROITE
-				if(estBordure(case1.getVoisinHautDroit(),variante)){
-					a=1;
-				}
-				
-				case2=case1.getVoisinHautDroit();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			if(direction=="droite"){ // DROITE
-				if(estBordure(case1.getVoisinDroit(),variante)){
-					a=1;
-				}
-				case2=case1.getVoisinDroit();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			if(direction=="basDroite"){ // BAS DROITE
-				if(estBordure(case1.getVoisinBasDroit(),variante)){
-					a=1;
-				}
-				case2=case1.getVoisinBasDroit();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			if(direction=="basGauche"){ // BAS GAUCHE
-				if(estBordure(case1.getVoisinBasGauche(),variante)){
-					a=1;
-				}
-				case2=case1.getVoisinBasGauche();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			if(direction=="gauche"){ // GAUCHE
-				if(estBordure(case1.getVoisinGauche(),variante)){
-					a=1;
-				}
-				case2=case1.getVoisinGauche();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			if(direction=="hautGauche"){ // HAUT CAUCHE
-				if(estBordure(case1.getVoisinHautGauche(),variante)){
-					a=1;
-				}
-				case2=case1.getVoisinHautGauche();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			
-			if(case1.getPion().getCouleur()!=case2.getPion().getCouleur()){
-				cpt++;
-			}
-			
-			if(cpt>=2){
-				return true;
-			}
-			
-			if(a==1){
-				break;
-			}
-			
-			if(direction=="hautDroite"){ // HAUT DROITE
-				case1=case1.getVoisinHautDroit();
-			}
-			if(direction=="droite"){ // DROITE
-				case1=case1.getVoisinDroit();
-			}
-			if(direction=="basDroite"){ // BAS DROITE
-				case1=case1.getVoisinBasDroit();
-			}
-			if(direction=="basGauche"){ // BAS GAUCHE
-				case1=case1.getVoisinBasGauche();
-			}
-			if(direction=="gauche"){ // GAUCHE
-				case1=case1.getVoisinGauche();
-			}
-			if(direction=="hautGauche"){ // HAUT CAUCHE
-				case1=case1.getVoisinHautGauche();
-			}	
-		}
-		return false;
 	}
 	
-	public boolean caseArriveeVide(Case case1,Case case2,Case case3,String direction){ // determine si les cases d'arrivées sont vide
+	public boolean caseArriveeVide(Case case1,Case case2,Case case3,String direction){ 
+		// determine si les cases d'arrivées des boules sont vides
+		
 		if(direction=="hautGauche"){
 			return testCaseArriveVideHautGauche(case1,case2,case3);
 		}
@@ -941,7 +686,7 @@ public class DamierAbalone extends Damier{
 	}
 	
 	public Case determierCaseADeplacer(Case case1,Case case2,Case case3,String direction){ 
-		// PREND 3 CASES ET DETERMINE LA QUEL EST A DEPLACER EN PREMIERE
+		// Prend 3 boules et determine la quel est a deplacer en 1er (en fonction de la direction)
 		
 		if((case3.getId()==-1)&&(case2.getId()==-1)){
 			return case1;
@@ -993,6 +738,8 @@ public class DamierAbalone extends Damier{
 	}
 	
 	public void deplacerBoule(Case case1,String direction){
+		// deplace les boules en fonction d'une direction
+		
 		if(direction=="hautDroite"){
 			deplacerBouleHautDroit(case1);
 		}
@@ -1197,8 +944,9 @@ public class DamierAbalone extends Damier{
 		}
 	}
 	
-	public boolean sumito(Case a,String direction)
-	{ // Determine si il y a position de sumito
+	public boolean sumito(Case a,String direction){ 
+		// Determine si il y a position de sumito
+		
 		int cptblanc=0,cptnoir=0;
 		
 		String color =a.getPion().getCouleur();
@@ -1270,7 +1018,7 @@ public class DamierAbalone extends Damier{
 		
 		while(case1.getPion()!=null){
 			
-			if(estBordure(case1,"mur")){
+			if(estBordure(case1)){
 				return true;
 			}
 			
@@ -1351,6 +1099,8 @@ public class DamierAbalone extends Damier{
 		else{
 			
 			if(variante=="mur"){
+				// on verifie qu'il n'y a pas de mur sur les cases d'arrivees	
+			
 				if( (caseArriveeVide(case1,case2,case3,direction))
 					&&(pasDeMur(case1,direction))
 					&&(pasDeMur(case2,direction))
