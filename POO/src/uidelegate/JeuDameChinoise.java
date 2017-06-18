@@ -403,15 +403,20 @@ public class JeuDameChinoise extends Jeu {
 				listeCouleur.add("jaune");
 				listeCouleur.add("noir");
 			}
-		} else if (nbJoueur == 4) {
-			if (compteurTour % 4 == 0) {
+		} else if (nbJoueur == 6) {
+			if (compteurTour % 6 == 0) {
 				listeCouleur.add("rouge");
-			} else if (compteurTour % 4 == 1) {
+			} else if (compteurTour % 6 == 1) {
 				listeCouleur.add("bleu");
-			} else if (compteurTour % 4 == 2) {
+			} else if (compteurTour % 6 == 2) {
 				listeCouleur.add("blanc");
-			} else
+			} else if (compteurTour % 6 == 3) {
 				listeCouleur.add("noir");
+			}else if (compteurTour % 6 == 4) {
+				listeCouleur.add("vert");
+			}
+			else
+				listeCouleur.add("jaune");
 		}
 		return listeCouleur;
 	}
