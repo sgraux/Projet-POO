@@ -533,111 +533,48 @@ public class DamierAbalone extends Damier{
 	}
 	
 	public boolean chevauchementCouleur(Case case1,String direction,String variante){ // determine si il y a un chevauchement de couleur suivant une direction
-		Case case2=new Case();
-		int a=0;
+		String couleur=case1.getPion().getCouleur();
 		int cpt=0;
 		
-		if(estBordure(case1,variante)){
+		while(true){
+			if(direction=="hautGauche"){
+				case1=case1.getVoisinHautGauche();
+			}
+			if(direction=="hautDroite"){
+				case1=case1.getVoisinHautDroit();
+			}
+			if(direction=="droite"){
+				case1=case1.getVoisinDroit();
+			}
+			if(direction=="gauche"){
+				case1=case1.getVoisinGauche();
+			}
+			if(direction=="basDroite"){
+				case1=case1.getVoisinBasDroit();
+			}
+			if(direction=="basGauche"){
+				case1=case1.getVoisinBasGauche();
+			}
+			
+			if((case1!=null)&&(case1.getPion()!=null)){
+				if(case1.getPion().getCouleur()!=couleur){
+					cpt++;
+				}
+				couleur=case1.getPion().getCouleur();
+			}
+			else{
+				break ;
+			}
+			
+		}
+		
+		if(cpt>=2){
+			return true;
+		}
+		else{
 			return false;
 		}
 		
-		while(case1.getPion()!=null){
-			
-			
-			if(direction=="hautDroite"){ // HAUT DROITE
-				if(estBordure(case1.getVoisinHautDroit(),variante)){
-					a=1;
-				}
-				
-				case2=case1.getVoisinHautDroit();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			if(direction=="droite"){ // DROITE
-				if(estBordure(case1.getVoisinDroit(),variante)){
-					a=1;
-				}
-				case2=case1.getVoisinDroit();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			if(direction=="basDroite"){ // BAS DROITE
-				if(estBordure(case1.getVoisinBasDroit(),variante)){
-					a=1;
-				}
-				case2=case1.getVoisinBasDroit();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			if(direction=="basGauche"){ // BAS GAUCHE
-				if(estBordure(case1.getVoisinBasGauche(),variante)){
-					a=1;
-				}
-				case2=case1.getVoisinBasGauche();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			if(direction=="gauche"){ // GAUCHE
-				if(estBordure(case1.getVoisinGauche(),variante)){
-					a=1;
-				}
-				case2=case1.getVoisinGauche();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			if(direction=="hautGauche"){ // HAUT CAUCHE
-				if(estBordure(case1.getVoisinHautGauche(),variante)){
-					a=1;
-				}
-				case2=case1.getVoisinHautGauche();
-				
-				if(case2.getPion()==null){
-					break;
-				}
-			}
-			
-			if(case1.getPion().getCouleur()!=case2.getPion().getCouleur()){
-				cpt++;
-			}
-			
-			if(cpt>=2){
-				return true;
-			}
-			
-			if(a==1){
-				break;
-			}
-			
-			if(direction=="hautDroite"){ // HAUT DROITE
-				case1=case1.getVoisinHautDroit();
-			}
-			if(direction=="droite"){ // DROITE
-				case1=case1.getVoisinDroit();
-			}
-			if(direction=="basDroite"){ // BAS DROITE
-				case1=case1.getVoisinBasDroit();
-			}
-			if(direction=="basGauche"){ // BAS GAUCHE
-				case1=case1.getVoisinBasGauche();
-			}
-			if(direction=="gauche"){ // GAUCHE
-				case1=case1.getVoisinGauche();
-			}
-			if(direction=="hautGauche"){ // HAUT CAUCHE
-				case1=case1.getVoisinHautGauche();
-			}	
-		}
-		return false;
 	}
 	
 	public boolean caseArriveeVide(Case case1,Case case2,Case case3,String direction){ // determine si les cases d'arrivées sont vide
