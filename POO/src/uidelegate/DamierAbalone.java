@@ -6,6 +6,19 @@ public class DamierAbalone extends Damier{
 		super(61);
 		initialiseGraphe();
 	}
+	
+	/*public static void main(String argv[]){
+		DamierAbalone a=new DamierAbalone();
+		a.tabCases[29].setEtat(1);
+		a.tabCases[30].setEtat(1);
+		a.tabCases[31].setEtat(1);
+		//System.out.println(a.tabCases[15].getEtat());
+		a.tabCases[38].setPion(new Pion("blanc"));
+		a.afficherC();
+		if(a.deplacementPossible(a.tabCases[51], a.tabCases[45], a.tabCases[38], "hautDroite")){
+			System.out.println("hautDroite");
+		}
+	}*/
 
 	public void initialiseGraphe(){
 		
@@ -224,9 +237,15 @@ public class DamierAbalone extends Damier{
     return false;
 	}
 	
-	public boolean estBordure(Case parCase){
+	public boolean estBordure(Case parCase,String variante){
 		
 		int id = parCase.getId();
+		
+		if(variante=="trouNoir"){
+			if((id==21)||(id==22)||(id==29)||(id==31)||(id==38)||(id==39)){
+				return true;
+			}
+		}
 		
 		if((id==0)||(id==1)||(id==2)||(id==3)||(id==4)){
 			return true;
@@ -526,12 +545,12 @@ public class DamierAbalone extends Damier{
 		return cpt;
 	}
 	
-	public boolean chevauchementCouleur(Case case1,String direction){ // determine si il y a un chevauchement de couleur suivant une direction
+	public boolean chevauchementCouleur(Case case1,String direction,String variante){ // determine si il y a un chevauchement de couleur suivant une direction
 		Case case2=new Case();
 		int a=0;
 		int cpt=0;
 		
-		if(estBordure(case1)){
+		if(estBordure(case1,variante)){
 			return false;
 		}
 		
@@ -539,7 +558,7 @@ public class DamierAbalone extends Damier{
 			
 			
 			if(direction=="hautDroite"){ // HAUT DROITE
-				if(estBordure(case1.getVoisinHautDroit())){
+				if(estBordure(case1.getVoisinHautDroit(),variante)){
 					a=1;
 				}
 				
@@ -550,7 +569,7 @@ public class DamierAbalone extends Damier{
 				}
 			}
 			if(direction=="droite"){ // DROITE
-				if(estBordure(case1.getVoisinDroit())){
+				if(estBordure(case1.getVoisinDroit(),variante)){
 					a=1;
 				}
 				case2=case1.getVoisinDroit();
@@ -560,7 +579,7 @@ public class DamierAbalone extends Damier{
 				}
 			}
 			if(direction=="basDroite"){ // BAS DROITE
-				if(estBordure(case1.getVoisinBasDroit())){
+				if(estBordure(case1.getVoisinBasDroit(),variante)){
 					a=1;
 				}
 				case2=case1.getVoisinBasDroit();
@@ -570,7 +589,7 @@ public class DamierAbalone extends Damier{
 				}
 			}
 			if(direction=="basGauche"){ // BAS GAUCHE
-				if(estBordure(case1.getVoisinBasGauche())){
+				if(estBordure(case1.getVoisinBasGauche(),variante)){
 					a=1;
 				}
 				case2=case1.getVoisinBasGauche();
@@ -580,7 +599,7 @@ public class DamierAbalone extends Damier{
 				}
 			}
 			if(direction=="gauche"){ // GAUCHE
-				if(estBordure(case1.getVoisinGauche())){
+				if(estBordure(case1.getVoisinGauche(),variante)){
 					a=1;
 				}
 				case2=case1.getVoisinGauche();
@@ -590,7 +609,7 @@ public class DamierAbalone extends Damier{
 				}
 			}
 			if(direction=="hautGauche"){ // HAUT CAUCHE
-				if(estBordure(case1.getVoisinHautGauche())){
+				if(estBordure(case1.getVoisinHautGauche(),variante)){
 					a=1;
 				}
 				case2=case1.getVoisinHautGauche();
@@ -1264,7 +1283,7 @@ public class DamierAbalone extends Damier{
 		
 		while(case1.getPion()!=null){
 			
-			if(estBordure(case1)){
+			if(estBordure(case1,"mur")){
 				return true;
 			}
 			
@@ -1302,12 +1321,21 @@ public class DamierAbalone extends Damier{
 				if(case1.getVoisinGauche().getEtat()==1){
 				}
 				case1=case1.getVoisinGauche();
-			}
+			}	
 		}
-		return true;
-	}
 
-	public boolean deplacementPossible(Case case1,Case case2,Case case3,String direction){
+		if(case1.getEtat()==1){
+			return false;
+		}
+		if(case1.getEtat()==0){
+			return true;
+		}
+		
+		return true;
+		
+	}
+	//
+	public boolean deplacementPossible(Case case1,Case case2,Case case3,String direction,String variante){
 		// fonction prenant 3 boules et une direction, et determine si un deplacement est possible.
 		
 		Case caseTest=new Case();
@@ -1320,10 +1348,12 @@ public class DamierAbalone extends Damier{
 		if(alignementBoule(case1,case2,case3,direction)){
 			caseTest=determierCaseADeplacer(case1,case2,case3,direction);
 			
-			if(!pasDeMur(caseTest,direction)){
-				return false;
+			if(variante=="mur"){
+				if(!pasDeMur(caseTest,direction)){
+					return false;
+				}
 			}
-			if(chevauchementCouleur(caseTest,direction)){
+			if(chevauchementCouleur(caseTest,direction,variante)){
 				return false;
 			}
 			if(!sumito(caseTest,direction)){
@@ -1333,17 +1363,29 @@ public class DamierAbalone extends Damier{
 			return true; // si il n'y a pas de mur, pas de chevauchement de couleur et sumito alors c'est bon
 		}
 		else{
-			System.out.println("SI ON EST LA C'EST QU'IL Y A UN GROS PROBLEME");
-			if( (caseArriveeVide(case1,case2,case3,direction))
+
+			if(variante=="mur"){
+				if( (caseArriveeVide(case1,case2,case3,direction))
 					&&(pasDeMur(case1,direction))
 					&&(pasDeMur(case2,direction))
 					&&(pasDeMur(case3,direction)) ){
-				return true;
+					return true;
+				}
+				else{
+					return false;
+				}
 			}
-			else{
-				return false;
+			if(variante=="trouNoir"){
+				if((caseArriveeVide(case1,case2,case3,direction))){
+					return true;
+				}
+				else{
+					return false;
+				}
 			}
-		}	
+			
+		}
+		return false;
 	}	
 	
 }

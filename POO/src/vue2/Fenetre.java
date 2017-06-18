@@ -80,18 +80,26 @@ public class Fenetre extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
-		acc.actionPerformed(e);
-		
+		//acc.actionPerformed(e);
+		if(source==acc.dc){
+			
+			choixPanDC();
+		}
 	}
-
+	
+	
+	
 	public static void main(String[] args){
 		
 		Fenetre frame = new Fenetre();
+		//ActionEvent e=null;
 		//frame.accueil();
+		
+		//frame.actionPerformed(e);
 		//frame.choixPanDC();
 		//frame.choixPanAB();
-		frame.platDC();
-		//frame.platAB();
+		//frame.platDC();
+		frame.platAB();
 }
 }
 

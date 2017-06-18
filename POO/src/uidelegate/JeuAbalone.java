@@ -21,8 +21,9 @@ public class JeuAbalone extends Jeu{
 			caseSelectione[i]=new Case(-1, null,0,null,null,null,null,null,null);
 		}
 		
+		
 		// Implementation des variantes
-		if(variante=="TrouNoir"){
+		if(variante=="trouNoir"){
 			((DamierAbalone)damier).tabCases[21].setVoisinBasDroit(null);
 			((DamierAbalone)damier).tabCases[22].setVoisinBasGauche(null);
 			((DamierAbalone)damier).tabCases[29].setVoisinDroit(null);
@@ -31,7 +32,7 @@ public class JeuAbalone extends Jeu{
 			((DamierAbalone)damier).tabCases[31].setVoisinGauche(null);
 		}
 		
-		if(variante=="Mur"){
+		if(variante=="mur"){
 			((DamierAbalone)damier).tabCases[29].setEtat(1);
 			((DamierAbalone)damier).tabCases[30].setEtat(1);
 			((DamierAbalone)damier).tabCases[31].setEtat(1);
@@ -52,55 +53,33 @@ public class JeuAbalone extends Jeu{
 	}
 	
 	public int appliquerCoup(){
-		if((joueContreIA)&&(couleurJoueur=="noir")){ // tour de l'IA
-			IA();
-			couleurJoueur="blanc";
-			
-			if( (((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8) || (((DamierAbalone)damier).nbBouleParCouleur("noir")<=8) ){
-				if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
-					return 2;
-				}
-				if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
-					return 3;
-				}
-			}
+		if(nbCaseSelectione()==0){
+			return 0;
+			// si le joueur n'a pas selectioner de case, alors pas de deplacement possible
 		}
-		else{ // tour d'un joueur
-			if(nbCaseSelectione()==0){
-				return 0;
-				// si le joueur n'a pas selectioner de case, alors pas de deplacement possible
-			}
+		
+		if(((DamierAbalone)damier).deplacementPossible(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction,variante)){
+			Case tmp=new Case();
 			
-			if(((DamierAbalone)damier).deplacementPossible(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
-				Case tmp=new Case();
+			if(!((DamierAbalone)damier).alignementBoule(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
+				// si la direction d'alignement des boules =/= direction choisit par le Joueur
 				
-				if(!((DamierAbalone)damier).alignementBoule(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction)){
-					// si la direction d'alignement des boules =/= direction choisit par le Joueur
-					
-					((DamierAbalone)damier).deplacerBoule(caseSelectione[0],direction);
-					
-					if(caseSelectione[1].getId()!=-1){
-						((DamierAbalone)damier).deplacerBoule(caseSelectione[1],direction);
-					}
-					if(caseSelectione[2].getId()!=-1){
-						((DamierAbalone)damier).deplacerBoule(caseSelectione[2],direction);
-					}
-					
-					if(couleurJoueur=="noir"){
-						couleurJoueur="blanc";
-					}
-					else{
-						couleurJoueur="noir";
-					}
-					viderTableau();
-					
-					return 1;
+				((DamierAbalone)damier).deplacerBoule(caseSelectione[0],direction);
+				
+				if(caseSelectione[1].getId()!=-1){
+					((DamierAbalone)damier).deplacerBoule(caseSelectione[1],direction);
+				}
+				if(caseSelectione[2].getId()!=-1){
+					((DamierAbalone)damier).deplacerBoule(caseSelectione[2],direction);
 				}
 				
-				tmp=((DamierAbalone)damier).determierCaseADeplacer(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction);
-				
-				((DamierAbalone)damier).deplacerBoule(tmp,direction);
-				
+				if(couleurJoueur=="noir"){
+					couleurJoueur="blanc";
+				}
+				else{
+					couleurJoueur="noir";
+				}
+				viderTableau();
 				
 				if( (((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8) || (((DamierAbalone)damier).nbBouleParCouleur("noir")<=8) ){
 					if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
@@ -113,25 +92,73 @@ public class JeuAbalone extends Jeu{
 					}
 				}
 				
-				// On change la couleur du joueur actuel
-				if(couleurJoueur=="noir"){
-					couleurJoueur="blanc";
-				}
-				else{
-					couleurJoueur="noir";
-				}
-				viderTableau();
 				return 1;
 			}
+			
+			tmp=((DamierAbalone)damier).determierCaseADeplacer(caseSelectione[0],caseSelectione[1],caseSelectione[2],direction);
+			
+			((DamierAbalone)damier).deplacerBoule(tmp,direction);
+			
+			
+			if( (((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8) || (((DamierAbalone)damier).nbBouleParCouleur("noir")<=8) ){
+				if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
+					viderTableau();
+					return 2;
+				}
+				if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
+					viderTableau();
+					return 3;
+				}
+			}
+			
+			// On change la couleur du joueur actuel
+			if(couleurJoueur=="noir"){
+				couleurJoueur="blanc";
+			}
 			else{
-				System.out.println("Pas de deplacement possible avec les boules selectionnees");
-				// AFFICHER A L'ECRAN QUE LE DEPLACEMENT N'EST PAS POSSIBLE
-				viderTableau();
-				return 0;
+				couleurJoueur="noir";
+			}
+			viderTableau();
+			return 1;
+		}
+		else{
+			System.out.println("Pas de deplacement possible avec les boules selectionnees");
+			// AFFICHER A L'ECRAN QUE LE DEPLACEMENT N'EST PAS POSSIBLE
+			viderTableau();
+			return 0;
+		}
+	}
+	
+	public int appliquerCoupIA(){
+		
+		IA();
+		couleurJoueur="blanc";
+		
+		if( (((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8) || (((DamierAbalone)damier).nbBouleParCouleur("noir")<=8) ){
+			if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
+				return 2;
+			}
+			if(((DamierAbalone)damier).nbBouleParCouleur("blanc")<=8){
+				return 3;
 			}
 		}
-		
-		return 0;
+		return 1;
+	}
+
+	public Case[] getCaseSelectione() {
+		return caseSelectione;
+	}
+
+	public void setCaseSelectione(Case[] caseSelectione) {
+		this.caseSelectione = caseSelectione;
+	}
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setCouleurJoueur(String couleurJoueur) {
+		this.couleurJoueur = couleurJoueur;
 	}
 
 	public void IA(){
@@ -156,27 +183,27 @@ public class JeuAbalone extends Jeu{
 			
 			utile=((DamierAbalone)damier).tabCases[positionBouleIA[i]];
 			
-			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"hautGauche")&&(colleBouleAdverse(utile,"hautGauche"))){
+			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"hautGauche",variante)&&(colleBouleAdverse(utile,"hautGauche"))){
 				a=false;
 				((DamierAbalone)damier).deplacerBoule(utile,"hautGauche");
 			}
-			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"hautDroite")&&(colleBouleAdverse(utile,"hautDroite"))){
+			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"hautDroite",variante)&&(colleBouleAdverse(utile,"hautDroite"))){
 				a=false;
 				((DamierAbalone)damier).deplacerBoule(utile,"hautDroite");
 			}
-			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"droite")&&(colleBouleAdverse(utile,"droite"))){
+			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"droite",variante)&&(colleBouleAdverse(utile,"droite"))){
 				a=false;
 				((DamierAbalone)damier).deplacerBoule(utile,"droite");
 			}
-			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"gauche")&&(colleBouleAdverse(utile,"gauche"))){
+			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"gauche",variante)&&(colleBouleAdverse(utile,"gauche"))){
 				a=false;
 				((DamierAbalone)damier).deplacerBoule(utile,"gauche");
 			}
-			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"basGauche")&&(colleBouleAdverse(utile,"basGauche"))){
+			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"basGauche",variante)&&(colleBouleAdverse(utile,"basGauche"))){
 				a=false;
 				((DamierAbalone)damier).deplacerBoule(utile,"basGauche");
 			}
-			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"basDroite")&&(colleBouleAdverse(utile,"basDroite"))){
+			if((a)&&((DamierAbalone)damier).deplacementPossible(utile,innutile,innutile,"basDroite",variante)&&(colleBouleAdverse(utile,"basDroite"))){
 				a=false;
 				((DamierAbalone)damier).deplacerBoule(utile,"basDroite");
 			}
@@ -193,42 +220,42 @@ public class JeuAbalone extends Jeu{
 				
 				if((b)&&(((DamierAbalone)damier).tabCases[i].getPion()!=null)
 						&&(((DamierAbalone)damier).tabCases[i].getPion().getCouleur()=="noir")
-						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"basGauche")){
+						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"basGauche",variante)){
 					remplirPossibiliteDeplacement(i);
 					nb++;
 					b=false;
 				}
 				if((b)&&(((DamierAbalone)damier).tabCases[i].getPion()!=null)
 						&&(((DamierAbalone)damier).tabCases[i].getPion().getCouleur()=="noir")
-						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"basDroite")){
+						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"basDroite",variante)){
 					remplirPossibiliteDeplacement(i);
 					nb++;
 					b=false;			
 				}
 				if((b)&&(((DamierAbalone)damier).tabCases[i].getPion()!=null)
 						&&(((DamierAbalone)damier).tabCases[i].getPion().getCouleur()=="noir")
-						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"droite")){
+						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"droite",variante)){
 					remplirPossibiliteDeplacement(i);
 					nb++;
 					b=false;				
 				}
 				if((b)&&(((DamierAbalone)damier).tabCases[i].getPion()!=null)
 						&&(((DamierAbalone)damier).tabCases[i].getPion().getCouleur()=="noir")
-						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"gauche")){
+						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"gauche",variante)){
 					remplirPossibiliteDeplacement(i);
 					nb++;
 					b=false;				
 				}
 				if((b)&&(((DamierAbalone)damier).tabCases[i].getPion()!=null)
 						&&(((DamierAbalone)damier).tabCases[i].getPion().getCouleur()=="noir")
-						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"hautGauche")){
+						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"hautGauche",variante)){
 					remplirPossibiliteDeplacement(i);
 					nb++;
 					b=false;
 				}
 				if((b)&&(((DamierAbalone)damier).tabCases[i].getPion()!=null)
 						&&(((DamierAbalone)damier).tabCases[i].getPion().getCouleur()=="noir")
-						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"hautDroite")){
+						&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[i],innutile,innutile,"hautDroite",variante)){
 					remplirPossibiliteDeplacement(i);
 					nb++;
 					b=false;
@@ -237,8 +264,8 @@ public class JeuAbalone extends Jeu{
 			
 			alea=petitNombreAlea(nb/3);
 						
-			if( (c)&&(((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basGauche")
-					&&(((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basDroite"))) ){
+			if( (c)&&(((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basGauche",variante)
+					&&(((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basDroite",variante))) ){
 				int x=petitNombreAlea(1);
 				
 				if(x==0){
@@ -251,26 +278,26 @@ public class JeuAbalone extends Jeu{
 				}
 			
 			}
-			if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basDroite")){
+			if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basDroite",variante)){
 				((DamierAbalone)damier).deplacerBoule(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],"basDroite");
 				c=false;			
 			}
-			if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basGauche")){
+			if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"basGauche",variante)){
 				((DamierAbalone)damier).deplacerBoule(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],"basGauche");
 				c=false;			
 			}
-			if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"gauche")){
+			if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"gauche",variante)){
 				((DamierAbalone)damier).deplacerBoule(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],"gauche");
 				c=false;			
 			}
-			if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"droite")){
+			if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"droite",variante)){
 				((DamierAbalone)damier).deplacerBoule(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],"droite");
 				c=false;			
 			}
-			if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"hautGauche")){
+			if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"hautGauche",variante)){
 				((DamierAbalone)damier).deplacerBoule(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],"hautGauche");
 				c=false;			
-			}if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"hautDroite")){
+			}if((c)&&((DamierAbalone)damier).deplacementPossible(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],innutile,innutile,"hautDroite",variante)){
 				((DamierAbalone)damier).deplacerBoule(((DamierAbalone)damier).tabCases[possibiliteDeplacement[alea]],"hautDroite");
 				c=false;			
 			}
