@@ -67,7 +67,7 @@ public class Fenetre extends JFrame implements ActionListener{
 	
 	public void platDC(){
 		pan.removeAll();
-		pan.add(new PlateauxDC(size, false, null,4,4).getPanel(),BorderLayout.WEST);
+		pan.add(new PlateauxDC(size, false, null,3,3).getPanel(),BorderLayout.WEST);
 		pan.revalidate();
 	}
 	
