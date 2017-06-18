@@ -11,7 +11,7 @@ public class Fenetre extends JFrame implements ActionListener,Var{
 	JPanel pan = new JPanel();
 	
 	
-	
+	//
 	
 	
 	public Fenetre(){
