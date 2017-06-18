@@ -1,5 +1,7 @@
 package uidelegate;
 
+import java.util.ArrayList;
+
 public class DamierDameChinoise extends Damier{
 
 	public DamierDameChinoise() {
@@ -407,5 +409,37 @@ public class DamierDameChinoise extends Damier{
 		initialiseBleu();
 		initialiseVert();
 		initialiseBlanc();
+	}
+	
+	public ArrayList<Case> listeCaseBleu(){
+		ArrayList<Case> liste = new ArrayList<Case>();
+		
+		for(int i = 0; i < 121; i++){
+			if(tabCases[i].getPion() != null && tabCases[i].getPion().getCouleur() == "bleu"){
+				liste.add(tabCases[i]);
+			}
+		}
+		
+		return liste;
+	}
+	
+	public ArrayList<Case> listeCoupsCase(Case parCase){
+		ArrayList<Case> liste = new ArrayList<Case>();
+		
+		if(parCase.getVoisinHautGauche() != null && estPermis(parCase, parCase.getVoisinHautGauche()))
+			liste.add(parCase.getVoisinHautGauche());
+		if(parCase.getVoisinGauche() != null && estPermis(parCase, parCase.getVoisinGauche()))
+			liste.add(parCase.getVoisinGauche());
+		if(parCase.getVoisinBasGauche() != null && estPermis(parCase, parCase.getVoisinBasGauche()))
+			liste.add(parCase.getVoisinBasGauche());
+		if(parCase.getVoisinBasDroit() != null && estPermis(parCase, parCase.getVoisinBasDroit()))
+			liste.add(parCase.getVoisinBasDroit());
+		if(parCase.getVoisinDroit() != null && estPermis(parCase, parCase.getVoisinDroit()))
+			liste.add(parCase.getVoisinDroit());
+		if(parCase.getVoisinHautDroit() != null && estPermis(parCase, parCase.getVoisinHautDroit()))
+			liste.add(parCase.getVoisinHautDroit());
+
+		return liste;
+
 	}
 }

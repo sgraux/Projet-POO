@@ -2,11 +2,11 @@ package vue2;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -14,10 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import uidelegate.Case;
-import uidelegate.DamierDameChinoise;
 import uidelegate.JeuDameChinoise;
-import uidelegate.Pion;
 
 public class PlateauxDC extends JeuxPan implements ActionListener {
 
@@ -246,6 +243,22 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 				jeuDame.getBoutonNouveau().setIconBase(jeuDame.getBoutonCourant().getIconNonSelect());
 				jeuDame.getBoutonCourant().setIconBase(bBla);
 				jeuDame.reinitialiseBouton();
+				if(jeuDame.getJoueContreIA() && jeuDame.getNBCouleur() == 2 && jeuDame.getNBJoueur() == 2){
+					ArrayList<Integer> listeID = jeuDame.idCoupIA();
+					//System.out.println(listeID.get(0) + " ---- " + listeID.get(1));
+					for(int i =0; i < 17; i++){
+						for(int j = 0; j < 25; j++){
+							if(button[i][j].getCasePlateau() != null && button[i][j].getCasePlateau().getId() == listeID.get(0))
+								jeuDame.setBoutonCourant(button[i][j]);
+							else if(button[i][j].getCasePlateau() != null && button[i][j].getCasePlateau().getId() == listeID.get(1))
+								jeuDame.setBoutonNouveau(button[i][j]);
+						}
+					}
+					jeuDame.appliqueCoup();
+					jeuDame.getBoutonNouveau().setIconBase(jeuDame.getBoutonCourant().getIconNonSelect());
+					jeuDame.getBoutonCourant().setIconBase(bBla);
+					jeuDame.reinitialiseBouton();
+				}
 			}
 			else if (resultatCoup == 2) {
 				JOptionPane.showMessageDialog(null, "victoire du rouge");
