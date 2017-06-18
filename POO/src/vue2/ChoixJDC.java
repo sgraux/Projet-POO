@@ -65,7 +65,7 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
     JButton com = new JButton("Commencer");
 	
     private String var;
-	private boolean ia;
+	private boolean ia=true;
 	private int nbJ;
 	private String nom;
 	

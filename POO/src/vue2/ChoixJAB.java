@@ -53,7 +53,7 @@ public class ChoixJAB extends JeuxPan implements ActionListener,Var {
 	private Object source;
 	
 	private String var;
-	private boolean ia;
+	private boolean ia=true;
 	private String nom;
 	
 	
