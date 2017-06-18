@@ -65,6 +65,33 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
     
     JButton com = new JButton("Commencer");
 	
+    private String var;
+	private boolean ia;
+	private int nbJ;
+	
+	public int getNbJ() {
+		return nbJ;
+	}
+
+	public void setNbJ(int nbJ) {
+		this.nbJ = nbJ;
+	}
+
+	private String getVar() {
+		return var;
+	}
+
+	public void setVar(String var) {
+		this.var = var;
+	}
+
+	public boolean getIa() {
+		return ia;
+	}
+
+	public void setIa(boolean ia) {
+		this.ia = ia;
+	}
 	
 
 	@Override
@@ -201,13 +228,16 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 		if(source==j2Button){
 			tj2.setBounds(300, 250, 100, 30);
 			v2.setBounds(425,250,100,30);
+			setNbJ(2);
+			setIa(false);
 		}
 		else if(source==j3Button){
 			tj2.setBounds(300, 250, 100, 30);
 			v2.setBounds(425,250,100,30);
 			v3.setBounds(425,300,100,30);
 			tj3.setBounds(300, 300, 100, 30);
-			
+			setNbJ(3);
+			setIa(false);
 		}
 		else if(source==j4Button){
 			tj2.setBounds(300, 250, 100, 30);
@@ -216,6 +246,8 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 			tj3.setBounds(300, 300, 100, 30);
 			v4.setBounds(425,350,100,30);
 			tj4.setBounds(300, 350, 100, 30);
+			setNbJ(4);
+			setIa(false);
 		}
 		else if(source==j5Button){
 			tj2.setBounds(300, 250, 100, 30);
@@ -226,6 +258,8 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 			tj4.setBounds(300, 350, 100, 30);
 			v5.setBounds(425,400,100,30);
 			tj5.setBounds(300, 400, 100, 30);
+			setNbJ(5);
+			setIa(false);
 		}
 		else if(source==j6Button){
 			tj2.setBounds(300, 250, 100, 30);
@@ -238,12 +272,34 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 			tj5.setBounds(300, 400, 100, 30);
 			v6.setBounds(425,450,100,30);
 			tj6.setBounds(300, 450, 100, 30);
-		}
-		else if(source==jaiButton){
+			setNbJ(6);
+			setIa(false);
+			
 			
 		}
+		else if(source==jaiButton){
+			setNbJ(2);
+			setIa(true);
+		}
 		else if(source==com){
-			frame.platDC();
+			if(getNbJ()==2 && getIa()==false){
+				frame.platDC2J();
+			}
+			else if(getIa()==true){
+				frame.platDCIA();
+				}
+			else if(getNbJ()==3){
+				frame.platDC3J();
+				}
+			else if(getNbJ()==4){
+				frame.platDC4J();
+				}
+			else if(getNbJ()==5){
+				frame.platDC5J();
+				}
+			else{
+				frame.platDC6J();
+			}
 		}
 		
 		

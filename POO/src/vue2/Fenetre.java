@@ -5,15 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Fenetre extends JFrame implements ActionListener{
+public class Fenetre extends JFrame implements ActionListener,Var{
 
 	
-	private ImageIcon arr = new ImageIcon(new ImageIcon(getClass().getResource("/Images/arriereplan.jpg")).getImage());
 	JPanel pan = new JPanel();
 	
-	private Dimension size = new Dimension(800,700);
 	
-	Acceuil acc =new Acceuil(size);
+	
+	
 	
 	public Fenetre(){
 	    this.setTitle("JEUX DC & AB");
@@ -65,26 +64,82 @@ public class Fenetre extends JFrame implements ActionListener{
 		pan.revalidate();
 	}
 	
-	public void platDC(){
+	//Les Constructeurs DC
+	
+	public void platDCIA(){
 		pan.removeAll();
 		pan.add(new PlateauxDC(size, true, null,2,2).getPanel(),BorderLayout.WEST);
 		pan.revalidate();
 	}
-	
-	public void platAB(){
+	public void platDC2J(){
 		pan.removeAll();
-		pan.add(new PlateauxAB(size).getPanel(),BorderLayout.WEST);
+		pan.add(new PlateauxDC(size, false, null,2,2).getPanel(),BorderLayout.WEST);
 		pan.revalidate();
 	}
+	public void platDC3J(){
+		pan.removeAll();
+		pan.add(new PlateauxDC(size, false, null,3,3).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	public void platDC4J(){
+		pan.removeAll();
+		pan.add(new PlateauxDC(size, false, null,4,4).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	public void platDC5J(){
+		pan.removeAll();
+		pan.add(new PlateauxDC(size, false, null,5,5).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	public void platDC6J(){
+		pan.removeAll();
+		pan.add(new PlateauxDC(size, true, null,6,6).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	
+	
+	//Les Constructeurs AB
+	public void platAB(){
+		pan.removeAll();
+		pan.add(new PlateauxAB(size,null,false).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	
+	public void platABIA(){
+		pan.removeAll();
+		pan.add(new PlateauxAB(size,null,true).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	
+	public void platABIATN(){
+		pan.removeAll();
+		pan.add(new PlateauxAB(size,"trouNoir",true).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	
+	public void platABTN(){
+		pan.removeAll();
+		pan.add(new PlateauxAB(size,"trouNoir",false).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	
+	public void platABIAMU(){
+		pan.removeAll();
+		pan.add(new PlateauxAB(size,"mur",true).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	public void platABMU(){
+		pan.removeAll();
+		pan.add(new PlateauxAB(size,"mur",false).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
-		//acc.actionPerformed(e);
-		if(source==acc.dc){
-			
-			choixPanDC();
-		}
+		
 	}
 
 }

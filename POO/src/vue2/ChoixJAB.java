@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class ChoixJAB extends JeuxPan implements ActionListener {
+public class ChoixJAB extends JeuxPan implements ActionListener,Var {
 	
 	public ChoixJAB(Dimension dim) {
 		super(dim);
@@ -31,7 +31,9 @@ public class ChoixJAB extends JeuxPan implements ActionListener {
 	public void setChoixJ(String choixJ) {
 		this.choixJ = choixJ;
 	}
-
+	
+	
+	
 	private JRadioButton j2Button = new JRadioButton("2J");
 	private	JRadioButton j3Button = new JRadioButton("AI");
 	
@@ -50,6 +52,26 @@ public class ChoixJAB extends JeuxPan implements ActionListener {
 	
 	private Object source;
 	
+	private String var;
+	private boolean ia;
+	
+	private String getVar() {
+		return var;
+	}
+
+	public void setVar(String var) {
+		this.var = var;
+	}
+
+	public boolean getIa() {
+		return ia;
+	}
+
+	public void setIa(boolean ia) {
+		this.ia = ia;
+	}
+	
+
 	@Override
 	protected void initPanel() {
 		//titre
@@ -141,15 +163,43 @@ public class ChoixJAB extends JeuxPan implements ActionListener {
 	@Override	
 	public void actionPerformed(ActionEvent e) {
 		source = e.getSource();
+		
 		if(source==j2Button){
 			v2.setBounds(425,250,100,30);
 			tj2.setBounds(300, 250, 100, 30);
+			setIa(false);
 		}
 		else if(source==j3Button){
-			
+			setIa(true);
+		}
+		if(source==mCButton){
+			setVar("rien");
+				}
+		else if(source==mTNButton){
+			setVar("trouNoir");
+		}
+		else if(source==mMuButton){
+			setVar("mur");
 		}
 		else if(source==com){
-			frame.platAB();
+			if(getIa()==false && getVar()=="trouNoir"){
+				frame.platABTN();
+			}
+			else if(getIa()==true && getVar()=="trouNoir"){
+				frame.platABIATN();
+				}
+			else if(getIa()==false && getVar()=="mur"){
+				frame.platABMU();
+				}
+			else if(getIa()==true && getVar()=="mur"){
+				frame.platABIAMU();
+				}
+			else if(getIa()==false && getVar()=="rien"){
+				frame.platAB();
+				}
+			else{
+				frame.platABIA();
+			}
 		}
 	}
 

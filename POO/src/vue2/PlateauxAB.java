@@ -15,15 +15,23 @@ import javax.swing.JPanel;
 
 import uidelegate.JeuAbalone;
 
-public class PlateauxAB extends JeuxPan implements ActionListener{
+public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 	
 	
 	
 
-	private String mode="trouNoir";
-	private boolean contreIA=true;
+	private String mode;
 	
-	public boolean isContreIA() {
+	public String getMode() {
+		return mode;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+	private boolean contreIA;
+	
+	public boolean getContreIA() {
 		return contreIA;
 	}
 
@@ -31,10 +39,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		this.contreIA = contreIA;
 	}
 
-	public PlateauxAB(Dimension dim) {
-		super(dim);
-		initPanel();
-	}
+	
 	//test
 	int plateau[][]=
 				{
@@ -49,7 +54,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 		        {0,0,0,0,2,0,2,0,2,0,2,0,2,0,0,0,0}};
 	
 	private BoutonCase button[][]=new BoutonCase[9][17];
-	private JeuAbalone jeuAb = new JeuAbalone(contreIA, mode);
+	private JeuAbalone jeuAb = new JeuAbalone(getContreIA(), getMode());
 	//==//
 	private JButton bHauG = new JButton("HG");
 	private JButton bBasG = new JButton("BG");
@@ -58,9 +63,11 @@ public class PlateauxAB extends JeuxPan implements ActionListener{
 	private JButton bDro = new JButton("D");
 	private JButton bGau = new JButton("G");
 	
-	public PlateauxAB(Dimension dim, String mode) {
+	public PlateauxAB(Dimension dim, String modea,boolean contreIAa) {
 		super(dim);
-		this.mode = mode;
+		setMode(modea);
+		setContreIA(contreIAa);
+		initPanel();
 	}
 	private ImageIcon bArg = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeargent.png")).getImage());
 	private ImageIcon bBla = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeblanc.png")).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
