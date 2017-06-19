@@ -40,17 +40,6 @@ public class JeuAbalone extends Jeu{
 		
 		couleurJoueur="blanc";
 	}
-
-	@Override
-	public boolean estVictoire() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void boucleJeu() {	
-		
-	}
 	
 	public int appliquerCoup(){
 		if(nbCaseSelectione()==0){

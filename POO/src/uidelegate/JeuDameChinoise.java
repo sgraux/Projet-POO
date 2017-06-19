@@ -23,15 +23,6 @@ public class JeuDameChinoise extends Jeu {
 		((DamierDameChinoise) damier).initialiseCouleur(nbCouleur);
 	}
 
-	public void setCaseCourante(Case parCaseCourante) {
-	}
-
-	@Override
-	public boolean estVictoire() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	public int victoire() { // BESOIN DE FAIRE LA VICTOIRE POUR LE MODE 3
 							// COULEURS
 		if (nbJoueur != 3) {
@@ -256,11 +247,6 @@ public class JeuDameChinoise extends Jeu {
 		return false;
 	}
 
-	@Override
-	public void boucleJeu() {
-		// TODO Auto-generated method stub
-
-	}
 
 	public int appliqueCoup() {// quand on select un pion, on peut pas le
 								// déselect pour le moment

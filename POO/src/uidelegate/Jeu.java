@@ -16,9 +16,7 @@ public abstract class Jeu {
 		damier = parDamier;
 	}
 	
-	public abstract boolean estVictoire();
-	
-	public abstract void boucleJeu();
+	public abstract int appliqueCoup();
 	
 	public Damier getDamier(){
 		return damier;
