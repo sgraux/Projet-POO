@@ -12,8 +12,6 @@ public class Fenetre extends JFrame implements ActionListener,Var{
 	
 	
 	//
-	
-	
 	public Fenetre(){
 	    this.setTitle("JEUX DC & AB");
 	    this.setLayout(null);

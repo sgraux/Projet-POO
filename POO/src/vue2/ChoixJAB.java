@@ -194,21 +194,27 @@ public class ChoixJAB extends JeuxPan implements ActionListener,Var {
 		else if(source==com){
 			if(getIa()==false && getVar()=="trouNoir"){
 				frame.platABTN();
+				System.out.println("1"+getVar()+getIa());
 			}
 			else if(getIa()==true && getVar()=="trouNoir"){
 				frame.platABIATN();
+				System.out.println("2"+getVar()+getIa());
 				}
 			else if(getIa()==false && getVar()=="mur"){
 				frame.platABMU();
+				System.out.println("3"+getVar()+getIa());
 				}
 			else if(getIa()==true && getVar()=="mur"){
 				frame.platABIAMU();
+				System.out.println("4"+getVar()+getIa());
 				}
 			else if(getIa()==false && getVar()=="rien"){
 				frame.platAB();
+				System.out.println("5"+getVar()+getIa());
 				}
 			else{
 				frame.platABIA();
+				System.out.println("6"+getVar()+getIa());
 			}
 		}
 		if(source==v1){
