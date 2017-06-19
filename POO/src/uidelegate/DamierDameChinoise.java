@@ -293,6 +293,71 @@ public class DamierDameChinoise extends Damier{
 		return false;
 	}
 	
+	public boolean sautPrise(Case parCaseOri, Case parCaseDest){
+		try{
+		if(parCaseOri.getVoisinHautGauche().aUnPion() == true){
+			if(parCaseOri.getVoisinHautGauche().getVoisinHautGauche() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				parCaseOri.getVoisinHautGauche().setPion(null);
+				return true;
+			}
+		}
+		}catch(Exception e){}
+		try{
+		if(parCaseOri.getVoisinGauche().aUnPion() == true){
+			if(parCaseOri.getVoisinGauche().getVoisinGauche() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				parCaseOri.getVoisinGauche().setPion(null);
+				return true;
+			}
+		}
+		}catch(Exception e){}
+		try{
+		if(parCaseOri.getVoisinBasGauche().aUnPion() == true){
+			if(parCaseOri.getVoisinBasGauche().getVoisinBasGauche() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				parCaseOri.getVoisinBasGauche().setPion(null);
+				return true;
+			}
+		}
+		}catch(Exception e){}
+		try{
+		if(parCaseOri.getVoisinBasDroit().aUnPion() == true){
+			if(parCaseOri.getVoisinBasDroit().getVoisinBasDroit() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				parCaseOri.getVoisinBasDroit().setPion(null);
+				return true;	
+			}
+		}
+		}catch(Exception e){}
+		try{
+		if(parCaseOri.getVoisinDroit().aUnPion() == true){
+			if(parCaseOri.getVoisinDroit().getVoisinDroit() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				parCaseOri.getVoisinDroit().setPion(null);
+				return true;
+			}
+		}
+		}catch(Exception e){}
+		try{
+		if(parCaseOri.getVoisinHautDroit().aUnPion() == true){
+			if(parCaseOri.getVoisinHautDroit().getVoisinHautDroit() == parCaseDest){
+				parCaseDest.setPion(parCaseOri.getPion());
+				parCaseOri.setPion(null);
+				parCaseOri.getVoisinHautDroit().setPion(null);
+				return true;
+				
+			}
+		}
+		}catch(Exception e){}
+		return false;
+	}
+	
 	public void initialiseCouleur(int parNombre){
 		switch(parNombre){
 		case 2: initialisePion2C();

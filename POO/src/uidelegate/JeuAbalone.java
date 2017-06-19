@@ -41,7 +41,7 @@ public class JeuAbalone extends Jeu{
 		couleurJoueur="blanc";
 	}
 	
-	public int appliquerCoup(){
+	public int appliqueCoup(){
 		if(nbCaseSelectione()==0){
 			return 0;
 			// si le joueur n'a pas selectioner de case, alors pas de deplacement possible
@@ -118,7 +118,7 @@ public class JeuAbalone extends Jeu{
 		}
 	}
 	
-	public int appliquerCoupIA(){
+	public int appliqueCoupIA(){
 		
 		IA();
 		couleurJoueur="blanc";

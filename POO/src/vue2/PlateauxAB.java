@@ -406,14 +406,14 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 		
 		if(source==bGau){
 				jeuAb.setDirection("gauche");
-				int var=jeuAb.appliquerCoup();
+				int var=jeuAb.appliqueCoup();
 				if(var==0){
 					
 				}
 				else if(var==1){
 					redessinerIcons();
 					if(jeuAb.getJoueContreIA()){
-						jeuAb.appliquerCoupIA();
+						jeuAb.appliqueCoupIA();
 						redessinerIcons();
 					}
 				}
@@ -422,14 +422,14 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 		}
 		else if(source==bDro){
 			jeuAb.setDirection("droite");
-			int var=jeuAb.appliquerCoup();
+			int var=jeuAb.appliqueCoup();
 			if(var==0){
 				
 			}
 			else if(var==1){
 				redessinerIcons();
 				if(jeuAb.getJoueContreIA()){
-					jeuAb.appliquerCoupIA();
+					jeuAb.appliqueCoupIA();
 					redessinerIcons();
 				}
 			}
@@ -438,14 +438,14 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 	}
 		else if(source==bHauG){
 			jeuAb.setDirection("hautGauche");
-			int var=jeuAb.appliquerCoup();
+			int var=jeuAb.appliqueCoup();
 			if(var==0){
 				
 			}
 			else if(var==1){
 				redessinerIcons();
 				if(jeuAb.getJoueContreIA()){
-					jeuAb.appliquerCoupIA();
+					jeuAb.appliqueCoupIA();
 					redessinerIcons();
 				}
 			}
@@ -454,7 +454,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 	}
 		else if(source==bBasG){
 			jeuAb.setDirection("basGauche");
-			int var=jeuAb.appliquerCoup();
+			int var=jeuAb.appliqueCoup();
 			if(var==0){
 				
 			}
@@ -462,7 +462,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 				jeuAb.afficherTableau();
 				redessinerIcons();
 				if(jeuAb.getJoueContreIA()){
-					jeuAb.appliquerCoupIA();
+					jeuAb.appliqueCoupIA();
 					redessinerIcons();
 				}
 			}
@@ -471,14 +471,14 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 	}
 		else if(source==bHauD){
 			jeuAb.setDirection("hautDroite");
-			int var=jeuAb.appliquerCoup();
+			int var=jeuAb.appliqueCoup();
 			if(var==0){
 				
 			}
 			else if(var==1){
 				redessinerIcons();
 				if(jeuAb.getJoueContreIA()){
-					jeuAb.appliquerCoupIA();
+					jeuAb.appliqueCoupIA();
 					redessinerIcons();
 				}
 			}
@@ -487,14 +487,14 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 	}
 		else if(source==bBasD){
 			jeuAb.setDirection("basDroite");
-			int var=jeuAb.appliquerCoup();
+			int var=jeuAb.appliqueCoup();
 			if(var==0){
 				
 			}
 			else if(var==1){
 				redessinerIcons();
 				if(jeuAb.getJoueContreIA()){
-					jeuAb.appliquerCoupIA();
+					jeuAb.appliqueCoupIA();
 					redessinerIcons();
 				}
 			}
