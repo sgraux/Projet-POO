@@ -26,6 +26,7 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 	public PlateauxDC(Dimension dim, boolean optionIA, String optionVariante, int nbJoueur, int nbCouleur) {
 		super(dim);
 		jeuDame = new JeuDameChinoise(optionIA, optionVariante, nbJoueur, nbCouleur);
+		System.out.println(optionVariante);
 		selectionneCouleur();
 		initPanel();
 	}

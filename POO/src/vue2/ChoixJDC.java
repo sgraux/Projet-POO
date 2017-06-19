@@ -46,7 +46,7 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
     
     private CheckboxGroup moGroup = new CheckboxGroup();
 	private JRadioButton mCButton = new JRadioButton("Classic");
-    private JRadioButton mRButton = new JRadioButton("Rapide");
+    private JRadioButton mRButton = new JRadioButton("Prise");
     
     private JTextField tj1 = new JTextField("NomeJ1", 20);
     private JTextField tj2 = new JTextField("NomeJ2", 20);
