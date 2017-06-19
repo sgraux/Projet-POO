@@ -61,6 +61,8 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 		initPanel();
 	}
 	
+	
+	
 	private BoutonCase button[][]=new BoutonCase[9][17];
 	
 	//==//
