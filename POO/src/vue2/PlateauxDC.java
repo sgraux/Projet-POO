@@ -81,6 +81,7 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 	private JLabel label10 = new JLabel("scr");
 	private JLabel label11 = new JLabel("scr");
 
+	//Fonction qui initialise le panel est il met les compasant graphic la dans 
 	@Override
 	protected void initPanel() {
 
@@ -226,7 +227,8 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 		 */
 
 	}
-
+	
+	//Fonction qui gere les evenement su ce panel
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
@@ -348,6 +350,7 @@ public class PlateauxDC extends JeuxPan implements ActionListener {
 			}
 		}
 	}
+	
 	public void selectionneCouleur4C(){
 		for(int i = 0; i < 17; i++){
 			for(int j = 0; j < 25; j++){

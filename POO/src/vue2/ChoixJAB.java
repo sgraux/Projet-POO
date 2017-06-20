@@ -35,7 +35,7 @@ public class ChoixJAB extends JeuxPan implements ActionListener,Var {
 	
 	
 	private JRadioButton j2Button = new JRadioButton("2J");
-	private	JRadioButton j3Button = new JRadioButton("AI");
+	private	JRadioButton j3Button = new JRadioButton("IA");
 	
 	private CheckboxGroup moGroup = new CheckboxGroup();
 	private JRadioButton mCButton = new JRadioButton("Classic");
@@ -54,17 +54,26 @@ public class ChoixJAB extends JeuxPan implements ActionListener,Var {
 	
 	private String var;
 	private boolean ia=true;
-	private String nom;
+	private String nom1;
+	private String nom2;
 	
 	
-	public String getNom() {
-		return nom;
+	public String getNom1() {
+		return nom1;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setNom1(String nom) {
+		this.nom1 = nom;
 	}
 	
+	public String getNom2() {
+		return nom2;
+	}
+
+	public void setNom2(String nom2) {
+		this.nom2 = nom2;
+	}
+
 	private String getVar() {
 		return var;
 	}
@@ -81,7 +90,7 @@ public class ChoixJAB extends JeuxPan implements ActionListener,Var {
 		this.ia = ia;
 	}
 	
-
+	//Fonction qui initialise le panel est il met les compasant graphic la dans 
 	@Override
 	protected void initPanel() {
 		//titre
@@ -170,6 +179,7 @@ public class ChoixJAB extends JeuxPan implements ActionListener,Var {
 		
 	}
 	
+	//Fonction qui gere les evenemnt sur ce panel est envoi les parametre sélectionné
 	@Override	
 	public void actionPerformed(ActionEvent e) {
 		source = e.getSource();
@@ -192,36 +202,31 @@ public class ChoixJAB extends JeuxPan implements ActionListener,Var {
 			setVar("mur");
 		}
 		else if(source==com){
+			System.out.println(getNom1());
 			if(getIa()==false && getVar()=="trouNoir"){
-				frame.platABTN();
-				System.out.println("1"+getVar()+getIa());
+				frame.platABTN(nom1,nom2);
 			}
 			else if(getIa()==true && getVar()=="trouNoir"){
-				frame.platABIATN();
-				System.out.println("2"+getVar()+getIa());
+				frame.platABIATN(nom1,nom2);
 				}
 			else if(getIa()==false && getVar()=="mur"){
-				frame.platABMU();
-				System.out.println("3"+getVar()+getIa());
+				frame.platABMU(nom1,nom2);
 				}
 			else if(getIa()==true && getVar()=="mur"){
-				frame.platABIAMU();
-				System.out.println("4"+getVar()+getIa());
+				frame.platABIAMU(nom1,nom2);
 				}
 			else if(getIa()==false && getVar()=="rien"){
-				frame.platAB();
-				System.out.println("5"+getVar()+getIa());
+				frame.platAB(nom1,nom2);
 				}
 			else{
-				frame.platABIA();
-				System.out.println("6"+getVar()+getIa());
+				frame.platABIA(nom1,nom2);
 			}
 		}
 		if(source==v1){
-			setNom(tj1.getText());
+			setNom1(tj1.getText());
 		}
 		else if(source==v2){
-			setNom(tj2.getText());
+			setNom2(tj2.getText());
 		}
 
 }

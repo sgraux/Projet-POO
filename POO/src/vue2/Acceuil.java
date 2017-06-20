@@ -30,6 +30,7 @@ public class Acceuil extends JeuxPan implements ActionListener{
 	private JLabel label3 = new JLabel("BEST SC:1000000");
 	private JLabel label4 = new JLabel("BEST SC:1000000");
 	
+	//Fonction qui initialise le panel est il met les compasant graphic la dans 
 	public void initPanel(){
 	    
 		//Titre
@@ -74,6 +75,7 @@ public class Acceuil extends JeuxPan implements ActionListener{
 	    label4.setBounds(490,575,220,30);
 	}
 	
+	//Fonction qui gere les evenemnt sur ce panel est envoi les parametre sélectionné
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		source= e.getSource();
