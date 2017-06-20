@@ -458,44 +458,4 @@ public class JeuAbalone extends Jeu{
 	}
 }
 
-/* 	    
-TANT QUE LE JOUEUR N'A PAS CLIQUE SUR UNE FLECHE DIRECTIONELLE 
-|
-|   // Des que le joueur clique sur une case
-|	damier.remplirTableau(CASE SUR LAQUEL LE JOUEUR A CLIQUER,couleurJoueur);
-|_____	
- 
-// Des que le joueur clique sur une fleche directionelle
-
-if(damier.nbCaseSelectione()==0){
-	System.out.println("Vous n'avez selectionnez aucune case");
-}
-else{
-	ON ENREGISTRE LA DIRECTION QUE LE JOUEUR A SELECTIONE
-
-	// CONVENTION DE CODE POUR LES NOMS DE DIRECTION
-	// hautGauche hautDroite droite gauche basGauche basDroite // 
-	
-	if(damier.deplacementPossible(LES 3 CASES SELECTONEES, DIRECTION)){
-		Case tmp=new Case();
-		
-		tmp=damier.determinerCaseADeplacer(LES 3 CASES SELECTIONEES, DIRECTION);
-		
-		damier.deplacerBoule(tmp, DIRECTION);
-		
-		// On change la couleur du joueur actuel
-		if(damier.getCouleurJoueur()=="noir"){
-			damier.setCouleurJoueur("rouge");
-		}
-		else{
-			damier.setCouleurJoueur("noir");
-		}
-		
-	}
-	else{
-		System.out.println("Pas de deplcement possible avec les boules selectionnees");
-		// AFFICHER A L'ECRAN QUE LE DEPLACEMENT N'EST PAS POSSIBLE
-	}
-}
-*/
 
