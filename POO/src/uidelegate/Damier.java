@@ -20,6 +20,7 @@ public abstract class Damier {
 	
 	public abstract void initialiseGraphe();
 
+	//renvoie vrai si la caseTest est un voisin de la caseRef
 	public boolean estVoisin(Case parCaseRef, Case parCaseTest){
 		
 		if(parCaseRef.getVoisinHautGauche() == parCaseTest)
@@ -38,6 +39,7 @@ public abstract class Damier {
 		return false;
 	}
 	
+	//renvoie vrai si un déplacement est possible
 	public boolean estPermis(Case parCaseOri, Case parCaseDest){
 		if(estVoisin(parCaseOri, parCaseDest) && parCaseDest.getPion() == null)
 			return true;

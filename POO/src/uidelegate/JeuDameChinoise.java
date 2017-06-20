@@ -11,8 +11,8 @@ public class JeuDameChinoise extends Jeu {
 	private int nbCouleur;
 	private int compteurTour = 0;
 
-	private BoutonCase boutonCourant;
-	private BoutonCase boutonNouveau;
+	private BoutonCase boutonCourant;//premier bouton cliqué
+	private BoutonCase boutonNouveau;//deuxième bouton cliqué
 	// private int compteurClique = 0;
 
 	public JeuDameChinoise(boolean parJoueContreIA, String parVariante, int parNBJoueur, int parNBCouleur) {
@@ -23,8 +23,7 @@ public class JeuDameChinoise extends Jeu {
 		((DamierDameChinoise) damier).initialiseCouleur(nbCouleur);
 	}
 
-	public int victoire() { // BESOIN DE FAIRE LA VICTOIRE POUR LE MODE 3
-							// COULEURS
+	public int victoire() { //Test si un des joueurs a gagné 
 		if (nbJoueur != 3) {
 			if (victoireRouge())
 				return 2;
@@ -248,8 +247,9 @@ public class JeuDameChinoise extends Jeu {
 	}
 
 
-	public int appliqueCoup() {// quand on select un pion, on peut pas le
-								// déselect pour le moment
+	public int appliqueCoup() {//applique le coup en fonction des boutons passés par la fenêtre
+								//renvoie un entier signifiant si le coup à été effectué ou non
+								//ou si un joueur a gagné 
 		if (boutonCourant.getCasePlateau().getId() == boutonNouveau.getCasePlateau().getId()) {
 			reinitialiseBouton();
 			return 0;
@@ -275,6 +275,9 @@ public class JeuDameChinoise extends Jeu {
 		}
 	}
 
+	//renvoie une liste contenant deux ID de case
+	//le premier sera la case d'origine 
+	//le seconde sela la case de destination pour le déplacement
 	public ArrayList<Integer> idCoupIA() {
 		ArrayList<Integer> listeID = new ArrayList<Integer>();
 		
@@ -305,6 +308,7 @@ public class JeuDameChinoise extends Jeu {
 		// compteurClique = 0;
 	}
 
+	//Détermine la ou les couleurs qui peuvent être jouées pendant ce tour
 	public ArrayList<String> couleurTour() {
 		if (nbCouleur == 2)
 			return couleurTour2C();
@@ -411,6 +415,7 @@ public class JeuDameChinoise extends Jeu {
 		return boutonCourant;
 	}
 
+	//le premier bouton cliqué sera toujours un bouton avec un pion
 	public void setBoutonCourant(BoutonCase boutonCourant) {
 		if (boutonCourant.getCasePlateau().aUnPion()
 				&& couleurTour().contains(boutonCourant.getCasePlateau().getPion().getCouleur()))
@@ -421,6 +426,7 @@ public class JeuDameChinoise extends Jeu {
 		return boutonNouveau;
 	}
 
+	//le deuxième bouton doit toujours être libre
 	public void setBoutonNouveau(BoutonCase boutonNouveau) {
 		if (!boutonNouveau.getCasePlateau().aUnPion())
 			this.boutonNouveau = boutonNouveau;

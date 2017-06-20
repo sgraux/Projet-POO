@@ -9,6 +9,10 @@ public class DamierDameChinoise extends Damier{
 		initialiseGraphe();
 	}
 
+	//Initiliase le graphe 
+	//la branche au sommet de l'étoile en premier
+	//puis toutes les lignes du corps de l'étoile
+	//et la branche en bas de l'étoile
 	@Override
 	public void initialiseGraphe() {
 
@@ -225,6 +229,7 @@ public class DamierDameChinoise extends Damier{
 		
 	}
 
+	//effectue un déplacement classique
 	public boolean deplacement(Case parCaseOri, Case parCaseDest){
 		if(estPermis(parCaseOri, parCaseDest)){
 			parCaseDest.setPion(parCaseOri.getPion());
@@ -234,6 +239,7 @@ public class DamierDameChinoise extends Damier{
 		return false;
 	}
 	
+	//effectue un saut par dessus un pion 
 	public boolean saut(Case parCaseOri, Case parCaseDest){
 		try{
 		if(parCaseOri.getVoisinHautGauche().aUnPion() == true){
@@ -293,6 +299,7 @@ public class DamierDameChinoise extends Damier{
 		return false;
 	}
 	
+	//effecue un saut avec prise pour la variante
 	public boolean sautPrise(Case parCaseOri, Case parCaseDest){
 		try{
 		if(parCaseOri.getVoisinHautGauche().aUnPion() == true){
@@ -358,6 +365,7 @@ public class DamierDameChinoise extends Damier{
 		return false;
 	}
 	
+	//initiliase le nombre de couleur souhaité 
 	public void initialiseCouleur(int parNombre){
 		switch(parNombre){
 		case 2: initialisePion2C();
@@ -476,6 +484,8 @@ public class DamierDameChinoise extends Damier{
 		initialiseBlanc();
 	}
 	
+	//IA
+	//renvoie une liste des cases contenants un pion bleu
 	public ArrayList<Case> listeCaseBleu(){
 		ArrayList<Case> liste = new ArrayList<Case>();
 		
@@ -488,6 +498,7 @@ public class DamierDameChinoise extends Damier{
 		return liste;
 	}
 	
+	//renvoie la liste des cases de déplacement possible pour une case donée
 	public ArrayList<Case> listeCoupsCase(Case parCase){
 		ArrayList<Case> liste = new ArrayList<Case>();
 		
