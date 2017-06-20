@@ -38,8 +38,25 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 	public void setContreIA(boolean contreIA) {
 		this.contreIA = contreIA;
 	}
-
 	
+	private String nom1;
+	private String nom2="IA";
+	
+	public String getNom1() {
+		return nom1;
+	}
+
+	public void setNom1(String nom1) {
+		this.nom1 = nom1;
+	}
+
+	public String getNom2() {
+		return nom2;
+	}
+
+	public void setNom2(String nom2) {
+		this.nom2 = nom2;
+	}
 	//test
 	int plateau[][]=
 				{
@@ -53,10 +70,12 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 		        {0,0,0,2,0,2,0,2,0,2,0,2,0,2,0,0,0},
 		        {0,0,0,0,2,0,2,0,2,0,2,0,2,0,0,0,0}};
 	private JeuAbalone jeuAb ;
-	public PlateauxAB(Dimension dim, String mode,boolean contreIA) {
+	public PlateauxAB(Dimension dim, String mode,boolean contreIA,String nom1,String nom2) {
 		super(dim);
 		this.mode=mode;
 		this.contreIA=contreIA;
+		this.nom1=nom1;
+		this.nom2=nom2;
 		jeuAb = new JeuAbalone(contreIA, mode);
 		initPanel();
 	}
@@ -81,13 +100,13 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 	private ImageIcon bNoiSel = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billenoirselect.png")).getImage());
 	private ImageIcon bBlaSel = new ImageIcon(new ImageIcon(getClass().getResource("/Images/billeblancselect.png")).getImage());
 	
-	private JLabel label = new JLabel("J1(NOIR):");
-	private JLabel label1 = new JLabel("J2(BLANC):");
+	private JLabel label = new JLabel("J1B("+getNom1()+")");
+	private JLabel label1 = new JLabel("J2N("+getNom2()+")");
 	private JLabel label2 = new JLabel("scr");
 	private JLabel label3 = new JLabel("scr");
 
 	
-	
+	//Fonction qui initialise le panel est il met les compasant graphic la dans 
 	@Override
 	protected void initPanel() {
 		
@@ -399,7 +418,7 @@ public class PlateauxAB extends JeuxPan implements ActionListener,Var{
 		this.ButtonSelec = ButtonSelec;
 	}
 
-	//
+	//Fonction qui gere les evenement sur ce panel
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{	

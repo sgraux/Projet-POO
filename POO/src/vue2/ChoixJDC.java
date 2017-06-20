@@ -102,7 +102,7 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 		this.ia = ia;
 	}
 	
-
+	//Fonction qui initialise le panel est il met les compasant graphic la dans 
 	@Override
 	protected void initPanel() {
 		//titre
@@ -225,6 +225,7 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 		
 	}
 	
+	//Fonction qui gere les evenemnt sur ce panel est envoi les parametre sélectionné
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
@@ -272,24 +273,48 @@ public class ChoixJDC extends JeuxPan implements ActionListener {
 			setNbJ(2);
 			setIa(true);
 		}
+		else if(source==mCButton){
+			setChoixJ(null);
+		}
+		else if(source==mRButton){
+			setChoixJ("prise");
+		}
 		else if(source==com){
-			if(getNbJ()==2 && getIa()==false){
+			if(getChoixJ()==null && getNbJ()==2 && getIa()==false){
 				frame.platDC2J();
 			}
 			else if(getIa()==true){
 				frame.platDCIA();
 				}
-			else if(getNbJ()==3){
+			else if(getChoixJ()==null && getNbJ()==3){
 				frame.platDC3J();
 				}
-			else if(getNbJ()==4){
+			else if(getChoixJ()==null && getNbJ()==4){
 				frame.platDC4J();
 				}
-			else if(getNbJ()==5){
+			else if(getChoixJ()==null && getNbJ()==5){
 				frame.platDC5J();
 				}
-			else{
+			else if(getChoixJ()==null && getNbJ()==6){
 				frame.platDC6J();
+			}
+			else if(getChoixJ()=="prise" && getNbJ()==2 && getIa()==false){
+				frame.platDC2Jpr();
+			}
+			else if(getChoixJ()=="prise" && getIa()==true){
+				frame.platDCIApr();
+				}
+			else if(getChoixJ()=="prise" && getNbJ()==3){
+				frame.platDC3Jpr();
+				}
+			else if(getChoixJ()=="prise" && getNbJ()==4){
+				frame.platDC4Jpr();
+				}
+			else if(getChoixJ()=="prise" && getNbJ()==5){
+				frame.platDC5Jpr();
+				}
+			else{
+				frame.platDC6Jpr();
 			}
 		}
 		

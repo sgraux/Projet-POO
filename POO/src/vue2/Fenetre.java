@@ -11,7 +11,7 @@ public class Fenetre extends JFrame implements ActionListener,Var{
 	JPanel pan = new JPanel();
 	
 	
-	//
+	//Constructeur de la fenetre principale du jeux
 	public Fenetre(){
 	    this.setTitle("JEUX DC & AB");
 	    this.setLayout(null);
@@ -43,7 +43,8 @@ public class Fenetre extends JFrame implements ActionListener,Var{
 	    this.setVisible(true);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
+	
+	//Fonctions qui vider le panel principale et mettre les nouveaux composant
 	public void accueil(){
 		pan.removeAll();
 		pan.add(acc.getPanel());
@@ -95,40 +96,71 @@ public class Fenetre extends JFrame implements ActionListener,Var{
 		pan.revalidate();
 	}
 	
+	public void platDCIApr(){
+		pan.removeAll();
+		pan.add(new PlateauxDC(size, true, "prise",2,2).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	public void platDC2Jpr(){
+		pan.removeAll();
+		pan.add(new PlateauxDC(size, false, "prise",2,2).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	public void platDC3Jpr(){
+		pan.removeAll();
+		pan.add(new PlateauxDC(size, false, "prise",3,3).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	public void platDC4Jpr(){
+		pan.removeAll();
+		pan.add(new PlateauxDC(size, false, "prise",4,4).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	public void platDC5Jpr(){
+		pan.removeAll();
+		pan.add(new PlateauxDC(size, false, "prise",5,5).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	public void platDC6Jpr(){
+		pan.removeAll();
+		pan.add(new PlateauxDC(size, true, "prise",6,6).getPanel(),BorderLayout.WEST);
+		pan.revalidate();
+	}
+	
 	
 	//Les Constructeurs AB
-	public void platAB(){
+	public void platAB(String nom1,String nom2){
 		pan.removeAll();
-		pan.add(new PlateauxAB(size,null,false).getPanel(),BorderLayout.WEST);
+		pan.add(new PlateauxAB(size,null,false,nom1,nom2).getPanel(),BorderLayout.WEST);
 		pan.revalidate();
 	}
 	
-	public void platABIA(){
+	public void platABIA(String nom1,String nom2){
 		pan.removeAll();
-		pan.add(new PlateauxAB(size,null,true).getPanel(),BorderLayout.WEST);
+		pan.add(new PlateauxAB(size,null,true,nom1,"IA").getPanel(),BorderLayout.WEST);
 		pan.revalidate();
 	}
 	
-	public void platABIATN(){
+	public void platABIATN(String nom1,String nom2){
 		pan.removeAll();
-		pan.add(new PlateauxAB(size,"trouNoir",true).getPanel(),BorderLayout.WEST);
+		pan.add(new PlateauxAB(size,"trouNoir",true,nom1,"IA").getPanel(),BorderLayout.WEST);
 		pan.revalidate();
 	}
 	
-	public void platABTN(){
+	public void platABTN(String nom1,String nom2){
 		pan.removeAll();
-		pan.add(new PlateauxAB(size,"trouNoir",false).getPanel(),BorderLayout.WEST);
+		pan.add(new PlateauxAB(size,"trouNoir",false,nom1,nom2).getPanel(),BorderLayout.WEST);
 		pan.revalidate();
 	}
 	
-	public void platABIAMU(){
+	public void platABIAMU(String nom1,String nom2){
 		pan.removeAll();
-		pan.add(new PlateauxAB(size,"mur",true).getPanel(),BorderLayout.WEST);
+		pan.add(new PlateauxAB(size,"mur",true,nom1,"IA").getPanel(),BorderLayout.WEST);
 		pan.revalidate();
 	}
-	public void platABMU(){
+	public void platABMU(String nom1,String nom2){
 		pan.removeAll();
-		pan.add(new PlateauxAB(size,"mur",false).getPanel(),BorderLayout.WEST);
+		pan.add(new PlateauxAB(size,"mur",false,nom1,"IA").getPanel(),BorderLayout.WEST);
 		pan.revalidate();
 	}
 	
@@ -136,7 +168,7 @@ public class Fenetre extends JFrame implements ActionListener,Var{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object source = e.getSource();
+		
 		
 	}
 
